@@ -1,5 +1,5 @@
 //
-//  PlayerModel.swift
+//  Item.swift
 //  Dungeonaire
 //
 //  Created by Benjamin Su on 6/1/17.
@@ -8,12 +8,8 @@
 
 import Foundation
 
-class PlayerInfo {
+class Item {
     
-    // var party = [Characters]()
-    //inventory
-    //gold
-    //party lvl
     
     
 }

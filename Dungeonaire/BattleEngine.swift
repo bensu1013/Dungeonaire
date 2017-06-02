@@ -1,5 +1,5 @@
 //
-//  Character.swift
+//  BattleEngine.swift
 //  Dungeonaire
 //
 //  Created by Benjamin Su on 6/1/17.
@@ -8,18 +8,9 @@
 
 import Foundation
 
-class Character {
-    
-    //items
-    //skills
-    //stats
+class BattleEngine {
     
     
-    
-    
-    func update(dt: TimeInterval) {
-        
-    }
     
     
     

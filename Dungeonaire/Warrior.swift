@@ -9,10 +9,12 @@
 import Foundation
 
 
-class Warrior: Character {
+class Warrior: Squib {
     
     
     override func update(dt: TimeInterval) {
-        
+        if let _ = equipment["weapon"] as? Weapon {
+            print("weapon")
+        }
     }
 }
