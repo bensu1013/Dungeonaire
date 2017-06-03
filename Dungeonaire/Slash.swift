@@ -10,6 +10,16 @@ import Foundation
 
 class Slash: Skill {
     
+    var damageMultiplier = 1.2
     
+    override init() {
+        super.init()
+        type = .attack
+        targets = [0,1]
+    }
+    
+    override func activate(modifier: Double) -> Double {
+        return modifier * damageMultiplier
+    }
     
 }

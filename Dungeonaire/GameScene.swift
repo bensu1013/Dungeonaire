@@ -11,24 +11,32 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    
+    let battleEngine = BattleEngine()
+
     
     override func didMove(to view: SKView) {
+        
+        
         let char = Warrior()
-        char.equipment.weapon = Weapon()
+        let enemy = GoblinSpear()
+        PlayerDatabase.main.party.units.append(char)
         
-        PlayerDatabase.main.party.append(char)
+        battleEngine.enemyTeam.append(enemy)
         
-        for s in PlayerDatabase.main.party {
-            s.update(dt: 0.0)
-        }
+        battleEngine.startBattleInitiatives()
         
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let _ = battleEngine.currentUnit {
+            
+        }
+        battleEngine.currentUnit = nil
+    }
  
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        
+        battleEngine.update(dt: currentTime)
     }
     
 }

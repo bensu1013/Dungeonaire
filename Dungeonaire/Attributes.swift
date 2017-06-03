@@ -10,11 +10,11 @@ import Foundation
 
 struct Attributes {
     
-    var Strength = 0
-    var Dexterity = 0
-    var Vitality = 0
-    var Wisdom = 0
-    var Luck = 0
+    var strength = 0
+    var dexterity = 0
+    var vitality = 0
+    var wisdom = 0
+    var luck = 0
     
     
 }

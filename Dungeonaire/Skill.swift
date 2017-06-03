@@ -8,8 +8,18 @@
 
 import Foundation
 
+enum SkillType {
+    case attack
+    case defense
+}
+
 class Skill {
     
+    var type: SkillType = .attack
+    var targets = [Int]()
     
+    func activate(modifier: Double) -> Double {
+        return 0
+    }
     
 }

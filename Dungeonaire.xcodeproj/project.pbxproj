@@ -31,6 +31,7 @@
 		FD1E4E341EE24EFD00626E22 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E331EE24EFD00626E22 /* Attributes.swift */; };
 		FD1E4E381EE2519900626E22 /* Slash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E371EE2519900626E22 /* Slash.swift */; };
 		FD1E4E3A1EE251B300626E22 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E391EE251B300626E22 /* Skill.swift */; };
+		FD1E4E3C1EE316B000626E22 /* GoblinSpear.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E3B1EE316B000626E22 /* GoblinSpear.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		FD1E4E331EE24EFD00626E22 /* Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
 		FD1E4E371EE2519900626E22 /* Slash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slash.swift; sourceTree = "<group>"; };
 		FD1E4E391EE251B300626E22 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		FD1E4E3B1EE316B000626E22 /* GoblinSpear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoblinSpear.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1E4E301EE24DBF00626E22 /* EnemyUnit.swift */,
+				FD1E4E3E1EE316CD00626E22 /* Goblins */,
 			);
 			name = EnemyUnits;
 			sourceTree = "<group>";
@@ -215,6 +218,22 @@
 				FD1E4E371EE2519900626E22 /* Slash.swift */,
 			);
 			name = WarriorSkills;
+			sourceTree = "<group>";
+		};
+		FD1E4E3D1EE316C000626E22 /* GoblinSpear */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E3B1EE316B000626E22 /* GoblinSpear.swift */,
+			);
+			name = GoblinSpear;
+			sourceTree = "<group>";
+		};
+		FD1E4E3E1EE316CD00626E22 /* Goblins */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E3D1EE316C000626E22 /* GoblinSpear */,
+			);
+			name = Goblins;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +329,7 @@
 				FD1E4E101EE096F000626E22 /* Unit.swift in Sources */,
 				FD1E4E3A1EE251B300626E22 /* Skill.swift in Sources */,
 				FD1E4E251EE1097600626E22 /* BattleEngine.swift in Sources */,
+				FD1E4E3C1EE316B000626E22 /* GoblinSpear.swift in Sources */,
 				FD1E4E381EE2519900626E22 /* Slash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

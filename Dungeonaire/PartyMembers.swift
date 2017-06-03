@@ -10,7 +10,7 @@ import Foundation
 
 class PartyMembers {
     
-//    var 
+    var units = [PlayerUnit]()
     
     
 }

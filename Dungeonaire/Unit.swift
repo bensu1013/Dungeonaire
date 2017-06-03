@@ -10,17 +10,17 @@ import Foundation
 
 class Unit {
     
-    
+    var initiative = 0
     var skills = [Skill]()
     var attributes = Attributes()
-    //health
+    var health = 10
     
-    init() {
-        
+    func takeTurn() {
+        print("unit")
     }
     
     func update(dt: TimeInterval) {
-        
+        print("unit update")
     }
     
     

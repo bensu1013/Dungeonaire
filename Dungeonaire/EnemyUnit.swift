@@ -10,4 +10,11 @@ import Foundation
 
 class EnemyUnit: Unit {
     
+    
+    override func takeTurn() {
+        //use AI to choose skill to use
+        print("freedom@@@@@@@/n@@@@@@@/n@@@@@@@")
+    }
+    
+    
 }

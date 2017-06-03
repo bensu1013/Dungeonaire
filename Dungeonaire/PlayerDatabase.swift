@@ -14,7 +14,7 @@ class PlayerDatabase {
     
     private init() {}
     
-    var party = [PlayerUnit]()
+    var party = PartyMembers()
     var inventory = [Item]()
     var gold = 0
     
