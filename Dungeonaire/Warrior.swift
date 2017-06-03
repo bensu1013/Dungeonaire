@@ -9,12 +9,17 @@
 import Foundation
 
 
-class Warrior: Squib {
+class Warrior: PlayerUnit {
     
+    override init() {
+        super.init()
+        
+    }
     
     override func update(dt: TimeInterval) {
-        if let _ = equipment["weapon"] as? Weapon {
-            print("weapon")
+        if let weapon = equipment.weapon {
+            print(weapon.damage)
         }
+        
     }
 }

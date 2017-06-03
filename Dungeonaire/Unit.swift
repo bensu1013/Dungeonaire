@@ -8,15 +8,16 @@
 
 import Foundation
 
-class Squib {
+class Unit {
     
-    //items
-    var equipment = [String: Item]()
-    //skills
-    //stats
+    
+    var skills = [Skill]()
+    var attributes = Attributes()
     //health
     
-    
+    init() {
+        
+    }
     
     func update(dt: TimeInterval) {
         

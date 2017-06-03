@@ -15,7 +15,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         let char = Warrior()
-        char.equipment["weapon"] = Weapon()
+        char.equipment.weapon = Weapon()
         
         PlayerDatabase.main.party.append(char)
         

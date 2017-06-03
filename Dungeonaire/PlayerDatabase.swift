@@ -14,10 +14,10 @@ class PlayerDatabase {
     
     private init() {}
     
-    var party = [Squib]()
-    //inventory
-    //gold
-    //party lvl
+    var party = [PlayerUnit]()
+    var inventory = [Item]()
+    var gold = 0
+    
     
     
 }

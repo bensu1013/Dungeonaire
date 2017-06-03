@@ -1,5 +1,5 @@
 //
-//  BattleEngine.swift
+//  PartyMembers.swift
 //  Dungeonaire
 //
 //  Created by Benjamin Su on 6/1/17.
@@ -8,12 +8,9 @@
 
 import Foundation
 
-class BattleEngine {
+class PartyMembers {
     
-    var playerTeam = [PlayerUnit]()
-    var enemyTeam = [EnemyUnit]()
-    
-    
+//    var 
     
     
 }

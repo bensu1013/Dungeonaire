@@ -1,5 +1,5 @@
 //
-//  BattleEngine.swift
+//  Armor.swift
 //  Dungeonaire
 //
 //  Created by Benjamin Su on 6/1/17.
@@ -8,12 +8,8 @@
 
 import Foundation
 
-class BattleEngine {
+class Armor: Item {
     
-    var playerTeam = [PlayerUnit]()
-    var enemyTeam = [EnemyUnit]()
-    
-    
-    
+    var defense = 8
     
 }

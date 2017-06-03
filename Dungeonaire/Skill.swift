@@ -1,16 +1,15 @@
 //
-//  Weapon.swift
+//  Skill.swift
 //  Dungeonaire
 //
-//  Created by Benjamin Su on 6/1/17.
+//  Created by Benjamin Su on 6/2/17.
 //  Copyright © 2017 Benjamin Su. All rights reserved.
 //
 
 import Foundation
 
-class Weapon: Item {
+class Skill {
     
-    var damage = 10
     
     
 }

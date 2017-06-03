@@ -1,5 +1,5 @@
 //
-//  BattleEngine.swift
+//  EquipmentController.swift
 //  Dungeonaire
 //
 //  Created by Benjamin Su on 6/1/17.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-class BattleEngine {
+class EquipmentController {
     
-    var playerTeam = [PlayerUnit]()
-    var enemyTeam = [EnemyUnit]()
+    var weapon: Weapon?
+    var armor: Armor?
     
     
     

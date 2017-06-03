@@ -15,7 +15,7 @@
 		FD1E4E031EE0966700626E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E011EE0966700626E22 /* Main.storyboard */; };
 		FD1E4E051EE0966700626E22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E041EE0966700626E22 /* Assets.xcassets */; };
 		FD1E4E081EE0966700626E22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E061EE0966700626E22 /* LaunchScreen.storyboard */; };
-		FD1E4E101EE096F000626E22 /* Squib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E0F1EE096F000626E22 /* Squib.swift */; };
+		FD1E4E101EE096F000626E22 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E0F1EE096F000626E22 /* Unit.swift */; };
 		FD1E4E131EE0974900626E22 /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E121EE0974900626E22 /* Warrior.swift */; };
 		FD1E4E161EE097DC00626E22 /* LevelMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E151EE097DC00626E22 /* LevelMap.swift */; };
 		FD1E4E191EE0980F00626E22 /* HudLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E181EE0980F00626E22 /* HudLayer.swift */; };
@@ -23,6 +23,14 @@
 		FD1E4E201EE108EB00626E22 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E1F1EE108EB00626E22 /* Item.swift */; };
 		FD1E4E221EE108FE00626E22 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E211EE108FE00626E22 /* Weapon.swift */; };
 		FD1E4E251EE1097600626E22 /* BattleEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E241EE1097600626E22 /* BattleEngine.swift */; };
+		FD1E4E271EE10C5D00626E22 /* Armor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E261EE10C5D00626E22 /* Armor.swift */; };
+		FD1E4E291EE10CD400626E22 /* PartyMembers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E281EE10CD400626E22 /* PartyMembers.swift */; };
+		FD1E4E2B1EE10DD500626E22 /* EquipmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E2A1EE10DD500626E22 /* EquipmentController.swift */; };
+		FD1E4E2F1EE24D7800626E22 /* PlayerUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E2E1EE24D7800626E22 /* PlayerUnit.swift */; };
+		FD1E4E311EE24DBF00626E22 /* EnemyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E301EE24DBF00626E22 /* EnemyUnit.swift */; };
+		FD1E4E341EE24EFD00626E22 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E331EE24EFD00626E22 /* Attributes.swift */; };
+		FD1E4E381EE2519900626E22 /* Slash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E371EE2519900626E22 /* Slash.swift */; };
+		FD1E4E3A1EE251B300626E22 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E391EE251B300626E22 /* Skill.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +44,7 @@
 		FD1E4E041EE0966700626E22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD1E4E071EE0966700626E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD1E4E091EE0966700626E22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD1E4E0F1EE096F000626E22 /* Squib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Squib.swift; sourceTree = "<group>"; };
+		FD1E4E0F1EE096F000626E22 /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		FD1E4E121EE0974900626E22 /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
 		FD1E4E151EE097DC00626E22 /* LevelMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMap.swift; sourceTree = "<group>"; };
 		FD1E4E181EE0980F00626E22 /* HudLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudLayer.swift; sourceTree = "<group>"; };
@@ -44,6 +52,14 @@
 		FD1E4E1F1EE108EB00626E22 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FD1E4E211EE108FE00626E22 /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		FD1E4E241EE1097600626E22 /* BattleEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleEngine.swift; sourceTree = "<group>"; };
+		FD1E4E261EE10C5D00626E22 /* Armor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Armor.swift; sourceTree = "<group>"; };
+		FD1E4E281EE10CD400626E22 /* PartyMembers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyMembers.swift; sourceTree = "<group>"; };
+		FD1E4E2A1EE10DD500626E22 /* EquipmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipmentController.swift; sourceTree = "<group>"; };
+		FD1E4E2E1EE24D7800626E22 /* PlayerUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerUnit.swift; sourceTree = "<group>"; };
+		FD1E4E301EE24DBF00626E22 /* EnemyUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyUnit.swift; sourceTree = "<group>"; };
+		FD1E4E331EE24EFD00626E22 /* Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
+		FD1E4E371EE2519900626E22 /* Slash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slash.swift; sourceTree = "<group>"; };
+		FD1E4E391EE251B300626E22 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,13 +109,14 @@
 			path = Dungeonaire;
 			sourceTree = "<group>";
 		};
-		FD1E4E111EE0971F00626E22 /* CharacterModels */ = {
+		FD1E4E111EE0971F00626E22 /* UnitModels */ = {
 			isa = PBXGroup;
 			children = (
-				FD1E4E0F1EE096F000626E22 /* Squib.swift */,
-				FD1E4E121EE0974900626E22 /* Warrior.swift */,
+				FD1E4E321EE24EB500626E22 /* BaseUnit */,
+				FD1E4E2C1EE24CEA00626E22 /* PlayerUnits */,
+				FD1E4E2D1EE24CFF00626E22 /* EnemyUnits */,
 			);
-			name = CharacterModels;
+			name = UnitModels;
 			sourceTree = "<group>";
 		};
 		FD1E4E141EE097B300626E22 /* GameMap */ = {
@@ -123,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1E4E1B1EE098AB00626E22 /* PlayerDatabase.swift */,
+				FD1E4E281EE10CD400626E22 /* PartyMembers.swift */,
 			);
 			name = PlayerModel;
 			sourceTree = "<group>";
@@ -131,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1E4E1A1EE0988600626E22 /* PlayerModel */,
-				FD1E4E111EE0971F00626E22 /* CharacterModels */,
+				FD1E4E111EE0971F00626E22 /* UnitModels */,
 			);
 			name = GameModels;
 			sourceTree = "<group>";
@@ -139,8 +157,10 @@
 		FD1E4E1E1EE108D500626E22 /* ItemModels */ = {
 			isa = PBXGroup;
 			children = (
+				FD1E4E2A1EE10DD500626E22 /* EquipmentController.swift */,
 				FD1E4E1F1EE108EB00626E22 /* Item.swift */,
 				FD1E4E211EE108FE00626E22 /* Weapon.swift */,
+				FD1E4E261EE10C5D00626E22 /* Armor.swift */,
 			);
 			name = ItemModels;
 			sourceTree = "<group>";
@@ -151,6 +171,50 @@
 				FD1E4E241EE1097600626E22 /* BattleEngine.swift */,
 			);
 			name = GameLogic;
+			sourceTree = "<group>";
+		};
+		FD1E4E2C1EE24CEA00626E22 /* PlayerUnits */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E2E1EE24D7800626E22 /* PlayerUnit.swift */,
+				FD1E4E351EE2515700626E22 /* WarriorUnit */,
+			);
+			name = PlayerUnits;
+			sourceTree = "<group>";
+		};
+		FD1E4E2D1EE24CFF00626E22 /* EnemyUnits */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E301EE24DBF00626E22 /* EnemyUnit.swift */,
+			);
+			name = EnemyUnits;
+			sourceTree = "<group>";
+		};
+		FD1E4E321EE24EB500626E22 /* BaseUnit */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E0F1EE096F000626E22 /* Unit.swift */,
+				FD1E4E331EE24EFD00626E22 /* Attributes.swift */,
+				FD1E4E391EE251B300626E22 /* Skill.swift */,
+			);
+			name = BaseUnit;
+			sourceTree = "<group>";
+		};
+		FD1E4E351EE2515700626E22 /* WarriorUnit */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E121EE0974900626E22 /* Warrior.swift */,
+				FD1E4E361EE2517800626E22 /* WarriorSkills */,
+			);
+			name = WarriorUnit;
+			sourceTree = "<group>";
+		};
+		FD1E4E361EE2517800626E22 /* WarriorSkills */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E371EE2519900626E22 /* Slash.swift */,
+			);
+			name = WarriorSkills;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,16 +293,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD1E4E131EE0974900626E22 /* Warrior.swift in Sources */,
+				FD1E4E341EE24EFD00626E22 /* Attributes.swift in Sources */,
+				FD1E4E2F1EE24D7800626E22 /* PlayerUnit.swift in Sources */,
+				FD1E4E291EE10CD400626E22 /* PartyMembers.swift in Sources */,
 				FD1E4E201EE108EB00626E22 /* Item.swift in Sources */,
 				FD1E4E161EE097DC00626E22 /* LevelMap.swift in Sources */,
+				FD1E4E2B1EE10DD500626E22 /* EquipmentController.swift in Sources */,
+				FD1E4E271EE10C5D00626E22 /* Armor.swift in Sources */,
 				FD1E4E1C1EE098AB00626E22 /* PlayerDatabase.swift in Sources */,
+				FD1E4E311EE24DBF00626E22 /* EnemyUnit.swift in Sources */,
 				FD1E4E191EE0980F00626E22 /* HudLayer.swift in Sources */,
 				FD1E4E221EE108FE00626E22 /* Weapon.swift in Sources */,
 				FD1E4DFE1EE0966700626E22 /* GameScene.swift in Sources */,
 				FD1E4E001EE0966700626E22 /* GameViewController.swift in Sources */,
 				FD1E4DF81EE0966700626E22 /* AppDelegate.swift in Sources */,
-				FD1E4E101EE096F000626E22 /* Squib.swift in Sources */,
+				FD1E4E101EE096F000626E22 /* Unit.swift in Sources */,
+				FD1E4E3A1EE251B300626E22 /* Skill.swift in Sources */,
 				FD1E4E251EE1097600626E22 /* BattleEngine.swift in Sources */,
+				FD1E4E381EE2519900626E22 /* Slash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
