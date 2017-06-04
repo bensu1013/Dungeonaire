@@ -13,7 +13,6 @@ class EnemyUnit: Unit {
     
     override func takeTurn(handler: @escaping (Skill?) -> () ) {
         //use AI to choose skill to use
-//        print("freedom@@@@@@@\n\(health)")
     }
     
     

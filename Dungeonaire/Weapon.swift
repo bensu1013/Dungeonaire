@@ -10,7 +10,7 @@ import Foundation
 
 class Weapon: Item {
     
-    var damage = 10
+    var damage = 3
     
     
 }

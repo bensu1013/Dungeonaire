@@ -19,7 +19,7 @@ class Stab: Skill {
     }
     
     override func activate(modifier: Double) -> Double {
-        return modifier * damageMultiplier
+        return damageMultiplier * modifier
     }
     
 }

@@ -14,18 +14,24 @@ class BattleEngine {
     
     var teamOne = BattleTeam()
     var teamTwo = BattleTeam()
+    var inputRequired = false
+    
     
     init() {
-        teamOne.party = UserDatabase.main.party.units
-        teamOne.enemyTeam = teamTwo
         
+    }
+    
+    func load(first team1: [Unit], second team2: [Unit]) {
+        for unit in team1 {
+            teamOne.addTeamMember(unit: unit)
+        }
+        for unit in team2 {
+            teamTwo.addTeamMember(unit: unit)
+        }
+        
+        teamOne.enemyTeam = teamTwo
         teamTwo.enemyTeam = teamOne
     }
-    
-    func playerTurn() {
-        
-    }
-    
     
     
 }
@@ -47,16 +53,19 @@ extension BattleEngine {
             teamTwo.checkInitiatives()
         }
         if nextTeam() == 2 {
+            inputRequired = false
             //skill needs to be chosen
+            teamTwo.currentUnit?.selectSkill(at: 0)
             
-            //target for skill picked
-            
+            //target for skill picked if applicable
             //effect of skill applied
-            
             //initiative reduced and check for other potential turns
-            
+            teamTwo.takeTurn() {
+                self.prepareNextTurn()
+            }
         } else {
             //prepare for player
+            inputRequired = true
         }
     }
     

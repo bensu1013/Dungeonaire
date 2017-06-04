@@ -10,21 +10,32 @@ import Foundation
 
 class Unit {
     
-    var selectedSkill: Skill?
+    weak var selectedSkill: Skill?
+    weak var team: BattleTeam?
     var initiative = 0
+    //Skills should be its own class manager like attributes
     var skills = [Skill]()
     var attributes = Attributes()
     var health = 10
-        
+    
     func selectSkill(at index: Int) {
         selectedSkill = skills[index]
     }
+    
+    func activateSkill() {
+        
+    }
+    
     func takeTurn(handler: @escaping (Skill?) -> () ) {
-        print("unit")
+        
+    }
+    
+    func calculateDamageRange() -> Int {
+        return 0
     }
     
     func update(dt: TimeInterval) {
-        print("unit update")
+        
     }
     
     

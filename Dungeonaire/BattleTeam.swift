@@ -23,9 +23,21 @@ class BattleTeam {
     var currentUnit: Unit?
     var party = [Unit]()
     
+    func addTeamMember(unit: Unit) {
+        party.append(unit)
+        unit.team = self
+    }
     
-    
-    func takeTurn() {
+    func takeTurn(completion: @escaping () -> () ) {
+        if let unit = currentUnit {
+            
+            unit.activateSkill()
+            
+            unit.initiative -= turnThreshold
+            currentUnit = nil
+            checkInitiatives()
+            completion()
+        }
         
     }
     

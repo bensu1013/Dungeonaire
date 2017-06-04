@@ -15,11 +15,11 @@ class Slash: Skill {
     override init() {
         super.init()
         type = .attack
-        targets = [0,1]
+        targets = [0]
     }
     
     override func activate(modifier: Double) -> Double {
-        return modifier * damageMultiplier
+        return damageMultiplier * modifier
     }
     
 }

@@ -15,6 +15,7 @@ enum SkillType {
 
 class Skill {
     
+    var user: Unit?
     var type: SkillType = .attack
     var targets = [Int]()
     
