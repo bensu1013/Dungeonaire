@@ -10,7 +10,7 @@ import Foundation
 
 class Slash: Skill {
     
-    var damageMultiplier = 1.2
+    var damageMultiplier: Double = 1
     
     override init() {
         super.init()

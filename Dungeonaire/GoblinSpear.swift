@@ -17,8 +17,12 @@ class GoblinSpear: EnemyUnit {
         attributes.vitality = 3
         attributes.wisdom = 2
         attributes.luck = 2
+        health = 234
     }
     
+    override func takeTurn(handler: @escaping (Skill?) -> ()) {
+        handler(selectedSkill)
+    }
     
     override func update(dt: TimeInterval) {
         print("goblin unit")

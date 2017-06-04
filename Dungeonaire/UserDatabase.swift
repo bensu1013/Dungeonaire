@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlayerDatabase {
+class UserDatabase {
     
     static var main = PlayerDatabase()
     

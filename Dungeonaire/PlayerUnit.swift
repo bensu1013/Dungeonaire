@@ -10,7 +10,10 @@ import Foundation
 
 class PlayerUnit: Unit {
     
+    var selectedSkill: Skill? = nil
     var equipment = EquipmentController()
     
-    
+    func selectSkill(_ index: Int) {
+        selectedSkill = skills[index]
+    }
 }

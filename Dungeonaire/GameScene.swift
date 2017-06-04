@@ -17,19 +17,21 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         
-        let char = Warrior()
+        let char1 = Warrior()
+        let char2 = Warrior()
         let enemy = GoblinSpear()
-        PlayerDatabase.main.party.units.append(char)
-        
-        battleEngine.enemyTeam.append(enemy)
+        UserDatabase.main.party.units.append(char1)
+        UserDatabase.main.party.units.append(char2)
+        battleEngine.teamTwo.party.append(enemy)
         
         battleEngine.startBattleInitiatives()
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let _ = battleEngine.currentUnit {
-            
+        if let unit = battleEngine.currentUnit as? PlayerUnit {
+            unit.selectSkill(0)
+            battleEngine.playerTurn()
         }
         battleEngine.currentUnit = nil
     }

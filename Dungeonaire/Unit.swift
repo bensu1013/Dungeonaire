@@ -15,7 +15,7 @@ class Unit {
     var attributes = Attributes()
     var health = 10
     
-    func takeTurn() {
+    func takeTurn(handler: @escaping (Skill?) -> () ) {
         print("unit")
     }
     

@@ -10,10 +10,11 @@ import Foundation
 
 class EnemyUnit: Unit {
     
+    var selectedSkill: Skill? = nil
     
-    override func takeTurn() {
+    override func takeTurn(handler: @escaping (Skill?) -> () ) {
         //use AI to choose skill to use
-        print("freedom@@@@@@@/n@@@@@@@/n@@@@@@@")
+//        print("freedom@@@@@@@\n\(health)")
     }
     
     
