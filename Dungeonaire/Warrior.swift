@@ -32,10 +32,10 @@ class Warrior: PlayerUnit {
         if let weapon = equipment.weapon {
             print(weapon.damage)
         }
-        print("warrior")
+      
     }
     
-    override func selectSkill(_ index: Int) {
+    override func selectSkill(at index: Int) {
         selectedSkill = skills[index]
     }
     

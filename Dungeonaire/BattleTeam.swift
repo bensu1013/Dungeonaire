@@ -25,6 +25,10 @@ class BattleTeam {
     
     
     
+    func takeTurn() {
+        
+    }
+    
 }
 
 //MARK: team initiative methods

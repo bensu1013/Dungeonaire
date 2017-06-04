@@ -12,107 +12,72 @@ private var turnThreshold = 100
 
 class BattleEngine {
     
-    var currentUnit: Unit?
     var teamOne = BattleTeam()
     var teamTwo = BattleTeam()
     
     init() {
-        teamOne.party = UserDatabase.main.party
+        teamOne.party = UserDatabase.main.party.units
         teamOne.enemyTeam = teamTwo
         
         teamTwo.enemyTeam = teamOne
     }
     
     func playerTurn() {
-        if let unit = currentUnit as? PlayerUnit {
-            unit.takeTurn(handler: { (skill) in
-                if let skill = skill {
-                    let skillAmount = skill.activate(modifier: Double(unit.attributes.strength))
-                    if skill.type == .attack {
-                        for target in skill.targets {
-                            if target < self.teamTwo.party.count {
-                                self.teamTwo.party[target].health -= Int(skillAmount)
-                            }
-                        }
-                    }
-                }
-            })
-        }
-    }
-    
-    //probably remove update and turn in to a while loop for finding next unit action
-    func update(dt: TimeInterval) {
-        if let unit = currentUnit {
-            if let enemy = unit as? EnemyUnit {
-                enemy.takeTurn(handler: { (skill) in
-                    
-                })
-                currentUnit = nil
-            }
-            if let _ = unit as? PlayerUnit {
-                //setup HUDLayer to reflect unit
-            }
-        } else {
-            incrementInitiatives()
-            checkInitiatives()
-        }
         
     }
+    
+    
     
 }
 
 //MARK: initiatives
 extension BattleEngine {
     
-    //figure out turns based on dexterity
-    func startBattleInitiatives() {
-        for playerUnit in teamOne.party {
-            let initRoll = Int(arc4random_uniform(UInt32(20)))
-            playerUnit.initiative = initRoll + playerUnit.attributes.dexterity
+    func startBattle() {
+        teamOne.startBattleInitiatives()
+        teamTwo.startBattleInitiatives()
+        prepareNextTurn()
+    }
+    
+    func prepareNextTurn() {
+        while !hasUnitReady() {
+            teamOne.incrementInitiatives()
+            teamTwo.incrementInitiatives()
+            teamOne.checkInitiatives()
+            teamTwo.checkInitiatives()
         }
-        for enemyUnit in teamTwo.party {
-            let initRoll = Int(arc4random_uniform(UInt32(20)))
-            enemyUnit.initiative = initRoll + enemyUnit.attributes.dexterity
+        if nextTeam() == 2 {
+            //skill needs to be chosen
+            
+            //target for skill picked
+            
+            //effect of skill applied
+            
+            //initiative reduced and check for other potential turns
+            
+        } else {
+            //prepare for player
         }
     }
     
-    func checkInitiatives() {
-        var highestInitUnit: Unit? = nil
-        for enemyUnit in teamTwo.party {
-            if enemyUnit.initiative >= turnThreshold {
-                if let unit = highestInitUnit {
-                    if enemyUnit.initiative > unit.initiative {
-                        highestInitUnit = enemyUnit
-                    }
-                } else {
-                    highestInitUnit = enemyUnit
-                }
-            }
+    func nextTeam() -> Int {
+        guard let a = teamOne.currentUnit else {
+            return 2
         }
-        for playerUnit in teamOne.party {
-            if playerUnit.initiative >= turnThreshold {
-                if let unit = highestInitUnit {
-                    if playerUnit.initiative > unit.initiative {
-                        highestInitUnit = playerUnit
-                    }
-                } else {
-                    highestInitUnit = playerUnit
-                }
-            }
+        guard let b = teamTwo.currentUnit else {
+            return 1
         }
-        if let unit = highestInitUnit {
-            unit.initiative -= turnThreshold
-            currentUnit = unit
-        }
+        return a.initiative >= b.initiative ? 1 : 2
     }
     
-    func incrementInitiatives() {
-        for unit in teamOne.party {
-            unit.initiative += unit.attributes.dexterity
+    func hasUnitReady() -> Bool {
+        if let _ = teamOne.currentUnit {
+            return true
         }
-        for unit in teamTwo.party {
-            unit.initiative += unit.attributes.dexterity
+        if let _ = teamTwo.currentUnit {
+            return true
         }
+        return false
     }
     
 }

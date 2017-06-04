@@ -24,21 +24,19 @@ class GameScene: SKScene {
         UserDatabase.main.party.units.append(char2)
         battleEngine.teamTwo.party.append(enemy)
         
-        battleEngine.startBattleInitiatives()
+        battleEngine.startBattle()
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let unit = battleEngine.currentUnit as? PlayerUnit {
-            unit.selectSkill(0)
-            battleEngine.playerTurn()
-        }
-        battleEngine.currentUnit = nil
+        
+        
+        
     }
  
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        battleEngine.update(dt: currentTime)
+
     }
     
 }

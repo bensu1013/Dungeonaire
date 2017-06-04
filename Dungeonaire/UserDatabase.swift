@@ -10,7 +10,7 @@ import Foundation
 
 class UserDatabase {
     
-    static var main = PlayerDatabase()
+    static var main = UserDatabase()
     
     private init() {}
     

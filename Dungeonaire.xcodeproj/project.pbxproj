@@ -33,6 +33,7 @@
 		FD1E4E3A1EE251B300626E22 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E391EE251B300626E22 /* Skill.swift */; };
 		FD1E4E3C1EE316B000626E22 /* GoblinSpear.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E3B1EE316B000626E22 /* GoblinSpear.swift */; };
 		FD1E4E401EE3904F00626E22 /* BattleTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E3F1EE3904F00626E22 /* BattleTeam.swift */; };
+		FD1E4E431EE3B74E00626E22 /* Stab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E421EE3B74E00626E22 /* Stab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		FD1E4E391EE251B300626E22 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		FD1E4E3B1EE316B000626E22 /* GoblinSpear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoblinSpear.swift; sourceTree = "<group>"; };
 		FD1E4E3F1EE3904F00626E22 /* BattleTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleTeam.swift; sourceTree = "<group>"; };
+		FD1E4E421EE3B74E00626E22 /* Stab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1E4E3B1EE316B000626E22 /* GoblinSpear.swift */,
+				FD1E4E411EE3B73D00626E22 /* GoblinSpearSkills */,
 			);
 			name = GoblinSpear;
 			sourceTree = "<group>";
@@ -237,6 +240,14 @@
 				FD1E4E3D1EE316C000626E22 /* GoblinSpear */,
 			);
 			name = Goblins;
+			sourceTree = "<group>";
+		};
+		FD1E4E411EE3B73D00626E22 /* GoblinSpearSkills */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E421EE3B74E00626E22 /* Stab.swift */,
+			);
+			name = GoblinSpearSkills;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +334,7 @@
 				FD1E4E161EE097DC00626E22 /* LevelMap.swift in Sources */,
 				FD1E4E2B1EE10DD500626E22 /* EquipmentController.swift in Sources */,
 				FD1E4E271EE10C5D00626E22 /* Armor.swift in Sources */,
+				FD1E4E431EE3B74E00626E22 /* Stab.swift in Sources */,
 				FD1E4E1C1EE098AB00626E22 /* UserDatabase.swift in Sources */,
 				FD1E4E311EE24DBF00626E22 /* EnemyUnit.swift in Sources */,
 				FD1E4E191EE0980F00626E22 /* HudLayer.swift in Sources */,

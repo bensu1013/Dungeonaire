@@ -10,7 +10,6 @@ import Foundation
 
 class EnemyUnit: Unit {
     
-    var selectedSkill: Skill? = nil
     
     override func takeTurn(handler: @escaping (Skill?) -> () ) {
         //use AI to choose skill to use
