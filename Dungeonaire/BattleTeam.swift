@@ -15,7 +15,7 @@
 
 import Foundation
 
-private var turnThreshold = 100
+var turnThreshold = 100
 
 class BattleTeam {
     
@@ -30,15 +30,12 @@ class BattleTeam {
     
     func takeTurn(completion: @escaping () -> () ) {
         if let unit = currentUnit {
-            
             unit.activateSkill()
-            
             unit.initiative -= turnThreshold
             currentUnit = nil
             checkInitiatives()
             completion()
         }
-        
     }
     
 }

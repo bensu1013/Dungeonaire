@@ -48,13 +48,6 @@ class GameScene: SKScene {
             frameTime += currentTime
         }
         
-        if frameTime >= 10 {
-            frameTime -= 10
-            
-            print("Warrior : \(battleEngine.teamOne.party[0].health)")
-            print("Goblin : \(battleEngine.teamTwo.party[0].health)\n")
-            
-        }
         
         
         

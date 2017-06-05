@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GoblinSpear: EnemyUnit {
+class GoblinSpear: MonsterUnit {
     
     override init() {
         super.init()

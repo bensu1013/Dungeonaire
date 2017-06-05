@@ -1,5 +1,5 @@
 //
-//  EnemyUnit.swift
+//  MonsterUnit.swift
 //  Dungeonaire
 //
 //  Created by Benjamin Su on 6/2/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EnemyUnit: Unit {
+class MonsterUnit: Unit {
     
     
     override func takeTurn(handler: @escaping (Skill?) -> () ) {

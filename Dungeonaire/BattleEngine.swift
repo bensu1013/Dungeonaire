@@ -8,12 +8,11 @@
 
 import Foundation
 
-private var turnThreshold = 100
 
 class BattleEngine {
     
-    var teamOne = BattleTeam()
-    var teamTwo = BattleTeam()
+    var teamOne = PlayerTeam()
+    var teamTwo = MonsterTeam()
     var inputRequired = false
     
     
@@ -46,6 +45,14 @@ extension BattleEngine {
     }
     
     func prepareNextTurn() {
+        
+        for unit in teamOne.party {
+            print("Player - Init: \(unit.initiative) // Health: \(unit.health)")
+        }
+        for unit in teamTwo.party {
+            print("Monster - Init: \(unit.initiative) // Health: \(unit.health)")
+        }
+        
         while !hasUnitReady() {
             teamOne.incrementInitiatives()
             teamTwo.incrementInitiatives()
@@ -54,12 +61,6 @@ extension BattleEngine {
         }
         if nextTeam() == 2 {
             inputRequired = false
-            //skill needs to be chosen
-            teamTwo.currentUnit?.selectSkill(at: 0)
-            
-            //target for skill picked if applicable
-            //effect of skill applied
-            //initiative reduced and check for other potential turns
             teamTwo.takeTurn() {
                 self.prepareNextTurn()
             }
