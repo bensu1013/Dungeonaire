@@ -14,12 +14,13 @@ class Stab: Skill {
     
     override init() {
         super.init()
-        type = .attack
-        targets = [0]
+        type = .offense
+        canMulti = false
+        targets = [0,1]
     }
     
-    override func activate(modifier: Double) -> Double {
-        return damageMultiplier * modifier
+    override func modifiedAmount(with base: Double) -> Double {
+        return damageMultiplier * base
     }
     
 }

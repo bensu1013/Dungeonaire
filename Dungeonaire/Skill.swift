@@ -9,17 +9,17 @@
 import Foundation
 
 enum SkillType {
-    case attack
+    case offense
     case defense
 }
 
 class Skill {
-    
-    var user: Unit?
-    var type: SkillType = .attack
+
+    var type: SkillType = .offense
+    var canMulti = false
     var targets = [Int]()
     
-    func activate(modifier: Double) -> Double {
+    func modifiedAmount(with base: Double) -> Double {
         return 0
     }
     

@@ -17,26 +17,23 @@ class GoblinSpear: MonsterUnit {
         attributes.vitality = 3
         attributes.wisdom = 2
         attributes.luck = 2
-        health = 234
+        health = 22
         
         let stab = Stab()
-        stab.user = self
         skills.append(stab)
         
     }
     
     override func activateSkill() {
         if let skill = selectedSkill {
-            let damage = skill.activate(modifier: Double(calculateDamageRange()))
-            for target in skill.targets {
-                self.team?.enemyTeam?.party[target].health -= Int(damage)
+            let damage = skill.modifiedAmount(with: Double(calculateDamageRange()))
+            if skill.canMulti {
+                self.team?.enemyTeam?.recieveAssault(targets: skill.targets, amount: damage)
+            } else {
+                let target = Int(arc4random_uniform(UInt32(skill.targets.count)))
+                self.team?.enemyTeam?.recieveAssault(targets: [skill.targets[target]], amount: damage)
             }
         }
-    }
-    
-    override func takeTurn(handler: @escaping (Skill?) -> ()) {
-        handler(selectedSkill)
-        selectedSkill = nil
     }
     
     override func update(dt: TimeInterval) {
@@ -48,12 +45,12 @@ class GoblinSpear: MonsterUnit {
         selectedSkill = skills[0]
     }
     
-    //in case of target selection, add function to choice targets and add to bottom of selectSkill
+    //in case of target selection, add function to choose targets and add to bottom of selectSkill
     
     
     override func calculateDamageRange() -> Int {
         var damage = 0
-        damage = attributes.strength
+        damage = attributes.strength / 10 + 1
         return damage
     }
     

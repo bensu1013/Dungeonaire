@@ -22,6 +22,16 @@ class BattleTeam {
     var enemyTeam: BattleTeam?
     var currentUnit: Unit?
     var party = [Unit]()
+    var isDefeated: Bool {
+        get {
+            for unit in party {
+                if !unit.isDefeated {
+                    return false
+                }
+            }
+            return true
+        }
+    }
     
     func addTeamMember(unit: Unit) {
         party.append(unit)
@@ -35,6 +45,15 @@ class BattleTeam {
             currentUnit = nil
             checkInitiatives()
             completion()
+        }
+    }
+    
+    func recieveAssault(targets: [Int], amount: Double) {
+        for target in targets {
+            if target < party.count {
+                let damageRange = amount / 100 * Double(arc4random_uniform(UInt32(75)) + 25) + 1
+                party[target].healthChanged(by: damageRange)
+            }
         }
     }
     
@@ -53,7 +72,7 @@ extension BattleTeam {
     func checkInitiatives() {
         var highestInitUnit: Unit? = nil
         for unit in party {
-            if unit.initiative >= turnThreshold {
+            if unit.initiative >= turnThreshold && !unit.isDefeated {
                 if let highUnit = highestInitUnit {
                     if unit.initiative > highUnit.initiative {
                         highestInitUnit = unit
@@ -68,7 +87,9 @@ extension BattleTeam {
     
     func incrementInitiatives() {
         for unit in party {
-            unit.initiative += unit.attributes.dexterity
+            if !unit.isDefeated {
+                unit.initiative += unit.attributes.dexterity
+            }
         }
     }
 

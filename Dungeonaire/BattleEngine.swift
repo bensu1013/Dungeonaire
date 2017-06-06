@@ -39,6 +39,8 @@ class BattleEngine {
 extension BattleEngine {
     
     func startBattle() {
+        //battle setup - graphical, data
+        
         teamOne.startBattleInitiatives()
         teamTwo.startBattleInitiatives()
         prepareNextTurn()
@@ -46,12 +48,20 @@ extension BattleEngine {
     
     func prepareNextTurn() {
         
+        if teamTwo.isDefeated {
+            print("winner")
+        } else if teamOne.isDefeated {
+            print("loser")
+        }
+        
         for unit in teamOne.party {
             print("Player - Init: \(unit.initiative) // Health: \(unit.health)")
         }
         for unit in teamTwo.party {
             print("Monster - Init: \(unit.initiative) // Health: \(unit.health)")
         }
+        
+        
         
         while !hasUnitReady() {
             teamOne.incrementInitiatives()

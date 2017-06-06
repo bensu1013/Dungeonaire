@@ -10,10 +10,7 @@ import Foundation
 
 class MonsterUnit: Unit {
     
-    
-    override func takeTurn(handler: @escaping (Skill?) -> () ) {
-        //use AI to choose skill to use
-    }
+
     
     
 }

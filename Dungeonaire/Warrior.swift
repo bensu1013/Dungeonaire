@@ -20,26 +20,25 @@ class Warrior: PlayerUnit {
         attributes.vitality = 6
         attributes.wisdom = 3
         attributes.luck = 2
-        health = 300
+        health = 35
         let weapon = Weapon()
         equipment.weapon = weapon
         let slash = Slash()
-        slash.user = self
         skills.append(slash)
     }
     
     override func activateSkill() {
         if let skill = selectedSkill {
-            let damage = skill.activate(modifier: Double(calculateDamageRange()))
-            for target in skill.targets {
-                self.team?.enemyTeam?.party[target].health -= Int(damage)
+            let damage = skill.modifiedAmount(with: Double(calculateDamageRange()))
+            if skill.canMulti {
+                self.team?.enemyTeam?.recieveAssault(targets: skill.targets, amount: damage)
+            } else {
+                
+                //user needs to choose target
+                let target = Int(arc4random_uniform(UInt32(skill.targets.count)))
+                self.team?.enemyTeam?.recieveAssault(targets: [skill.targets[target]], amount: damage)
             }
         }
-    }
-    
-    override func takeTurn(handler: @escaping (Skill?) -> () ) {
-        handler(selectedSkill)
-        selectedSkill = nil
     }
     
     override func update(dt: TimeInterval) {
@@ -52,7 +51,7 @@ class Warrior: PlayerUnit {
     }
     
     override func calculateDamageRange() -> Int {
-        var damage = 0
+        var damage = attributes.strength / 10 + 1
         if let weapon = equipment.weapon {
             damage = weapon.damage * attributes.strength / 10
         }

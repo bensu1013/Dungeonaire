@@ -13,6 +13,7 @@ class Unit {
     weak var selectedSkill: Skill?
     weak var team: BattleTeam?
     var initiative = 0
+    var isDefeated = false
     //Skills should be its own class manager like attributes
     var skills = [Skill]()
     var attributes = Attributes()
@@ -26,8 +27,12 @@ class Unit {
         
     }
     
-    func takeTurn(handler: @escaping (Skill?) -> () ) {
-        
+    func healthChanged(by amount: Double) {
+        health -= Int(amount)
+        if health <= 0 {
+            isDefeated = true
+            health = 0
+        }
     }
     
     func calculateDamageRange() -> Int {
