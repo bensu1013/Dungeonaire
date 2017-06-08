@@ -126,7 +126,7 @@
 		FD1E4E111EE0971F00626E22 /* UnitModels */ = {
 			isa = PBXGroup;
 			children = (
-				FD1E4E321EE24EB500626E22 /* BaseUnit */,
+				FD1E4E321EE24EB500626E22 /* BaseUnitModel */,
 				FD1E4E2C1EE24CEA00626E22 /* PlayerUnits */,
 				FD1E4E2D1EE24CFF00626E22 /* EnemyUnits */,
 			);
@@ -207,7 +207,7 @@
 			name = EnemyUnits;
 			sourceTree = "<group>";
 		};
-		FD1E4E321EE24EB500626E22 /* BaseUnit */ = {
+		FD1E4E321EE24EB500626E22 /* BaseUnitModel */ = {
 			isa = PBXGroup;
 			children = (
 				FD1E4E0F1EE096F000626E22 /* Unit.swift */,
@@ -215,7 +215,7 @@
 				FD1E4E4F1EE8E54400626E22 /* SkillManager.swift */,
 				FD1E4E391EE251B300626E22 /* Skill.swift */,
 			);
-			name = BaseUnit;
+			name = BaseUnitModel;
 			sourceTree = "<group>";
 		};
 		FD1E4E351EE2515700626E22 /* WarriorUnit */ = {

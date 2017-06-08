@@ -13,7 +13,7 @@ class MonsterTeam: BattleTeam {
     override func takeTurn(completion: @escaping () -> ()) {
         if let unit = currentUnit {
             chooseSkill(for: unit)
-            unit.activateSkill()
+            unit.skills.activateSkill()
             unit.initiative -= turnThreshold
             currentUnit = nil
             checkInitiatives()

@@ -10,19 +10,18 @@ import Foundation
 
 class Slash: Skill {
     
-    var damageMultiplier: Double {
+    override var multiplier: Double {
         return 1.0 + Double(rank) * 0.3
     }
     
     override init() {
         super.init()
         type = .offense
-        isMulti = true
         targets = [0,1]
     }
     
     override func modifiedAmount(with base: Double) -> Double {
-        return damageMultiplier * base
+        return multiplier * base
     }
     
 }

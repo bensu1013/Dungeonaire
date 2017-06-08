@@ -17,7 +17,11 @@ class Skill {
 
     var type: SkillType = .offense
     var rank = 1
-    var isMulti = false
+    var multiplier: Double {
+        return 1.0
+    }
+    //change the target system to have different effectiveness on positions
+    //possibly a  [(.position, .effectiveness)]
     var targets = [Int]()
     
     func modifiedAmount(with base: Double) -> Double {

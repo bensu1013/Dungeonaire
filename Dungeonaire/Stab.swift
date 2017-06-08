@@ -15,7 +15,6 @@ class Stab: Skill {
     override init() {
         super.init()
         type = .offense
-        isMulti = false
         targets = [0,1]
     }
     

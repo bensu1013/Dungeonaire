@@ -40,7 +40,7 @@ class BattleTeam {
     
     func takeTurn(completion: @escaping () -> () ) {
         if let unit = currentUnit {
-            unit.activateSkill()
+            unit.skills.activateSkill()
             unit.initiative -= turnThreshold
             currentUnit = nil
             checkInitiatives()
@@ -48,11 +48,10 @@ class BattleTeam {
         }
     }
     
-    func recieveAssault(targets: [Int], amount: Double) {
-        for target in targets {
-            if target < party.count {
-                let damageRange = amount / 100 * Double(arc4random_uniform(UInt32(75)) + 25) + 1
-                party[target].healthChanged(by: damageRange)
+    func recieveAssault(_ allDamage: [(Int, Double)]) {
+        for target in allDamage {
+            if target.0 < party.count {
+                party[target.0].healthChanged(by: target.1)
             }
         }
     }

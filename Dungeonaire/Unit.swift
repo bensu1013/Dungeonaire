@@ -19,10 +19,6 @@ class Unit {
     var health = 10
     var maxHealth = 10
     
-    func activateSkill() {
-        
-    }
-    
     func healthChanged(by amount: Double) {
         health -= Int(amount)
         if health <= 0 {
@@ -31,7 +27,7 @@ class Unit {
         }
     }
     
-    func calculateDamageRange() -> Int {
+    func calculateDamageRange() -> Double {
         return 0
     }
     
