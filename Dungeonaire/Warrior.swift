@@ -24,13 +24,13 @@ class Warrior: PlayerUnit {
         let weapon = Weapon()
         equipment.weapon = weapon
         let slash = Slash()
-        skills.append(slash)
+        skills.activeSkills.append(slash)
     }
     
     override func activateSkill() {
-        if let skill = selectedSkill {
+        if let skill = skills.selectedSkill {
             let damage = skill.modifiedAmount(with: Double(calculateDamageRange()))
-            if skill.canMulti {
+            if skill.isMulti {
                 self.team?.enemyTeam?.recieveAssault(targets: skill.targets, amount: damage)
             } else {
                 
@@ -44,10 +44,6 @@ class Warrior: PlayerUnit {
     override func update(dt: TimeInterval) {
         
       
-    }
-    
-    override func selectSkill(at index: Int) {
-        selectedSkill = skills[index]
     }
     
     override func calculateDamageRange() -> Int {

@@ -20,14 +20,14 @@ class GoblinSpear: MonsterUnit {
         health = 22
         
         let stab = Stab()
-        skills.append(stab)
+        skills.activeSkills.append(stab)
         
     }
     
     override func activateSkill() {
-        if let skill = selectedSkill {
+        if let skill = skills.selectedSkill {
             let damage = skill.modifiedAmount(with: Double(calculateDamageRange()))
-            if skill.canMulti {
+            if skill.isMulti {
                 self.team?.enemyTeam?.recieveAssault(targets: skill.targets, amount: damage)
             } else {
                 let target = Int(arc4random_uniform(UInt32(skill.targets.count)))
@@ -39,14 +39,7 @@ class GoblinSpear: MonsterUnit {
     override func update(dt: TimeInterval) {
 
     }
-    
-    override func selectSkill(at index: Int) {
-        //select skill for enemies regardless of index
-        selectedSkill = skills[0]
-    }
-    
     //in case of target selection, add function to choose targets and add to bottom of selectSkill
-    
     
     override func calculateDamageRange() -> Int {
         var damage = 0

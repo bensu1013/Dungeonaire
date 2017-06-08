@@ -16,7 +16,8 @@ enum SkillType {
 class Skill {
 
     var type: SkillType = .offense
-    var canMulti = false
+    var rank = 1
+    var isMulti = false
     var targets = [Int]()
     
     func modifiedAmount(with base: Double) -> Double {

@@ -22,7 +22,7 @@ class MonsterTeam: BattleTeam {
     }
     
     private func chooseSkill(for unit: Unit) {
-        unit.selectSkill(at: 0)
+        unit.skills.select(.first)
         //check list of skills vs enemyteams units
     }
     

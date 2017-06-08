@@ -37,6 +37,7 @@
 		FD1E4E471EE5CB0800626E22 /* MonsterTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E461EE5CB0800626E22 /* MonsterTeam.swift */; };
 		FD1E4E4C1EE5DA3F00626E22 /* BattleHUDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E4B1EE5DA3F00626E22 /* BattleHUDLayer.swift */; };
 		FD1E4E4E1EE5DA9300626E22 /* BattleHUDLayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E4D1EE5DA9300626E22 /* BattleHUDLayer.xib */; };
+		FD1E4E501EE8E54400626E22 /* SkillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E4F1EE8E54400626E22 /* SkillManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		FD1E4E461EE5CB0800626E22 /* MonsterTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterTeam.swift; sourceTree = "<group>"; };
 		FD1E4E4B1EE5DA3F00626E22 /* BattleHUDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleHUDLayer.swift; sourceTree = "<group>"; };
 		FD1E4E4D1EE5DA9300626E22 /* BattleHUDLayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BattleHUDLayer.xib; sourceTree = "<group>"; };
+		FD1E4E4F1EE8E54400626E22 /* SkillManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			children = (
 				FD1E4E0F1EE096F000626E22 /* Unit.swift */,
 				FD1E4E331EE24EFD00626E22 /* Attributes.swift */,
+				FD1E4E4F1EE8E54400626E22 /* SkillManager.swift */,
 				FD1E4E391EE251B300626E22 /* Skill.swift */,
 			);
 			name = BaseUnit;
@@ -355,6 +358,7 @@
 				FD1E4E4C1EE5DA3F00626E22 /* BattleHUDLayer.swift in Sources */,
 				FD1E4E431EE3B74E00626E22 /* Stab.swift in Sources */,
 				FD1E4E1C1EE098AB00626E22 /* UserDatabase.swift in Sources */,
+				FD1E4E501EE8E54400626E22 /* SkillManager.swift in Sources */,
 				FD1E4E311EE24DBF00626E22 /* EnemyUnit.swift in Sources */,
 				FD1E4E221EE108FE00626E22 /* Weapon.swift in Sources */,
 				FD1E4DFE1EE0966700626E22 /* GameScene.swift in Sources */,

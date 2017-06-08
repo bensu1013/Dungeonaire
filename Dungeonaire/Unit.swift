@@ -10,18 +10,14 @@ import Foundation
 
 class Unit {
     
-    weak var selectedSkill: Skill?
     weak var team: BattleTeam?
     var initiative = 0
     var isDefeated = false
     //Skills should be its own class manager like attributes
-    var skills = [Skill]()
+    var skills = SkillManager()
     var attributes = Attributes()
     var health = 10
-    
-    func selectSkill(at index: Int) {
-        selectedSkill = skills[index]
-    }
+    var maxHealth = 10
     
     func activateSkill() {
         

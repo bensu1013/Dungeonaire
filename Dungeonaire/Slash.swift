@@ -10,12 +10,14 @@ import Foundation
 
 class Slash: Skill {
     
-    let damageMultiplier: Double = 1.3
+    var damageMultiplier: Double {
+        return 1.0 + Double(rank) * 0.3
+    }
     
     override init() {
         super.init()
         type = .offense
-        canMulti = true
+        isMulti = true
         targets = [0,1]
     }
     
