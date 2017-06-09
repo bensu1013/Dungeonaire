@@ -33,6 +33,8 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if battleEngine.inputRequired {
+            //ASDLKVJASDLKJASDLKFJ HEREHEH
+            
             battleEngine.teamOne.currentUnit?.skills.select(.first)
             battleEngine.teamOne.takeTurn() {
                 self.battleEngine.prepareTurn()

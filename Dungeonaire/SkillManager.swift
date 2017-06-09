@@ -18,7 +18,7 @@ enum SkillSlot: Int {
 class SkillManager {
     
     weak var user: Unit?
-    weak var selectedSkill: Skill?
+//    weak var selectedSkill: Skill?
     var allSkills = [Skill]()
     var activeSkills = [Skill]()
     
@@ -29,19 +29,18 @@ class SkillManager {
     //called for skill selection (mainly for user interaction with HUD)
     func select(_ slot: SkillSlot) {
         let skill = activeSkills[slot.rawValue]
-        selectedSkill = skill
+//        selectedSkill = skill
+        activateSkill(skill: skill)
     }
     
     //send package of data in tuples for skill targets and randomized damage
-    func activateSkill() {
-        if let skill = selectedSkill {
-            if skill.type == .offense {
-                if let allDamage = calculateDamage(for: skill) {
-                    user?.team?.enemyTeam?.recieveAssault(allDamage)
-                }
+    func activateSkill(skill: Skill) {
+        if skill.type == .offense {
+            if let allDamage = calculateDamage(for: skill) {
+                user?.team?.enemyTeam?.recieveAssault(allDamage)
             }
         }
-        selectedSkill = nil
+//        selectedSkill = nil
     }
     
     //calculates randomize range of skill damage assigned to target

@@ -11,12 +11,13 @@ import UIKit
 
 class BattleHUDLayer: UIView {
     
-    @IBOutlet weak var unit1: UILabel!
-    
+    weak var skills: SkillManager?
+    @IBOutlet weak var label1: UILabel!
     @IBAction func skill1(_ sender: Any) {
-        print("pressed")
+        if let skills = skills {
+            skills.select(.first)
+        }
     }
-    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,9 +49,7 @@ class BattleHUDLayer: UIView {
         
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
-        let view = nib.instantiate(withOwner: nil, options: nil)[0] as! UIView
- 
-      
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view
     }

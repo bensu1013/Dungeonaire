@@ -38,7 +38,6 @@ class BattleTeam {
     
     func takeTurn(completion: @escaping () -> () ) {
         if let unit = currentUnit {
-            unit.skills.activateSkill()
             unit.initiative -= turnThreshold
             currentUnit = nil
             checkInitiatives()
