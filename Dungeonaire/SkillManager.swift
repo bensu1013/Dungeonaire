@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias targetedDamage = (Int, Double)
-
 enum SkillSlot: Int {
     case first = 0
     case second = 1
@@ -28,6 +26,7 @@ class SkillManager {
         
     }
     
+    //called for skill selection (mainly for user interaction with HUD)
     func select(_ slot: SkillSlot) {
         let skill = activeSkills[slot.rawValue]
         selectedSkill = skill
@@ -61,20 +60,5 @@ class SkillManager {
     
 }
 
-extension Double {
-    
-    //returns a smaller number between the percentage given and 100%
-    func modify(by percent: Double = 30.0) -> Double {
-        var range = percent
-        if range < 0 {
-            range = 0
-        } else if range > 100 {
-            range = 100
-        }
-        let base = 100.0 - range
-        let rand = Double(arc4random_uniform(UInt32(range))) + base
-        return self * rand / 100.0
-    }
-    
-}
+
 

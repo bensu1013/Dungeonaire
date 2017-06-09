@@ -15,8 +15,6 @@
 
 import Foundation
 
-var turnThreshold = 100
-
 class BattleTeam {
     
     var enemyTeam: BattleTeam?

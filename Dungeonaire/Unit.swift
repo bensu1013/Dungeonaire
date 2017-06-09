@@ -7,27 +7,35 @@
 //
 
 import Foundation
+import SpriteKit
 
 class Unit {
     
     weak var team: BattleTeam?
     var initiative = 0
-    var isDefeated = false
-    //Skills should be its own class manager like attributes
+    var isDefeated = false {
+        didSet {
+            initiative = 0
+        }
+    }
     var skills = SkillManager()
     var attributes = Attributes()
-    var health = 10
+    var body = UnitBody()
+    var health = 10 {
+        didSet {
+            if health < 0 {
+                health = 0
+                isDefeated = true
+            }
+        }
+    }
     var maxHealth: Int {
-        return 10
+        return 10 + (attributes.vitality * 2)
     }
     
     func healthChanged(by amount: Double) {
         if !isDefeated {
             health -= Int(amount)
-            if health <= 0 {
-                isDefeated = true
-                health = 0
-            }
         }
     }
     
@@ -39,6 +47,7 @@ class Unit {
         
     }
     
+    //initiative related methods
     func initiativeIncrement() {
         if !isDefeated {
             initiative += attributes.dexterity

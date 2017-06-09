@@ -34,12 +34,11 @@ class BattleEngine {
     
 }
 
-//MARK: initiatives
+//MARK: initiatives and turns
 extension BattleEngine {
     
     func startBattle() {
         //battle setup - graphical, data
-        
         teamOne.startBattleInitiatives()
         teamTwo.startBattleInitiatives()
         prepareTurn()

@@ -36,8 +36,11 @@
 		FD1E4E451EE5CAF500626E22 /* PlayerTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E441EE5CAF500626E22 /* PlayerTeam.swift */; };
 		FD1E4E471EE5CB0800626E22 /* MonsterTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E461EE5CB0800626E22 /* MonsterTeam.swift */; };
 		FD1E4E4C1EE5DA3F00626E22 /* BattleHUDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E4B1EE5DA3F00626E22 /* BattleHUDLayer.swift */; };
-		FD1E4E4E1EE5DA9300626E22 /* BattleHUDLayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E4D1EE5DA9300626E22 /* BattleHUDLayer.xib */; };
 		FD1E4E501EE8E54400626E22 /* SkillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E4F1EE8E54400626E22 /* SkillManager.swift */; };
+		FD1E4E521EEA429F00626E22 /* UnitBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E511EEA429F00626E22 /* UnitBody.swift */; };
+		FD1E4E541EEA433500626E22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E531EEA433500626E22 /* Extensions.swift */; };
+		FD1E4E561EEA435500626E22 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E551EEA435500626E22 /* GlobalVariables.swift */; };
+		FD1E4E581EEA6C2E00626E22 /* BattleHUDLayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E571EEA6C2E00626E22 /* BattleHUDLayer.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,8 +75,11 @@
 		FD1E4E441EE5CAF500626E22 /* PlayerTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTeam.swift; sourceTree = "<group>"; };
 		FD1E4E461EE5CB0800626E22 /* MonsterTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterTeam.swift; sourceTree = "<group>"; };
 		FD1E4E4B1EE5DA3F00626E22 /* BattleHUDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleHUDLayer.swift; sourceTree = "<group>"; };
-		FD1E4E4D1EE5DA9300626E22 /* BattleHUDLayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BattleHUDLayer.xib; sourceTree = "<group>"; };
 		FD1E4E4F1EE8E54400626E22 /* SkillManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillManager.swift; sourceTree = "<group>"; };
+		FD1E4E511EEA429F00626E22 /* UnitBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitBody.swift; sourceTree = "<group>"; };
+		FD1E4E531EEA433500626E22 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FD1E4E551EEA435500626E22 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		FD1E4E571EEA6C2E00626E22 /* BattleHUDLayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BattleHUDLayer.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 		FD1E4DF61EE0966700626E22 /* Dungeonaire */ = {
 			isa = PBXGroup;
 			children = (
+				FD1E4E011EE0966700626E22 /* Main.storyboard */,
 				FD1E4DF71EE0966700626E22 /* AppDelegate.swift */,
 				FD1E4DF91EE0966700626E22 /* GameScene.sks */,
 				FD1E4DFB1EE0966700626E22 /* Actions.sks */,
@@ -115,7 +122,8 @@
 				FD1E4E141EE097B300626E22 /* GameMap */,
 				FD1E4E1D1EE1089A00626E22 /* GameModels */,
 				FD1E4E1E1EE108D500626E22 /* ItemModels */,
-				FD1E4E011EE0966700626E22 /* Main.storyboard */,
+				FD1E4E531EEA433500626E22 /* Extensions.swift */,
+				FD1E4E551EEA435500626E22 /* GlobalVariables.swift */,
 				FD1E4E041EE0966700626E22 /* Assets.xcassets */,
 				FD1E4E061EE0966700626E22 /* LaunchScreen.storyboard */,
 				FD1E4E091EE0966700626E22 /* Info.plist */,
@@ -146,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1E4E4B1EE5DA3F00626E22 /* BattleHUDLayer.swift */,
-				FD1E4E4D1EE5DA9300626E22 /* BattleHUDLayer.xib */,
+				FD1E4E571EEA6C2E00626E22 /* BattleHUDLayer.xib */,
 			);
 			name = HudLayer;
 			sourceTree = "<group>";
@@ -211,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1E4E0F1EE096F000626E22 /* Unit.swift */,
+				FD1E4E511EEA429F00626E22 /* UnitBody.swift */,
 				FD1E4E331EE24EFD00626E22 /* Attributes.swift */,
 				FD1E4E4F1EE8E54400626E22 /* SkillManager.swift */,
 				FD1E4E391EE251B300626E22 /* Skill.swift */,
@@ -335,7 +344,7 @@
 				FD1E4E051EE0966700626E22 /* Assets.xcassets in Resources */,
 				FD1E4E081EE0966700626E22 /* LaunchScreen.storyboard in Resources */,
 				FD1E4DFC1EE0966700626E22 /* Actions.sks in Resources */,
-				FD1E4E4E1EE5DA9300626E22 /* BattleHUDLayer.xib in Resources */,
+				FD1E4E581EEA6C2E00626E22 /* BattleHUDLayer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD1E4E401EE3904F00626E22 /* BattleTeam.swift in Sources */,
+				FD1E4E541EEA433500626E22 /* Extensions.swift in Sources */,
 				FD1E4E131EE0974900626E22 /* Warrior.swift in Sources */,
 				FD1E4E341EE24EFD00626E22 /* Attributes.swift in Sources */,
 				FD1E4E2F1EE24D7800626E22 /* PlayerUnit.swift in Sources */,
@@ -355,6 +365,7 @@
 				FD1E4E161EE097DC00626E22 /* LevelMap.swift in Sources */,
 				FD1E4E2B1EE10DD500626E22 /* EquipmentController.swift in Sources */,
 				FD1E4E271EE10C5D00626E22 /* Armor.swift in Sources */,
+				FD1E4E561EEA435500626E22 /* GlobalVariables.swift in Sources */,
 				FD1E4E4C1EE5DA3F00626E22 /* BattleHUDLayer.swift in Sources */,
 				FD1E4E431EE3B74E00626E22 /* Stab.swift in Sources */,
 				FD1E4E1C1EE098AB00626E22 /* UserDatabase.swift in Sources */,
@@ -368,6 +379,7 @@
 				FD1E4E101EE096F000626E22 /* Unit.swift in Sources */,
 				FD1E4E3A1EE251B300626E22 /* Skill.swift in Sources */,
 				FD1E4E251EE1097600626E22 /* BattleEngine.swift in Sources */,
+				FD1E4E521EEA429F00626E22 /* UnitBody.swift in Sources */,
 				FD1E4E451EE5CAF500626E22 /* PlayerTeam.swift in Sources */,
 				FD1E4E3C1EE316B000626E22 /* GoblinSpear.swift in Sources */,
 				FD1E4E381EE2519900626E22 /* Slash.swift in Sources */,

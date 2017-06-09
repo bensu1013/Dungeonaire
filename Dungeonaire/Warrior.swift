@@ -36,9 +36,9 @@ class Warrior: PlayerUnit {
     }
     
     override func calculateDamageRange() -> Double {
-        var damage: Double = Double(attributes.strength) / 10 + 1
+        var damage: Double = Double(attributes.strength) / 5 + 1
         if let weapon = equipment.weapon {
-            damage = Double(weapon.damage * attributes.strength) / 10
+            damage = Double(weapon.damage * attributes.strength) / 5
         }
         return damage
     }

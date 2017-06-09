@@ -36,7 +36,7 @@ class GoblinSpear: MonsterUnit {
     
     override func calculateDamageRange() -> Double {
         var damage = 0.0
-        damage = Double(attributes.strength) / 10 + 1
+        damage = Double(attributes.strength) / 5 + 1
         return damage
     }
     
