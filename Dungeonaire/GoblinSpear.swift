@@ -10,6 +10,10 @@ import Foundation
 
 class GoblinSpear: MonsterUnit {
     
+    override var maxHealth: Int {
+        return 10 + (attributes.vitality * 3)
+    }
+    
     override init() {
         super.init()
         attributes.strength = 4
@@ -17,7 +21,7 @@ class GoblinSpear: MonsterUnit {
         attributes.vitality = 3
         attributes.wisdom = 2
         attributes.luck = 2
-        health = 22
+        health = maxHealth
         
         let stab = Stab()
         skills.user = self

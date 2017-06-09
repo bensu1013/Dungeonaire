@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias targetedDamage = (Int, Double)
+
 enum SkillSlot: Int {
     case first = 0
     case second = 1
@@ -31,8 +33,6 @@ class SkillManager {
         selectedSkill = skill
     }
     
-    //methods to calculate damage here instead
-    
     //send package of data in tuples for skill targets and randomized damage
     func activateSkill() {
         if let skill = selectedSkill {
@@ -42,16 +42,17 @@ class SkillManager {
                 }
             }
         }
+        selectedSkill = nil
     }
     
-    func calculateDamage(for skill: Skill) -> [(Int, Double)]? {
+    //calculates randomize range of skill damage assigned to target
+    func calculateDamage(for skill: Skill) -> [targetedDamage]? {
         guard let user = user else {
             return nil
         }
-        var allDamage = [(Int, Double)]()
+        var allDamage = [targetedDamage]()
         for target in skill.targets {
             let damage = user.calculateDamageRange().modify(by: 30.0)
-            print(damage)
             allDamage.append((target, damage))
         }
         return allDamage
@@ -72,7 +73,6 @@ extension Double {
         }
         let base = 100.0 - range
         let rand = Double(arc4random_uniform(UInt32(range))) + base
-        
         return self * rand / 100.0
     }
     

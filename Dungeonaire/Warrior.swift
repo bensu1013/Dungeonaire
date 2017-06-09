@@ -11,7 +11,9 @@ import Foundation
 
 class Warrior: PlayerUnit {
     
-
+    override var maxHealth: Int {
+        return 20 + (attributes.vitality * 4)
+    }
     
     override init() {
         super.init()
@@ -20,7 +22,7 @@ class Warrior: PlayerUnit {
         attributes.vitality = 6
         attributes.wisdom = 3
         attributes.luck = 2
-        health = 35
+        health = maxHealth
         let weapon = Weapon()
         equipment.weapon = weapon
         let slash = Slash()

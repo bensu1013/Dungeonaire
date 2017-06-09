@@ -35,7 +35,7 @@ class GameScene: SKScene {
         if battleEngine.inputRequired {
             battleEngine.teamOne.currentUnit?.skills.select(.first)
             battleEngine.teamOne.takeTurn() {
-                self.battleEngine.prepareNextTurn()
+                self.battleEngine.prepareTurn()
             }
         }
         

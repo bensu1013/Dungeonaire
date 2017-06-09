@@ -27,7 +27,6 @@ class BattleEngine {
         for unit in team2 {
             teamTwo.addTeamMember(unit: unit)
         }
-        
         teamOne.enemyTeam = teamTwo
         teamTwo.enemyTeam = teamOne
     }
@@ -43,10 +42,10 @@ extension BattleEngine {
         
         teamOne.startBattleInitiatives()
         teamTwo.startBattleInitiatives()
-        prepareNextTurn()
+        prepareTurn()
     }
     
-    func prepareNextTurn() {
+    func prepareTurn() {
         
         if teamTwo.isDefeated {
             print("winner")
@@ -61,18 +60,20 @@ extension BattleEngine {
             print("Monster - Init: \(unit.initiative) // Health: \(unit.health)")
         }
         
-        
-        
         while !hasUnitReady() {
             teamOne.incrementInitiatives()
             teamTwo.incrementInitiatives()
             teamOne.checkInitiatives()
             teamTwo.checkInitiatives()
         }
+        takeTurn()
+    }
+    
+    func takeTurn() {
         if nextTeam() == 2 {
             inputRequired = false
             teamTwo.takeTurn() {
-                self.prepareNextTurn()
+                self.prepareTurn()
             }
         } else {
             //prepare for player

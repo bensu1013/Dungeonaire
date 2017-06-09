@@ -48,10 +48,10 @@ class BattleTeam {
         }
     }
     
-    func recieveAssault(_ allDamage: [(Int, Double)]) {
-        for target in allDamage {
-            if target.0 < party.count {
-                party[target.0].healthChanged(by: target.1)
+    func recieveAssault(_ allDamage: [targetedDamage]) {
+        for damage in allDamage {
+            if damage.0 < party.count {
+                party[damage.0].healthChanged(by: damage.1)
             }
         }
     }
@@ -63,15 +63,14 @@ extension BattleTeam {
     
     func startBattleInitiatives() {
         for unit in party {
-            let initRoll = Int(arc4random_uniform(UInt32(20)))
-            unit.initiative = initRoll + unit.attributes.dexterity
+            unit.initiativeReset()
         }
     }
     
     func checkInitiatives() {
         var highestInitUnit: Unit? = nil
         for unit in party {
-            if unit.initiative >= turnThreshold && !unit.isDefeated {
+            if unit.readyForTurn() {
                 if let highUnit = highestInitUnit {
                     if unit.initiative > highUnit.initiative {
                         highestInitUnit = unit
@@ -86,9 +85,7 @@ extension BattleTeam {
     
     func incrementInitiatives() {
         for unit in party {
-            if !unit.isDefeated {
-                unit.initiative += unit.attributes.dexterity
-            }
+            unit.initiativeIncrement()
         }
     }
 

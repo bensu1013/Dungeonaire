@@ -17,13 +17,17 @@ class Unit {
     var skills = SkillManager()
     var attributes = Attributes()
     var health = 10
-    var maxHealth = 10
+    var maxHealth: Int {
+        return 10
+    }
     
     func healthChanged(by amount: Double) {
-        health -= Int(amount)
-        if health <= 0 {
-            isDefeated = true
-            health = 0
+        if !isDefeated {
+            health -= Int(amount)
+            if health <= 0 {
+                isDefeated = true
+                health = 0
+            }
         }
     }
     
@@ -35,6 +39,24 @@ class Unit {
         
     }
     
+    func initiativeIncrement() {
+        if !isDefeated {
+            initiative += attributes.dexterity
+        }
+    }
     
+    func initiativeReset() {
+        if !isDefeated {
+            let initBase = Int(arc4random_uniform(UInt32(20)))
+            initiative = initBase + attributes.dexterity
+        }
+    }
+    
+    func readyForTurn() -> Bool {
+        if initiative >= turnThreshold && !isDefeated {
+            return true
+        }
+        return false
+    }
     
 }
