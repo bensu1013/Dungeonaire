@@ -9,14 +9,17 @@
 import Foundation
 import UIKit
 
+protocol BattleHUDDelegate: class {
+    func activatedSkill(_ slot: SkillSlot)
+}
+
 class BattleHUDLayer: UIView {
     
+    weak var delegate: BattleHUDDelegate?
     weak var skills: SkillManager?
     @IBOutlet weak var label1: UILabel!
     @IBAction func skill1(_ sender: Any) {
-        if let skills = skills {
-            skills.select(.first)
-        }
+        delegate?.activatedSkill(.first)
     }
 
     override init(frame: CGRect) {
@@ -28,6 +31,12 @@ class BattleHUDLayer: UIView {
         super.init(coder: aDecoder)
         setupView()
     }
+    
+    func setButtons(_ skills: [Skill]) {
+        
+    }
+    
+    
     
     // MARK: - Private Helper Methods
     

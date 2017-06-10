@@ -12,10 +12,27 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    var hud: BattleHUDLayer!
+    let battleEngine = BattleEngine()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let hud = BattleHUDLayer(frame: self.view.frame)
+        //need to connect hud with battleengine
+        hud = BattleHUDLayer(frame: self.view.frame)
+        hud.delegate = self
+        view.addSubview(hud)
+        
+        let char1 = Warrior()
+        let char2 = Warrior()
+        let enemy1 = GoblinSpear()
+        let enemy2 = GoblinSpear()
+        UserDatabase.main.party.units.append(char1)
+        UserDatabase.main.party.units.append(char2)
+        
+        battleEngine.load(first: UserDatabase.main.party.units, second: [enemy1, enemy2])
+        battleEngine.startBattle()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -28,11 +45,10 @@ class GameViewController: UIViewController {
             }
             
             view.ignoresSiblingOrder = true
-            
             view.showsFPS = true
             view.showsNodeCount = true
         }
-        view.addSubview(hud)
+        
     }
 
     override var shouldAutorotate: Bool {
@@ -54,5 +70,14 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+extension GameViewController: BattleHUDDelegate {
+    func activatedSkill(_ slot: SkillSlot) {
+        battleEngine.teamOne.currentUnit?.skills.select(slot)
+        battleEngine.teamOne.takeTurn {
+            self.battleEngine.prepareTurn()
+        }
     }
 }
