@@ -19,9 +19,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //need to connect hud with battleengine
         hud = BattleHUDLayer(frame: self.view.frame)
-        hud.delegate = self
+//        hud.delegate = self
+        hud.battle = battleEngine
         view.addSubview(hud)
         
         let char1 = Warrior()
@@ -32,6 +32,7 @@ class GameViewController: UIViewController {
         UserDatabase.main.party.units.append(char2)
         
         battleEngine.load(first: UserDatabase.main.party.units, second: [enemy1, enemy2])
+        battleEngine.delegate = self
         battleEngine.startBattle()
         
         if let view = self.view as! SKView? {
@@ -73,11 +74,20 @@ class GameViewController: UIViewController {
     }
 }
 
-extension GameViewController: BattleHUDDelegate {
-    func activatedSkill(_ slot: SkillSlot) {
-        battleEngine.teamOne.currentUnit?.skills.select(slot)
-        battleEngine.teamOne.takeTurn {
-            self.battleEngine.prepareTurn()
-        }
+//extension GameViewController: BattleHUDDelegate {
+//    func activatedSkill(_ slot: SkillSlot) {
+//        battleEngine.teamOne.currentUnit?.skills.select(slot)
+//        battleEngine.teamOne.takeTurn {
+//            self.hud.label1.text = "\(self.battleEngine.teamOne.party[0].health)"
+//            self.battleEngine.prepareTurn()
+//        }
+//    }
+//}
+
+extension GameViewController: BattleEngineDelegate {
+    func healthChanges(team1: [Int], team2: [Int]) {
+        hud.label1.text = "\(team1[0])"
     }
 }
+
+

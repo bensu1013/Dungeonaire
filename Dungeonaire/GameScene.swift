@@ -14,9 +14,13 @@ class GameScene: SKScene {
     var frameTime: Double = 0
     
     override func didMove(to view: SKView) {
-        
-        
-       
+        var meh: CGFloat = -50
+        for unit in UserDatabase.main.party.units {
+            unit.body.body.position.x = meh
+            unit.body.runAnimation()
+            self.addChild(unit.body.body)
+            meh += 50
+        }
         
     }
     

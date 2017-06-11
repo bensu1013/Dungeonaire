@@ -16,10 +16,14 @@ protocol BattleHUDDelegate: class {
 class BattleHUDLayer: UIView {
     
     weak var delegate: BattleHUDDelegate?
-    weak var skills: SkillManager?
+    weak var battle: BattleEngine?
     @IBOutlet weak var label1: UILabel!
     @IBAction func skill1(_ sender: Any) {
-        delegate?.activatedSkill(.first)
+        battle?.teamOne.currentUnit?.skills.select(.first)
+        battle?.teamOne.takeTurn {
+            self.battle?.prepareTurn()
+        }
+        label1.text = "\(battle!.teamOne.party[0].health)"
     }
 
     override init(frame: CGRect) {
@@ -30,6 +34,10 @@ class BattleHUDLayer: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
+    }
+    
+    func updateHealth() {
+        
     }
     
     func setButtons(_ skills: [Skill]) {

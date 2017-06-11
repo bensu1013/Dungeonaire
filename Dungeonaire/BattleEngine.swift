@@ -8,13 +8,16 @@
 
 import Foundation
 
+protocol BattleEngineDelegate: class {
+    func healthChanges(team1: [Int], team2: [Int])
+}
 
 class BattleEngine {
     
     var teamOne = PlayerTeam()
     var teamTwo = MonsterTeam()
     var inputRequired = false
-    
+    var delegate: BattleEngineDelegate?
     
     init() {
         
@@ -68,10 +71,24 @@ extension BattleEngine {
         takeTurn()
     }
     
+    func unitsHealth() -> ([Int], [Int]) {
+        var team1 = [Int](), team2 = [Int]()
+        for unit in teamOne.party {
+            team1.append(unit.health)
+        }
+        for unit in teamTwo.party {
+            team2.append(unit.health)
+        }
+        return (team1, team2)
+    }
+    
     func takeTurn() {
         if nextTeam() == 2 {
             inputRequired = false
             teamTwo.takeTurn() {
+                //update hud
+                let allHealth = self.unitsHealth()
+                self.delegate?.healthChanges(team1: allHealth.0, team2: allHealth.1)
                 self.prepareTurn()
             }
         } else {
