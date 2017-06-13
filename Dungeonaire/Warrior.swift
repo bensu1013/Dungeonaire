@@ -12,16 +12,16 @@ import Foundation
 class Warrior: PlayerUnit {
     
     override var maxHealth: Int {
-        return 20 + (attributes.vitality * 4)
+        return 20 + (stats.vitality * 4)
     }
     
     override init() {
         super.init()
-        attributes.strength = 7
-        attributes.dexterity = 5
-        attributes.vitality = 6
-        attributes.wisdom = 3
-        attributes.luck = 2
+        stats.strength = 7
+        stats.dexterity = 5
+        stats.vitality = 6
+        stats.wisdom = 3
+        stats.luck = 2
         health = maxHealth
         let weapon = Weapon()
         equipment.weapon = weapon
@@ -36,9 +36,9 @@ class Warrior: PlayerUnit {
     }
     
     override func calculateDamageRange() -> Double {
-        var damage: Double = Double(attributes.strength) / 5 + 1
+        var damage: Double = Double(stats.strength) / 5 + 1
         if let weapon = equipment.weapon {
-            damage = Double(weapon.damage * attributes.strength) / 5
+            damage = Double(weapon.damage * stats.strength) / 5
         }
         return damage
     }

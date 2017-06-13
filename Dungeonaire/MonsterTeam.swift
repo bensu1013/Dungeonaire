@@ -22,6 +22,7 @@ class MonsterTeam: BattleTeam {
     
     private func chooseSkill(for unit: Unit) {
         unit.skills.select(.first)
+        unit.sprite.changeState(to: .attack)
         //check list of skills vs enemyteams units
     }
     

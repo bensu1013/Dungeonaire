@@ -11,6 +11,6 @@ import Foundation
 class Weapon: Item {
     
     var damage = 3
-    
+    var cards = [SkillCard()]
     
 }

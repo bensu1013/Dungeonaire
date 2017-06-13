@@ -20,6 +20,7 @@ class BattleHUDLayer: UIView {
     @IBOutlet weak var label1: UILabel!
     @IBAction func skill1(_ sender: Any) {
         battle?.teamOne.currentUnit?.skills.select(.first)
+        battle?.teamOne.currentUnit?.sprite.state = .attack
         battle?.teamOne.takeTurn {
             self.battle?.prepareTurn()
         }

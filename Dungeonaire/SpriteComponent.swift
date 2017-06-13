@@ -13,16 +13,18 @@ enum AnimationState: String {
     case idle, attack
 }
 
-class UnitBody {
+class SpriteComponent {
     
+    var unit: Unit!
     var body = SKSpriteNode(texture: nil, size: CGSize(width: 64.0, height: 64.0))
     var animation: AnimationSprite = ASWarriorIdle()
     var state: AnimationState = .idle {
         willSet {
-            print("animating")
             if newValue != state {
-                changeState(to: state)
+                changeState(to: newValue)
             }
+        }
+        didSet {
             runAnimation()
         }
     }
@@ -59,7 +61,7 @@ class AnimationSprite {
 class ASWarriorIdle: AnimationSprite {
     
     var texture = [SKTexture]()
-    var text: [UIColor] = [.brown, .green, .blue, .gray]
+    var text: [UIColor] = [.brown, .green, .brown, .green]
     
     override func animate(_ body: SKSpriteNode, completion: @escaping (AnimationState) -> ()) {
         body.removeAllActions()
@@ -85,14 +87,25 @@ class ASWarriorIdle: AnimationSprite {
 class ASWarriorAttack: AnimationSprite {
     
     var texture = [SKTexture]()
+    var text: [UIColor] = [.lightGray, .cyan, .lightGray, .cyan]
     
     override func animate(_ body: SKSpriteNode, completion: @escaping (AnimationState) -> ()) {
         body.removeAllActions()
-        let animation = SKAction.animate(with: texture, timePerFrame: 0.2)
+        var sequence = [SKAction]()
+//        let animation = SKAction.animate(with: texture, timePerFrame: 0.2)
+        for color in text {
+            let ani = SKAction.run {
+                body.color = color
+            }
+            sequence.append(ani)
+            let wait = SKAction.wait(forDuration: 0.2)
+            sequence.append(wait)
+        }
         let complete = SKAction.run {
             completion(.idle)
         }
-        body.run(SKAction.sequence([animation, complete]))
+        sequence.append(complete)
+        body.run(SKAction.sequence(sequence))
     }
 }
 

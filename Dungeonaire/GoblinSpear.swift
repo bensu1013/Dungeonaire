@@ -11,16 +11,16 @@ import Foundation
 class GoblinSpear: MonsterUnit {
     
     override var maxHealth: Int {
-        return 10 + (attributes.vitality * 3)
+        return 10 + (stats.vitality * 3)
     }
     
     override init() {
         super.init()
-        attributes.strength = 4
-        attributes.dexterity = 6
-        attributes.vitality = 3
-        attributes.wisdom = 2
-        attributes.luck = 2
+        stats.strength = 4
+        stats.dexterity = 6
+        stats.vitality = 3
+        stats.wisdom = 2
+        stats.luck = 2
         health = maxHealth
         
         let stab = Stab()
@@ -36,7 +36,7 @@ class GoblinSpear: MonsterUnit {
     
     override func calculateDamageRange() -> Double {
         var damage = 0.0
-        damage = Double(attributes.strength) / 5 + 1
+        damage = Double(stats.strength) / 5 + 1
         return damage
     }
     

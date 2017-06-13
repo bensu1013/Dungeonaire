@@ -19,8 +19,10 @@ class Unit {
         }
     }
     var skills = SkillManager()
-    var attributes = Attributes()
-    var body = UnitBody()
+    var stats = StatsComponent()
+    var sprite = SpriteComponent()
+    var battle = BattleComponent()
+    
     var health = 10 {
         didSet {
             if health < 0 {
@@ -30,7 +32,13 @@ class Unit {
         }
     }
     var maxHealth: Int {
-        return 10 + (attributes.vitality * 2)
+        return 10 + (stats.vitality * 2)
+    }
+    
+    init() {
+        skills.user = self
+        sprite.unit = self
+        battle.unit = self
     }
     
     func healthChanged(by amount: Double) {
@@ -50,14 +58,14 @@ class Unit {
     //initiative related methods
     func initiativeIncrement() {
         if !isDefeated {
-            initiative += attributes.dexterity
+            initiative += stats.dexterity
         }
     }
     
     func initiativeReset() {
         if !isDefeated {
             let initBase = Int(arc4random_uniform(UInt32(20)))
-            initiative = initBase + attributes.dexterity
+            initiative = initBase + stats.dexterity
         }
     }
     

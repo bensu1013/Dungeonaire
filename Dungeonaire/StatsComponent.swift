@@ -1,5 +1,5 @@
 //
-//  Attributes.swift
+//  stats.swift
 //  Dungeonaire
 //
 //  Created by Benjamin Su on 6/2/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Attributes {
+struct StatsComponent {
     
     var strength = 0
     var dexterity = 0

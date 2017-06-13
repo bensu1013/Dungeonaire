@@ -25,3 +25,10 @@ class Slash: Skill {
     }
     
 }
+
+class SlashCard: SkillCard {
+    
+    
+    
+    
+}
