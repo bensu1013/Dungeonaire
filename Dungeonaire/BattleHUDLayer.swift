@@ -10,21 +10,16 @@ import Foundation
 import UIKit
 
 protocol BattleHUDDelegate: class {
-    func activatedSkill(_ slot: SkillSlot)
+    func activatedSkill(_ slot: SkillSlot, at target: Int)
 }
 
 class BattleHUDLayer: UIView {
     
     weak var delegate: BattleHUDDelegate?
-    weak var battle: BattleEngine?
     @IBOutlet weak var label1: UILabel!
     @IBAction func skill1(_ sender: Any) {
-        battle?.teamOne.currentUnit?.skills.select(.first)
-        battle?.teamOne.currentUnit?.sprite.state = .attack
-        battle?.teamOne.takeTurn {
-            self.battle?.prepareTurn()
-        }
-        label1.text = "\(battle!.teamOne.party[0].health)"
+
+        delegate?.activatedSkill(.first, at: 0)
     }
 
     override init(frame: CGRect) {

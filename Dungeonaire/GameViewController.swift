@@ -13,8 +13,7 @@ import GameplayKit
 class GameViewController: UIViewController {
 
     var hud: BattleHUDLayer!
-    let battleEngine = BattleEngine()
-    var component: BattleStoredComponents = BattleStoredComponents()
+    var component = BattleStoredComponents()
     var playerUnits: [Unit] = [Unit]()
     var enemyUnits: [Unit] = [Unit]()
     
@@ -22,8 +21,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         hud = BattleHUDLayer(frame: self.view.frame)
-//        hud.delegate = self
-        hud.battle = battleEngine
+        hud.delegate = self
         view.addSubview(hud)
         
         let char1 = Warrior()
@@ -33,14 +31,12 @@ class GameViewController: UIViewController {
         UserDatabase.main.party.units.append(char1)
         UserDatabase.main.party.units.append(char2)
         
-        battleEngine.load(first: UserDatabase.main.party.units, second: [enemy1, enemy2])
-        battleEngine.delegate = self
-//        battleEngine.startBattle()
-        
-        print("Enemies \(enemyUnits)")
+        playerUnits = UserDatabase.main.party.units
         generateEnemies(array: [enemy1, enemy2])
         
-        print("Enemies \(enemyUnits)")
+        
+        startBattle()
+        prepareTurn()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -81,25 +77,35 @@ class GameViewController: UIViewController {
     }
 }
 
-//extension GameViewController: BattleHUDDelegate {
-//    func activatedSkill(_ slot: SkillSlot) {
-//        battleEngine.teamOne.currentUnit?.skills.select(slot)
-//        battleEngine.teamOne.takeTurn {
-//            self.hud.label1.text = "\(self.battleEngine.teamOne.party[0].health)"
-//            self.battleEngine.prepareTurn()
-//        }
-//    }
-//}
-
-extension GameViewController: BattleEngineDelegate {
-    func healthChanges(team1: [Int], team2: [Int]) {
-        hud.label1.text = "\(team1[0])"
+extension GameViewController: BattleHUDDelegate {
+    func activatedSkill(_ slot: SkillSlot, at target: Int) {
+        
+        completeTurn(skill: slot, target: target)
+        
     }
 }
 
 extension GameViewController: BattleStation {
     
+    func showDrawn(_ cards: Hand, isPlayer: Bool) {
+        
+        //set hud to reflect which team to zoom in to
+        if isPlayer {
+            
+        }
+        
+        //hud shows cards
+        hud.label1.text = "\(cards.0.isFriendly)"
+        
+        
+    }
     
-    
+    func turnComplete() {
+        
+        //graphically reset turn
+        
+        prepareTurn()
+        
+    }
     
 }

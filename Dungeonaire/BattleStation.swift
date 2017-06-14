@@ -19,6 +19,9 @@ protocol BattleStation: class {
     var playerUnits: [Unit] { get set }
     var enemyUnits: [Unit] { get set }
     var component: BattleStoredComponents { get set }
+    
+    func showDrawn(_ cards: Hand, isPlayer: Bool)
+    func turnComplete()
 }
 
 extension BattleStation {
@@ -28,6 +31,12 @@ extension BattleStation {
     }
     
     func startBattle() {
+        for unit in playerUnits {
+            component.battleUnits.append(unit.battle)
+        }
+        for unit in enemyUnits {
+            component.battleUnits.append(unit.battle)
+        }
         for unit in component.battleUnits {
             unit.initiativeStart()
         }
@@ -72,27 +81,44 @@ extension BattleStation {
     
     func prepareTurn() {
         while component.readyUnit == nil {
-            incrementInitiative()
             findReadyUnit()
+            incrementInitiative()
         }
         if let battleUnit = component.readyUnit {
-            let newHand = battleUnit.drawCards()
+            let hand = battleUnit.drawCards()
             // set hudlayer to reflect drawing cards 'newHand'
-            //
             
-        }
-    }
-    
-    func takeTurn() {
-        if let battleUnit = component.readyUnit {
             if let _ = battleUnit.unit as? MonsterUnit {
-                
+                showDrawn(hand, isPlayer: false)
+            }
+            if let _ = battleUnit.unit as? PlayerUnit {
+                showDrawn(hand, isPlayer: true)
             }
         }
     }
+    
+    func completeTurn(skill: SkillSlot, target: Int) {
+        if let battleUnit = component.readyUnit {
+            if let _ = battleUnit.unit as? MonsterUnit {
+                if let hand = battleUnit.hand {
+                    //deal damage with selected skillcard
+                    if skill.rawValue == 0 {
+                        print(hand.0.temp)
+                    }
+                }
+            }
+            if let _ = battleUnit.unit as? PlayerUnit {
+                
+            }
+            battleUnit.completeTurn()
+        }
+        endTurn()
+    }
  
     func endTurn() {
-        
+        component.readyUnit = nil
+        //reset hud to neutral
+        turnComplete()
     }
     
     

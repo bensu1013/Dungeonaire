@@ -11,7 +11,6 @@ import SpriteKit
 
 class Unit {
     
-    weak var team: BattleTeam?
     var initiative = 0
     var isDefeated = false {
         didSet {

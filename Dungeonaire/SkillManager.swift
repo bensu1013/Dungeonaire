@@ -34,18 +34,18 @@ class SkillManager {
     //send package of data in tuples for skill targets and randomized damage
     func activateSkill(skill: Skill) {
         if skill.type == .offense {
-            if let allDamage = calculateDamage(for: skill) {
-                user?.team?.enemyTeam?.recieveAssault(allDamage)
+            if let _ = calculateDamage(for: skill) {
+
             }
         }
     }
     
     //calculates randomize range of skill damage assigned to target
-    func calculateDamage(for skill: Skill) -> [targetedDamage]? {
+    func calculateDamage(for skill: Skill) -> [TargetedDamage]? {
         guard let user = user else {
             return nil
         }
-        var allDamage = [targetedDamage]()
+        var allDamage = [TargetedDamage]()
         for target in skill.targets {
             let damage = user.calculateDamageRange().modify(by: 30.0)
             allDamage.append((target, damage))

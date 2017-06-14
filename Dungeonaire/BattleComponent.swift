@@ -12,6 +12,7 @@ class BattleComponent {
     
     var unit: Unit!
     var initiative = 0
+    var hand: Hand?
     var speed: Int {
         get {
             return unit.stats.dexterity
@@ -31,14 +32,20 @@ class BattleComponent {
         }
     }
     
+    func completeTurn() {
+        
+        initiative -= turnThreshold
+        hand = nil
+        
+    }
     
-    func drawCards() -> hand {
+    func drawCards() -> Hand {
         let first = unit.deck.popLast()!
         let second = unit.deck.popLast()!
         let third = unit.deck.popLast()!
+        hand = (first, second, third)
         return (first, second, third)
     }
-    
     
     //MARK: - Initiative and Turn management
     func initiativeIncrement() {

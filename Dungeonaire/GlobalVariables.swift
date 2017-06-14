@@ -9,10 +9,10 @@
 import Foundation
 
 //tuple for a hand of newly drawn cards
-typealias hand = (SkillCard, SkillCard, SkillCard)
+typealias Hand = (SkillCard, SkillCard, SkillCard)
 
 //tuple wrapping for targets and associated damage
-typealias targetedDamage = (Int, Double)
+typealias TargetedDamage = (Int, Double)
 
 //initiative threshold for next turn
 var turnThreshold = 100
