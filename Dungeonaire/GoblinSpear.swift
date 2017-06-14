@@ -26,7 +26,7 @@ class GoblinSpear: MonsterUnit {
         let stab = Stab()
         skills.user = self
         skills.activeSkills.append(stab)
-        
+        deck = Weapon().cards
     }
 
     override func update(dt: TimeInterval) {

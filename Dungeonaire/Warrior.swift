@@ -28,6 +28,7 @@ class Warrior: PlayerUnit {
         let slash = Slash()
         skills.user = self
         skills.activeSkills.append(slash)
+        deck = weapon.cards
     }
     
     override func update(dt: TimeInterval) {

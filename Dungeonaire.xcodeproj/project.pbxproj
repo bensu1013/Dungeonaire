@@ -26,7 +26,7 @@
 		FD1E4E291EE10CD400626E22 /* PartyMembers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E281EE10CD400626E22 /* PartyMembers.swift */; };
 		FD1E4E2B1EE10DD500626E22 /* EquipmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E2A1EE10DD500626E22 /* EquipmentController.swift */; };
 		FD1E4E2F1EE24D7800626E22 /* PlayerUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E2E1EE24D7800626E22 /* PlayerUnit.swift */; };
-		FD1E4E311EE24DBF00626E22 /* EnemyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E301EE24DBF00626E22 /* EnemyUnit.swift */; };
+		FD1E4E311EE24DBF00626E22 /* MonsterUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E301EE24DBF00626E22 /* MonsterUnit.swift */; };
 		FD1E4E341EE24EFD00626E22 /* StatsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E331EE24EFD00626E22 /* StatsComponent.swift */; };
 		FD1E4E381EE2519900626E22 /* Slash.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E371EE2519900626E22 /* Slash.swift */; };
 		FD1E4E3A1EE251B300626E22 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E391EE251B300626E22 /* Skill.swift */; };
@@ -43,6 +43,7 @@
 		FD1E4E581EEA6C2E00626E22 /* BattleHUDLayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E571EEA6C2E00626E22 /* BattleHUDLayer.xib */; };
 		FD1E4E5A1EEF7F3100626E22 /* SkillCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E591EEF7F3100626E22 /* SkillCard.swift */; };
 		FD1E4E5C1EEF815500626E22 /* BattleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E5B1EEF815500626E22 /* BattleComponent.swift */; };
+		FD1E4E5E1EF084BD00626E22 /* BattleStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E5D1EF084BD00626E22 /* BattleStation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +68,7 @@
 		FD1E4E281EE10CD400626E22 /* PartyMembers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyMembers.swift; sourceTree = "<group>"; };
 		FD1E4E2A1EE10DD500626E22 /* EquipmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquipmentController.swift; sourceTree = "<group>"; };
 		FD1E4E2E1EE24D7800626E22 /* PlayerUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerUnit.swift; sourceTree = "<group>"; };
-		FD1E4E301EE24DBF00626E22 /* EnemyUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyUnit.swift; sourceTree = "<group>"; };
+		FD1E4E301EE24DBF00626E22 /* MonsterUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterUnit.swift; sourceTree = "<group>"; };
 		FD1E4E331EE24EFD00626E22 /* StatsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsComponent.swift; sourceTree = "<group>"; };
 		FD1E4E371EE2519900626E22 /* Slash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slash.swift; sourceTree = "<group>"; };
 		FD1E4E391EE251B300626E22 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		FD1E4E571EEA6C2E00626E22 /* BattleHUDLayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BattleHUDLayer.xib; sourceTree = "<group>"; };
 		FD1E4E591EEF7F3100626E22 /* SkillCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillCard.swift; sourceTree = "<group>"; };
 		FD1E4E5B1EEF815500626E22 /* BattleComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleComponent.swift; sourceTree = "<group>"; };
+		FD1E4E5D1EF084BD00626E22 /* BattleStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleStation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1E4E241EE1097600626E22 /* BattleEngine.swift */,
+				FD1E4E5D1EF084BD00626E22 /* BattleStation.swift */,
 				FD1E4E481EE5CB9500626E22 /* BattleTeams */,
 			);
 			name = GameLogic;
@@ -213,7 +216,7 @@
 		FD1E4E2D1EE24CFF00626E22 /* EnemyUnits */ = {
 			isa = PBXGroup;
 			children = (
-				FD1E4E301EE24DBF00626E22 /* EnemyUnit.swift */,
+				FD1E4E301EE24DBF00626E22 /* MonsterUnit.swift */,
 				FD1E4E3E1EE316CD00626E22 /* Goblins */,
 			);
 			name = EnemyUnits;
@@ -367,6 +370,7 @@
 				FD1E4E341EE24EFD00626E22 /* StatsComponent.swift in Sources */,
 				FD1E4E2F1EE24D7800626E22 /* PlayerUnit.swift in Sources */,
 				FD1E4E291EE10CD400626E22 /* PartyMembers.swift in Sources */,
+				FD1E4E5E1EF084BD00626E22 /* BattleStation.swift in Sources */,
 				FD1E4E201EE108EB00626E22 /* Item.swift in Sources */,
 				FD1E4E161EE097DC00626E22 /* LevelMap.swift in Sources */,
 				FD1E4E2B1EE10DD500626E22 /* EquipmentController.swift in Sources */,
@@ -376,7 +380,7 @@
 				FD1E4E431EE3B74E00626E22 /* Stab.swift in Sources */,
 				FD1E4E1C1EE098AB00626E22 /* UserDatabase.swift in Sources */,
 				FD1E4E501EE8E54400626E22 /* SkillManager.swift in Sources */,
-				FD1E4E311EE24DBF00626E22 /* EnemyUnit.swift in Sources */,
+				FD1E4E311EE24DBF00626E22 /* MonsterUnit.swift in Sources */,
 				FD1E4E221EE108FE00626E22 /* Weapon.swift in Sources */,
 				FD1E4DFE1EE0966700626E22 /* GameScene.swift in Sources */,
 				FD1E4E471EE5CB0800626E22 /* MonsterTeam.swift in Sources */,

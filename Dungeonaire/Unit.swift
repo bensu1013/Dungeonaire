@@ -23,6 +23,8 @@ class Unit {
     var sprite = SpriteComponent()
     var battle = BattleComponent()
     
+    var deck = [SkillCard]()
+    
     var health = 10 {
         didSet {
             if health < 0 {

@@ -14,7 +14,9 @@ class GameViewController: UIViewController {
 
     var hud: BattleHUDLayer!
     let battleEngine = BattleEngine()
-
+    var component: BattleStoredComponents = BattleStoredComponents()
+    var playerUnits: [Unit] = [Unit]()
+    var enemyUnits: [Unit] = [Unit]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,12 @@ class GameViewController: UIViewController {
         
         battleEngine.load(first: UserDatabase.main.party.units, second: [enemy1, enemy2])
         battleEngine.delegate = self
-        battleEngine.startBattle()
+//        battleEngine.startBattle()
+        
+        print("Enemies \(enemyUnits)")
+        generateEnemies(array: [enemy1, enemy2])
+        
+        print("Enemies \(enemyUnits)")
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -90,4 +97,9 @@ extension GameViewController: BattleEngineDelegate {
     }
 }
 
-
+extension GameViewController: BattleStation {
+    
+    
+    
+    
+}

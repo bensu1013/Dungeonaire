@@ -12,6 +12,11 @@ class BattleComponent {
     
     var unit: Unit!
     var initiative = 0
+    var speed: Int {
+        get {
+            return unit.stats.dexterity
+        }
+    }
     var isDefeated = false  {
         didSet {
             initiative = 0
@@ -26,13 +31,23 @@ class BattleComponent {
         }
     }
     
+    
+    func drawCards() -> hand {
+        let first = unit.deck.popLast()!
+        let second = unit.deck.popLast()!
+        let third = unit.deck.popLast()!
+        return (first, second, third)
+    }
+    
+    
+    //MARK: - Initiative and Turn management
     func initiativeIncrement() {
         if !isDefeated {
             initiative += unit.stats.dexterity
         }
     }
     
-    func initiativeReset() {
+    func initiativeStart() {
         if !isDefeated {
             let initBase = Int(arc4random_uniform(UInt32(20)))
             initiative = initBase + unit.stats.dexterity
@@ -47,3 +62,6 @@ class BattleComponent {
     }
     
 }
+
+
+
