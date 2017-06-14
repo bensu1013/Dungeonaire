@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum SkillSlot: Int {
+    case first = 0
+    case second = 1
+    case third = 2
+}
+
 enum CardType {
     case damage
     case heal

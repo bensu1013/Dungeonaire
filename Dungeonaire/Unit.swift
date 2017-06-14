@@ -17,7 +17,6 @@ class Unit {
             initiative = 0
         }
     }
-    var skills = SkillManager()
     var stats = StatsComponent()
     var sprite = SpriteComponent()
     var battle = BattleComponent()
@@ -37,12 +36,11 @@ class Unit {
     }
     
     init() {
-        skills.user = self
         sprite.unit = self
         battle.unit = self
     }
     
-    func healthChanged(by amount: Double) {
+    func healthChanged(by amount: Int) {
         if !isDefeated {
             health -= Int(amount)
         }

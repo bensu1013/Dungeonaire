@@ -10,7 +10,8 @@ import Foundation
 
 class MonsterUnit: Unit {
     
-
-    
+    func combatLogic() {
+        
+    }
     
 }

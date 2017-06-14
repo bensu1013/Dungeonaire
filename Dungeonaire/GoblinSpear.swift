@@ -23,9 +23,6 @@ class GoblinSpear: MonsterUnit {
         stats.luck = 2
         health = maxHealth
         
-        let stab = Stab()
-        skills.user = self
-        skills.activeSkills.append(stab)
         deck = Weapon().cards
     }
 

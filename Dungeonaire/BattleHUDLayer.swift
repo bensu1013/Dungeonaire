@@ -9,17 +9,27 @@
 import Foundation
 import UIKit
 
+enum HUDBattleState {
+    
+    case player, enemy, neutral
+    
+}
+
 protocol BattleHUDDelegate: class {
     func activatedSkill(_ slot: SkillSlot, at target: Int)
+    
 }
 
 class BattleHUDLayer: UIView {
     
     weak var delegate: BattleHUDDelegate?
+    var state: HUDBattleState = .neutral
+    
     @IBOutlet weak var label1: UILabel!
     @IBAction func skill1(_ sender: Any) {
-
-        delegate?.activatedSkill(.first, at: 0)
+        if state == .player {
+            delegate?.activatedSkill(.first, at: 0)
+        }
     }
 
     override init(frame: CGRect) {
@@ -32,13 +42,26 @@ class BattleHUDLayer: UIView {
         setupView()
     }
     
-    func updateHealth() {
-        
+    func update(health: ([Int], [Int])) {
+        label1.text = "\(health.0[0])"
     }
     
-    func setButtons(_ skills: [Skill]) {
-        
+    
+
+    
+    func show(_ cards: Hand) {
+        print("showing three cards!")
     }
+    
+    func endTurn(completion: @escaping () -> ()) {
+        
+        state = .neutral
+        
+        completion()
+    }
+    
+    
+    
     
     
     

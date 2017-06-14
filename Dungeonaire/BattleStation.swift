@@ -21,7 +21,9 @@ protocol BattleStation: class {
     var component: BattleStoredComponents { get set }
     
     func showDrawn(_ cards: Hand, isPlayer: Bool)
-    func turnComplete()
+    func updateHUD(health: ([Int], [Int]))
+    func showEndTurn()
+    
 }
 
 extension BattleStation {
@@ -86,10 +88,13 @@ extension BattleStation {
         }
         if let battleUnit = component.readyUnit {
             let hand = battleUnit.drawCards()
-            // set hudlayer to reflect drawing cards 'newHand'
             
+            // set hudlayer to reflect drawing cards 'hand'
             if let _ = battleUnit.unit as? MonsterUnit {
+                let ai = AIBattleLogic()
                 showDrawn(hand, isPlayer: false)
+                let aiChoice = ai.chooseCard(from: hand, team1: playerUnits, team2: enemyUnits)
+                completeTurn(skill: aiChoice.0, target: aiChoice.1)
             }
             if let _ = battleUnit.unit as? PlayerUnit {
                 showDrawn(hand, isPlayer: true)
@@ -103,23 +108,35 @@ extension BattleStation {
                 if let hand = battleUnit.hand {
                     //deal damage with selected skillcard
                     if skill.rawValue == 0 {
-                        print(hand.0.temp)
+                        use(hand.0, on: playerUnits[target])
+                        updateHUD(health: unitsHealth())
                     }
                 }
             }
             if let _ = battleUnit.unit as? PlayerUnit {
-                
+                if let hand = battleUnit.hand {
+                    //deal damage with selected skillcard
+                    if skill.rawValue == 0 {
+                        use(hand.0, on: enemyUnits[target])
+                        updateHUD(health: unitsHealth())
+                    }
+                }
             }
             battleUnit.completeTurn()
         }
         endTurn()
     }
- 
+    
     func endTurn() {
         component.readyUnit = nil
         //reset hud to neutral
-        turnComplete()
+        showEndTurn()
     }
     
+    func use(_ card: SkillCard, on target: Unit) {
+        
+        target.healthChanged(by: card.temp)
+        
+    }
     
 }

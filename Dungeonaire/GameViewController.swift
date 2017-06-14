@@ -67,45 +67,54 @@ class GameViewController: UIViewController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
 }
 
 extension GameViewController: BattleHUDDelegate {
+    
     func activatedSkill(_ slot: SkillSlot, at target: Int) {
         
         completeTurn(skill: slot, target: target)
         
     }
+    
 }
 
 extension GameViewController: BattleStation {
     
     func showDrawn(_ cards: Hand, isPlayer: Bool) {
         
-        //set hud to reflect which team to zoom in to
+        //set scene to reflect which team to zoom in to
         if isPlayer {
+            //scene.zoom
+            hud.state = .player
+            
+        } else {
+            
+            hud.state = .enemy
             
         }
         
         //hud shows cards
-        hud.label1.text = "\(cards.0.isFriendly)"
+        hud.show(cards)
+        
+    }
+    
+    func showEndTurn() {
+        
+        //graphically reset turn
+        hud.endTurn {
+            self.prepareTurn()
+        }
         
         
     }
     
-    func turnComplete() {
-        
-        //graphically reset turn
-        
-        prepareTurn()
-        
+    func updateHUD(health: ([Int], [Int])) {
+        hud.update(health: health)
     }
     
 }
