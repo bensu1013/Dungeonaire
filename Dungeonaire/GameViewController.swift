@@ -30,10 +30,14 @@ class GameViewController: UIViewController {
         
         let char1 = Warrior()
         let char2 = Warrior()
+        let char3 = Warrior()
+        let char4 = Warrior()
         let enemy1 = GoblinSpear()
         let enemy2 = GoblinSpear()
         UserDatabase.main.party.units.append(char1)
         UserDatabase.main.party.units.append(char2)
+        UserDatabase.main.party.units.append(char3)
+        UserDatabase.main.party.units.append(char4)
         
         playerUnits = UserDatabase.main.party.units
         generateEnemies(array: [enemy1, enemy2])
@@ -49,7 +53,7 @@ class GameViewController: UIViewController {
             hud.delegate = scene
             // Present the scene
             skView.presentScene(scene)
-            
+            scene.enemyPartyNode.fillParty(with: enemyUnits)
             
         }
         skView.ignoresSiblingOrder = true

@@ -10,41 +10,54 @@ import SpriteKit
 import GameplayKit
 
 enum GameSceneState {
-    
     case movement
     case battle
     case targetPlayer
     case targetEnemy
-    
-    
 }
 
+enum InputState {
+    
+    case neutral
+    case cards
+    case targets
+    
+}
 
 class GameScene: SKScene {
     
     var frameTime: Double = 0
     var state: GameSceneState = .movement
     
-    var cardsNode = CardPlayingNode()
+    var cardsPlayingNode = CardPlayingNode()
     
+    //create a party and enemy node controller similar to cardplayingnode
+    var playerPartyNode = PartyNode()
+    var enemyPartyNode = PartyNode()
     
     //should contain array of sprite bodies relevant for input
     var playerSprites = [SpriteComponent]()
     
+    
     override func didMove(to view: SKView) {
-        var meh: CGFloat = -50
-        for unit in UserDatabase.main.party.units {
-            playerSprites.append(unit.sprite)
-            unit.sprite.body.position.x = meh
-            unit.sprite.runAnimation()
-            self.addChild(unit.sprite.body)
-            meh += 100
+    
+        if let partyNode = childNode(withName: "PlayerPartyNode") as? PartyNode {
+            playerPartyNode = partyNode
+            playerPartyNode.setVariables(partyNode)
         }
         
-        if let cardPlayingNode = camera?.childNode(withName: "CardPlayingNode") {
-            print("cardNode")
-            cardsNode.setVariables(cardPlayingNode)
+        if let partyNode = childNode(withName: "EnemyPartyNode") as? PartyNode {
+            enemyPartyNode = partyNode
+            enemyPartyNode.setVariables(partyNode)
         }
+        
+        playerPartyNode.fillParty(with: UserDatabase.main.party.units)
+        
+        if let cardsNode = camera?.childNode(withName: "CardPlayingNode") as? CardPlayingNode {
+            cardsPlayingNode = cardsNode
+            cardsPlayingNode.setVariables(cardsNode)
+        }
+        
         
         
     }
@@ -60,19 +73,18 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("start touching me")
+        cardsPlayingNode.showCards()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
-            print("touch")
             for sprite in playerSprites {
                 if sprite.body.contains(touch.location(in: self)) {
-                    print("woah")
+                    
                 }
             }
-            
         }
+        cardsPlayingNode.clearCards()
     }
     
     

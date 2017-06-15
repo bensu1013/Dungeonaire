@@ -12,32 +12,43 @@ import SpriteKit
 class CardPlayingNode: SKNode {
     
     var cards = [CardSprite]()
-    var cardPos1 = CGPoint()
-    var cardPos2 = CGPoint()
-    var cardPos3 = CGPoint()
+    var cardPos = [CGPoint]()
     var deck = SKSpriteNode()
     
     func setVariables(_ node: SKNode) {
-        
-        
-        print("setting variables")
-        
+        if let deckNode = node.childNode(withName: "Deck") as? SKSpriteNode {
+            deck = deckNode
+        }
         for count in 1...3 {
             if let cardNode = node.childNode(withName: "Card\(count)") as? CardSprite {
-                print("individual cards")
+                cardNode.position = deck.position
                 cards.append(cardNode)
             }
+            if let cardPosNode = node.childNode(withName: "cardPosition\(count)") {
+                cardPos.append(cardPosNode.position)
+            }
         }
-        print(cards.count)
-        cards[0].cardName = "did it work??!"
-        print(cards[0].cardName)
         
+    }
+    
+    func showCards() {
+        cards[0].cardName = "Hello"
+        cards[1].cardName = "World"
+        cards[2].cardName = "!"
+        for x in 0...2 {
+            cards[x].slide(to: cardPos[x])
+        }
+    }
+    
+    func clearCards() {
+        for x in 0...2 {
+            cards[x].dropReset(to: deck.position)
+        }
     }
     
 }
 
 class CardSprite: SKSpriteNode {
-    
     var cardName: String? {
         get {
             if let label = childNode(withName: "Name") as? SKLabelNode {
@@ -52,6 +63,16 @@ class CardSprite: SKSpriteNode {
         }
     }
     
+    func slide(to point: CGPoint) {
+        let slide = SKAction.move(to: point, duration: 0.5)
+        self.run(slide)
+    }
     
+    func dropReset(to point: CGPoint) {
+        let drop = SKAction.moveBy(x: 0.0, y: -self.frame.height - 100, duration: 0.2)
+        let reset = SKAction.move(to: point, duration: 0.0)
+        let sequence = SKAction.sequence([drop, reset])
+        run(sequence)
+    }
     
 }
