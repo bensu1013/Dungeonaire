@@ -16,24 +16,37 @@ enum HUDBattleState {
 }
 
 protocol BattleHUDDelegate: class {
-    func activatedSkill(_ slot: SkillSlot, at target: Int)
+    
+//    func activatedSkill(_ slot: SkillSlot, at target: Int)
+    func skillSelected(type: GameSceneState)
+    
     
 }
+
+//TODO: Touch issues withoverlapping views
 
 class BattleHUDLayer: UIView {
     
     weak var delegate: BattleHUDDelegate?
     var state: HUDBattleState = .neutral
+    var handCards: Hand?
     
     @IBOutlet weak var label1: UILabel!
     @IBAction func skill1(_ sender: Any) {
+        print("skill")
         if state == .player {
-            delegate?.activatedSkill(.first, at: 0)
+            if handCards![0].isFriendly {
+                delegate?.skillSelected(type: .targetEnemy)
+            } else {
+                delegate?.skillSelected(type: .targetPlayer)
+            }
         }
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .clear
+        self.isUserInteractionEnabled = false
         setupView()
     }
     
@@ -47,10 +60,11 @@ class BattleHUDLayer: UIView {
     }
     
     
-
+    
     
     func show(_ cards: Hand) {
         print("showing three cards!")
+        handCards = cards
     }
     
     func endTurn(completion: @escaping () -> ()) {
@@ -71,7 +85,7 @@ class BattleHUDLayer: UIView {
     private func setupView() {
         let view = viewFromNibForClass()
         view.frame = bounds
-        
+        view.backgroundColor = UIColor.clear
         // Auto-layout stuff.
         view.autoresizingMask = [
             UIViewAutoresizing.flexibleWidth,

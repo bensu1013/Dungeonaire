@@ -105,22 +105,20 @@ extension BattleStation {
     func completeTurn(skill: SkillSlot, target: Int) {
         if let battleUnit = component.readyUnit {
             if let _ = battleUnit.unit as? MonsterUnit {
-                if let hand = battleUnit.hand {
-                    //deal damage with selected skillcard
-                    if skill.rawValue == 0 {
-                        use(hand.0, on: playerUnits[target])
-                        updateHUD(health: unitsHealth())
-                    }
+                //deal damage with selected skillcard
+                if skill.rawValue == 0 {
+                    battleUnit.useCard(skill, target: playerUnits[target])
+                    updateHUD(health: unitsHealth())
+                    
                 }
             }
             if let _ = battleUnit.unit as? PlayerUnit {
-                if let hand = battleUnit.hand {
-                    //deal damage with selected skillcard
-                    if skill.rawValue == 0 {
-                        use(hand.0, on: enemyUnits[target])
-                        updateHUD(health: unitsHealth())
-                    }
+                //deal damage with selected skillcard
+                if skill.rawValue == 0 {
+                    battleUnit.useCard(skill, target: enemyUnits[target])
+                    updateHUD(health: unitsHealth())
                 }
+                
             }
             battleUnit.completeTurn()
         }
@@ -131,12 +129,6 @@ extension BattleStation {
         component.readyUnit = nil
         //reset hud to neutral
         showEndTurn()
-    }
-    
-    func use(_ card: SkillCard, on target: Unit) {
-        
-        target.healthChanged(by: card.temp)
-        
     }
     
 }

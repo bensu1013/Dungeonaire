@@ -9,7 +9,7 @@
 import Foundation
 
 //tuple for a hand of newly drawn cards
-typealias Hand = (SkillCard, SkillCard, SkillCard)
+typealias Hand = [SkillCard]
 
 //tuple wrapping for targets and associated damage
 typealias TargetedDamage = (Int, Double)

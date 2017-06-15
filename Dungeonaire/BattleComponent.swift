@@ -39,12 +39,21 @@ class BattleComponent {
         
     }
     
+    func useCard(_ slot: SkillSlot, target: Unit) {
+        if let hand = hand {
+            if slot == .first {
+                target.healthChanged(by: hand[slot.rawValue].temp)
+            }
+        }
+        
+    }
+    
     func drawCards() -> Hand {
         let first = unit.deck.popLast()!
         let second = unit.deck.popLast()!
         let third = unit.deck.popLast()!
-        hand = (first, second, third)
-        return (first, second, third)
+        hand = [first, second, third]
+        return [first, second, third]
     }
     
     //MARK: - Initiative and Turn management

@@ -14,14 +14,18 @@ class GameViewController: UIViewController {
 
     var hud: BattleHUDLayer!
     var component = BattleStoredComponents()
+    var scene: GameScene?
+    
     var playerUnits: [Unit] = [Unit]()
     var enemyUnits: [Unit] = [Unit]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let skView = SKView(frame: view.frame)
+        view.addSubview(skView)
         
         hud = BattleHUDLayer(frame: self.view.frame)
-        hud.delegate = self
+        
         view.addSubview(hud)
         
         let char1 = Warrior()
@@ -35,23 +39,26 @@ class GameViewController: UIViewController {
         generateEnemies(array: [enemy1, enemy2])
         
         
+        
+        
+        // Load the SKScene from 'GameScene.sks'
+        if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = .aspectFill
+            self.scene = scene
+            hud.delegate = scene
+            // Present the scene
+            skView.presentScene(scene)
+            
+            
+        }
+        skView.ignoresSiblingOrder = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        
+        
         startBattle()
         prepareTurn()
-        
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
         
     }
 
@@ -61,7 +68,7 @@ class GameViewController: UIViewController {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
+            return .landscape
         } else {
             return .all
         }
@@ -73,15 +80,11 @@ class GameViewController: UIViewController {
     
 }
 
-extension GameViewController: BattleHUDDelegate {
-    
-    func activatedSkill(_ slot: SkillSlot, at target: Int) {
-        
-        completeTurn(skill: slot, target: target)
-        
-    }
-    
-}
+//extension GameViewController: BattleHUDDelegate {
+//    
+//    
+//    
+//}
 
 extension GameViewController: BattleStation {
     
@@ -91,10 +94,12 @@ extension GameViewController: BattleStation {
         if isPlayer {
             //scene.zoom
             hud.state = .player
-            
+            scene?.state = .battle
+            scene?.zoom()
         } else {
             
             hud.state = .enemy
+            scene?.state = .battle
             
         }
         
@@ -106,6 +111,7 @@ extension GameViewController: BattleStation {
     func showEndTurn() {
         
         //graphically reset turn
+        scene?.unZoom()
         hud.endTurn {
             self.prepareTurn()
         }
