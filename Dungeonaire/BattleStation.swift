@@ -22,7 +22,7 @@ protocol BattleStation: class {
     
     func showDrawn(_ cards: Hand, isPlayer: Bool)
     func updateHUD(health: ([Int], [Int]))
-    func showEndTurn()
+    func showEndTurn(completion: @escaping () -> () )
     
 }
 
@@ -44,13 +44,13 @@ extension BattleStation {
         }
     }
     
-    func incrementInitiative() {
+    private func incrementInitiative() {
         for unit in component.battleUnits {
             unit.initiativeIncrement()
         }
     }
     
-    func findReadyUnit() {
+    private func findReadyUnit() {
         var highInitUnit: BattleComponent?
         for unit in component.battleUnits {
             if unit.readyForTurn() {
@@ -91,10 +91,8 @@ extension BattleStation {
             
             // set hudlayer to reflect drawing cards 'hand'
             if let _ = battleUnit.unit as? MonsterUnit {
-                let ai = AIBattleLogic()
                 showDrawn(hand, isPlayer: false)
-                let aiChoice = ai.chooseCard(from: hand, team1: playerUnits, team2: enemyUnits)
-                completeTurn(skill: aiChoice.0, target: aiChoice.1)
+
             }
             if let _ = battleUnit.unit as? PlayerUnit {
                 showDrawn(hand, isPlayer: true)
@@ -102,25 +100,26 @@ extension BattleStation {
         }
     }
     
-    func completeTurn(skill: SkillSlot, target: Int) {
+    func aiCalc() {
+        let ai = AIBattleLogic()
+        let aiChoice = ai.chooseCard(from: component.readyUnit!.hand!, team1: playerUnits, team2: enemyUnits)
+        completeTurn(card: aiChoice.0, target: aiChoice.1)
+    }
+    
+    func completeTurn(card: SkillCard, target: Int) {
         if let battleUnit = component.readyUnit {
             if let _ = battleUnit.unit as? MonsterUnit {
-                //deal damage with selected skillcard
-                if skill.rawValue == 0 {
-                    battleUnit.useCard(skill, target: playerUnits[target])
-                    updateHUD(health: unitsHealth())
-                    
-                }
+
+                battleUnit.useCard(card, target: playerUnits[target])
+                
             }
             if let _ = battleUnit.unit as? PlayerUnit {
-                //deal damage with selected skillcard
-                if skill.rawValue == 0 {
-                    battleUnit.useCard(skill, target: enemyUnits[target])
-                    updateHUD(health: unitsHealth())
-                }
+       
+                battleUnit.useCard(card, target: enemyUnits[target])
                 
             }
             battleUnit.completeTurn()
+            updateHUD(health: unitsHealth())
         }
         endTurn()
     }
@@ -128,7 +127,10 @@ extension BattleStation {
     func endTurn() {
         component.readyUnit = nil
         //reset hud to neutral
-        showEndTurn()
+        showEndTurn {
+            self.prepareTurn()
+        }
+        
     }
     
 }

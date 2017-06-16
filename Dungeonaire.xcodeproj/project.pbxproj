@@ -11,7 +11,6 @@
 		FD05D2551EF2F8B1006B951A /* HealthNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD05D2541EF2F8B1006B951A /* HealthNode.swift */; };
 		FD1E4DF81EE0966700626E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4DF71EE0966700626E22 /* AppDelegate.swift */; };
 		FD1E4DFA1EE0966700626E22 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4DF91EE0966700626E22 /* GameScene.sks */; };
-		FD1E4DFC1EE0966700626E22 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4DFB1EE0966700626E22 /* Actions.sks */; };
 		FD1E4DFE1EE0966700626E22 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4DFD1EE0966700626E22 /* GameScene.swift */; };
 		FD1E4E001EE0966700626E22 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4DFF1EE0966700626E22 /* GameViewController.swift */; };
 		FD1E4E031EE0966700626E22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E011EE0966700626E22 /* Main.storyboard */; };
@@ -30,11 +29,9 @@
 		FD1E4E311EE24DBF00626E22 /* MonsterUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E301EE24DBF00626E22 /* MonsterUnit.swift */; };
 		FD1E4E341EE24EFD00626E22 /* StatsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E331EE24EFD00626E22 /* StatsComponent.swift */; };
 		FD1E4E3C1EE316B000626E22 /* GoblinSpear.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E3B1EE316B000626E22 /* GoblinSpear.swift */; };
-		FD1E4E4C1EE5DA3F00626E22 /* BattleHUDLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E4B1EE5DA3F00626E22 /* BattleHUDLayer.swift */; };
 		FD1E4E521EEA429F00626E22 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E511EEA429F00626E22 /* SpriteComponent.swift */; };
 		FD1E4E541EEA433500626E22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E531EEA433500626E22 /* Extensions.swift */; };
 		FD1E4E561EEA435500626E22 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E551EEA435500626E22 /* GlobalVariables.swift */; };
-		FD1E4E581EEA6C2E00626E22 /* BattleHUDLayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1E4E571EEA6C2E00626E22 /* BattleHUDLayer.xib */; };
 		FD1E4E5A1EEF7F3100626E22 /* SkillCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E591EEF7F3100626E22 /* SkillCard.swift */; };
 		FD1E4E5C1EEF815500626E22 /* BattleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E5B1EEF815500626E22 /* BattleComponent.swift */; };
 		FD1E4E5E1EF084BD00626E22 /* BattleStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E5D1EF084BD00626E22 /* BattleStation.swift */; };
@@ -48,7 +45,6 @@
 		FD1E4DF41EE0966700626E22 /* Dungeonaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dungeonaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1E4DF71EE0966700626E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD1E4DF91EE0966700626E22 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		FD1E4DFB1EE0966700626E22 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		FD1E4DFD1EE0966700626E22 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		FD1E4DFF1EE0966700626E22 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		FD1E4E021EE0966700626E22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,11 +64,9 @@
 		FD1E4E301EE24DBF00626E22 /* MonsterUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonsterUnit.swift; sourceTree = "<group>"; };
 		FD1E4E331EE24EFD00626E22 /* StatsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsComponent.swift; sourceTree = "<group>"; };
 		FD1E4E3B1EE316B000626E22 /* GoblinSpear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoblinSpear.swift; sourceTree = "<group>"; };
-		FD1E4E4B1EE5DA3F00626E22 /* BattleHUDLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleHUDLayer.swift; sourceTree = "<group>"; };
 		FD1E4E511EEA429F00626E22 /* SpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		FD1E4E531EEA433500626E22 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FD1E4E551EEA435500626E22 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
-		FD1E4E571EEA6C2E00626E22 /* BattleHUDLayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BattleHUDLayer.xib; sourceTree = "<group>"; };
 		FD1E4E591EEF7F3100626E22 /* SkillCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillCard.swift; sourceTree = "<group>"; };
 		FD1E4E5B1EEF815500626E22 /* BattleComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleComponent.swift; sourceTree = "<group>"; };
 		FD1E4E5D1EF084BD00626E22 /* BattleStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleStation.swift; sourceTree = "<group>"; };
@@ -113,9 +107,7 @@
 				FD1E4E011EE0966700626E22 /* Main.storyboard */,
 				FD1E4DF71EE0966700626E22 /* AppDelegate.swift */,
 				FD1E4DF91EE0966700626E22 /* GameScene.sks */,
-				FD1E4DFB1EE0966700626E22 /* Actions.sks */,
 				FD1E4DFF1EE0966700626E22 /* GameViewController.swift */,
-				FD1E4E171EE0980400626E22 /* HudLayer */,
 				FD1E4E231EE1094300626E22 /* GameLogic */,
 				FD1E4E141EE097B300626E22 /* GameMap */,
 				FD1E4E1D1EE1089A00626E22 /* GameModels */,
@@ -149,15 +141,6 @@
 				FD05D2541EF2F8B1006B951A /* HealthNode.swift */,
 			);
 			name = GameMap;
-			sourceTree = "<group>";
-		};
-		FD1E4E171EE0980400626E22 /* HudLayer */ = {
-			isa = PBXGroup;
-			children = (
-				FD1E4E4B1EE5DA3F00626E22 /* BattleHUDLayer.swift */,
-				FD1E4E571EEA6C2E00626E22 /* BattleHUDLayer.xib */,
-			);
-			name = HudLayer;
 			sourceTree = "<group>";
 		};
 		FD1E4E1A1EE0988600626E22 /* UserModel */ = {
@@ -316,8 +299,6 @@
 				FD1E4DFA1EE0966700626E22 /* GameScene.sks in Resources */,
 				FD1E4E051EE0966700626E22 /* Assets.xcassets in Resources */,
 				FD1E4E081EE0966700626E22 /* LaunchScreen.storyboard in Resources */,
-				FD1E4DFC1EE0966700626E22 /* Actions.sks in Resources */,
-				FD1E4E581EEA6C2E00626E22 /* BattleHUDLayer.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +322,6 @@
 				FD1E4E271EE10C5D00626E22 /* Armor.swift in Sources */,
 				FD1E4E561EEA435500626E22 /* GlobalVariables.swift in Sources */,
 				FD1E4E621EF2505C00626E22 /* CardPlayingNode.swift in Sources */,
-				FD1E4E4C1EE5DA3F00626E22 /* BattleHUDLayer.swift in Sources */,
 				FD1E4E1C1EE098AB00626E22 /* UserDatabase.swift in Sources */,
 				FD1E4E311EE24DBF00626E22 /* MonsterUnit.swift in Sources */,
 				FD1E4E221EE108FE00626E22 /* Weapon.swift in Sources */,

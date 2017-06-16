@@ -14,6 +14,7 @@ class CardPlayingNode: SKNode {
     var cards = [CardSprite]()
     var cardPos = [CGPoint]()
     var deck = SKSpriteNode()
+    var selectedCard: CardSprite?
     
     func setVariables(_ node: SKNode) {
         if let deckNode = node.childNode(withName: "Deck") as? SKSpriteNode {
@@ -31,11 +32,10 @@ class CardPlayingNode: SKNode {
         
     }
     
-    func showCards() {
-        cards[0].cardName = "Hello"
-        cards[1].cardName = "World"
-        cards[2].cardName = "!"
+    func showCards(with hand: Hand) {
         for x in 0...2 {
+            cards[x].skillCard = hand[x]
+            cards[x].cardName = "\(hand[x].temp)"
             cards[x].slide(to: cardPos[x])
         }
     }
@@ -62,6 +62,8 @@ class CardSprite: SKSpriteNode {
             }
         }
     }
+    
+    var skillCard: SkillCard?
     
     func slide(to point: CGPoint) {
         let slide = SKAction.move(to: point, duration: 0.5)

@@ -39,11 +39,11 @@ class BattleComponent {
         
     }
     
-    func useCard(_ slot: SkillSlot, target: Unit) {
+    func useCard(_ card: SkillCard, target: Unit) {
         if let hand = hand {
-            if slot == .first {
-                target.healthChanged(by: hand[slot.rawValue].temp)
-            }
+            
+            target.healthChanged(by: card.temp)
+            
         }
         
     }

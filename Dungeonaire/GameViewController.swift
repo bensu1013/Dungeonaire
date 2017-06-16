@@ -11,22 +11,16 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
-    var hud: BattleHUDLayer!
-    var component = BattleStoredComponents()
-    var scene: GameScene?
     
-    var playerUnits: [Unit] = [Unit]()
-    var enemyUnits: [Unit] = [Unit]()
+    var skView: SKView {
+        return view as! SKView
+    }
+    var scene: GameScene? {
+        return skView.scene as? GameScene
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let skView = SKView(frame: view.frame)
-        view.addSubview(skView)
-        
-        hud = BattleHUDLayer(frame: self.view.frame)
-        
-        view.addSubview(hud)
         
         let char1 = Warrior()
         let char2 = Warrior()
@@ -34,38 +28,42 @@ class GameViewController: UIViewController {
         let char4 = Warrior()
         let enemy1 = GoblinSpear()
         let enemy2 = GoblinSpear()
+        let enemy3 = GoblinSpear()
+        let enemy4 = GoblinSpear()
         UserDatabase.main.party.units.append(char1)
         UserDatabase.main.party.units.append(char2)
         UserDatabase.main.party.units.append(char3)
         UserDatabase.main.party.units.append(char4)
         
-        playerUnits = UserDatabase.main.party.units
-        generateEnemies(array: [enemy1, enemy2])
-        
-        
-        
-        
-        // Load the SKScene from 'GameScene.sks'
-        if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
-            // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
-            self.scene = scene
-            hud.delegate = scene
-            // Present the scene
-            skView.presentScene(scene)
-            scene.enemyPartyNode.fillParty(with: enemyUnits)
+        if skView.scene == nil {
+            skView.showsFPS = true
+            skView.showsNodeCount = true
             
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                // Present the scene
+                skView.presentScene(scene)
+                scene.enemyUnits = [enemy1, enemy2, enemy3, enemy4]
+                scene.enemyPartyNode.fillParty(with: [enemy1, enemy2, enemy3, enemy4])
+
+            }
         }
-        skView.ignoresSiblingOrder = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-        
-        
-        startBattle()
-        prepareTurn()
-        
     }
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scene?.startBattle()
+        scene?.prepareTurn()
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }
@@ -84,47 +82,5 @@ class GameViewController: UIViewController {
     
 }
 
-//extension GameViewController: BattleHUDDelegate {
-//    
-//    
-//    
-//}
 
-extension GameViewController: BattleStation {
-    
-    func showDrawn(_ cards: Hand, isPlayer: Bool) {
-        
-        //set scene to reflect which team to zoom in to
-        if isPlayer {
-            //scene.zoom
-            hud.state = .player
-            scene?.state = .battle
-            scene?.zoom()
-        } else {
-            
-            hud.state = .enemy
-            scene?.state = .battle
-            
-        }
-        
-        //hud shows cards
-        hud.show(cards)
-        
-    }
-    
-    func showEndTurn() {
-        
-        //graphically reset turn
-        scene?.unZoom()
-        hud.endTurn {
-            self.prepareTurn()
-        }
-        
-        
-    }
-    
-    func updateHUD(health: ([Int], [Int])) {
-        hud.update(health: health)
-    }
-    
-}
+

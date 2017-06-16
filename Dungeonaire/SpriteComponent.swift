@@ -16,7 +16,7 @@ enum AnimationState: String {
 class SpriteComponent {
     
     var unit: Unit!
-    var body = SKSpriteNode(texture: nil, size: CGSize(width: 64.0, height: 64.0))
+    var body = SKSpriteNode(texture: nil, size: CGSize(width: 60.0, height: 100.0))
     var animation: AnimationSprite = ASWarriorIdle()
     var state: AnimationState = .idle {
         willSet {
