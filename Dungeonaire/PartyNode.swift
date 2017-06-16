@@ -11,6 +11,8 @@ import SpriteKit
 
 class PartyNode: SKNode {
     
+    var offPosition = CGPoint()
+    var onPosition = CGPoint(x: 180.0, y: 0.0)
     var party = [SpriteComponent]()
     var partyPos = [CGPoint]()
     var healthNodes = [HealthNode]()
@@ -24,6 +26,10 @@ class PartyNode: SKNode {
                 healthNode.setVariables(healthNode)
                 healthNodes.append(healthNode)
             }
+        }
+        offPosition = node.position
+        if offPosition.x < 0 {
+            onPosition.x = -180.0
         }
     }
     
@@ -41,4 +47,14 @@ class PartyNode: SKNode {
         
     }
     
+    func enterSceneAnimation(completion: @escaping () -> () ) {
+        let move = SKAction.move(to: onPosition, duration: 1.5)
+        run(move) { 
+            completion()
+        }
+    }
+    
 }
+
+
+

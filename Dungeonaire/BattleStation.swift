@@ -20,7 +20,8 @@ protocol BattleStation: class {
     var enemyUnits: [Unit] { get set }
     var component: BattleStoredComponents { get set }
     
-    func showDrawn(_ cards: Hand, isPlayer: Bool)
+    func showDrawn(_ cards: Hand, isPlayer: Bool, completion: @escaping () -> () )
+    func takeAITurn()
     func updateHUD(health: ([Int], [Int]))
     func showEndTurn(completion: @escaping () -> () )
     
@@ -81,29 +82,52 @@ extension BattleStation {
         return (team1, team2)
     }
     
-    func prepareTurn() {
+//    func prepareTurn() {
+//        while component.readyUnit == nil {
+//            findReadyUnit()
+//            incrementInitiative()
+//        }
+//        let battleUnit = component.readyUnit!
+//        
+//        let hand = battleUnit.drawCards()
+//        
+//        // set hudlayer to reflect drawing cards 'hand'
+//        if let _ = battleUnit.unit as? MonsterUnit {
+//            showDrawn(hand, isPlayer: false)
+//            
+//        }
+//        if let _ = battleUnit.unit as? PlayerUnit {
+//            showDrawn(hand, isPlayer: true)
+//        }
+//        
+//    }
+    
+    func prepareTurn(completion: @escaping () -> () ) {
         while component.readyUnit == nil {
             findReadyUnit()
             incrementInitiative()
         }
-        if let battleUnit = component.readyUnit {
-            let hand = battleUnit.drawCards()
-            
-            // set hudlayer to reflect drawing cards 'hand'
-            if let _ = battleUnit.unit as? MonsterUnit {
-                showDrawn(hand, isPlayer: false)
-
-            }
-            if let _ = battleUnit.unit as? PlayerUnit {
-                showDrawn(hand, isPlayer: true)
+        let battleUnit = component.readyUnit!
+        let hand = battleUnit.drawCards()
+        
+        // set hudlayer to reflect drawing cards 'hand'
+        if let _ = battleUnit.unit as? MonsterUnit {
+            showDrawn(hand, isPlayer: false) {
+                completion()
             }
         }
+        if let _ = battleUnit.unit as? PlayerUnit {
+            showDrawn(hand, isPlayer: true) {
+                completion()
+            }
+        }
+        
     }
     
-    func aiCalc() {
+    func aiCalc() -> (SkillCard, Int) {
         let ai = AIBattleLogic()
         let aiChoice = ai.chooseCard(from: component.readyUnit!.hand!, team1: playerUnits, team2: enemyUnits)
-        completeTurn(card: aiChoice.0, target: aiChoice.1)
+        return (aiChoice.0, aiChoice.1)
     }
     
     func completeTurn(card: SkillCard, target: Int) {
@@ -114,7 +138,6 @@ extension BattleStation {
                 
             }
             if let _ = battleUnit.unit as? PlayerUnit {
-       
                 battleUnit.useCard(card, target: enemyUnits[target])
                 
             }
@@ -128,7 +151,7 @@ extension BattleStation {
         component.readyUnit = nil
         //reset hud to neutral
         showEndTurn {
-            self.prepareTurn()
+            
         }
         
     }
