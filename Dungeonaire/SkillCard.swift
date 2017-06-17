@@ -23,7 +23,7 @@ enum CardType {
 class SkillCard {
     
     var rank = 1
-    var isFriendly = false
+    var isFriendly = true
     var type = [CardType]()
     var temp = 4
     

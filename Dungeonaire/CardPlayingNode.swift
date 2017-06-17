@@ -32,12 +32,11 @@ class CardPlayingNode: SKNode {
         
     }
     
-    func showCards(with hand: Hand, for team: Team, selector: @escaping (SkillCard) -> () ) {
+    func showCards(with hand: Hand, for team: Team) {
         for x in 0...2 {
             if team == .team1 {
                 cards[x].isUserInteractionEnabled = true
             }
-            cards[x].onPressed = selector
             cards[x].skillCard = hand[x]
             cards[x].cardName = "\(hand[x].temp)"
             cards[x].slide(to: cardPos[x])

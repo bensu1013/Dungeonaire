@@ -33,16 +33,24 @@ class PartyNode: SKNode {
         }
     }
     
+    func updateHealth(_ healths: [Int]) {
+        for x in 0...healths.count - 1 {
+            healthNodes[x].healthText.text = "\(healths[x])"
+        }
+    }
+    
     func fillParty(with units: [Unit]) {
         
         for (ind, unit) in units.enumerated() {
             let sprite = unit.sprite
             party.append(sprite)
-            sprite.body.position = partyPos[ind]
+            sprite.isUserInteractionEnabled = true
+            sprite.position = partyPos[ind]
             sprite.runAnimation()
-            self.addChild(sprite.body)
+            self.addChild(sprite)
             healthNodes[ind].position = partyPos[ind]
-            healthNodes[ind].position.y += sprite.body.frame.height
+            healthNodes[ind].position.y += sprite.frame.height
+            healthNodes[ind].healthText.text = "\(unit.battle.health)"
         }
         
     }

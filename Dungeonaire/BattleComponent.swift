@@ -50,10 +50,16 @@ class BattleComponent {
     func useCard(_ card: SkillCard, target: Unit) {
         if let hand = hand {
             
-            target.healthChanged(by: card.temp)
+            target.battle.healthChanged(by: card.temp)
             
         }
         
+    }
+    
+    func healthChanged(by amount: Int) {
+        if !isDefeated {
+            health -= Int(amount)
+        }
     }
     
     func drawCards() -> Hand {

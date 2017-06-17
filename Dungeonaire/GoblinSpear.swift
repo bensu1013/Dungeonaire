@@ -21,7 +21,7 @@ class GoblinSpear: MonsterUnit {
         stats.vitality = 3
         stats.wisdom = 2
         stats.luck = 2
-        health = maxHealth
+        battle.health = maxHealth
         battle.team = .team2
         deck = Weapon().cards
     }

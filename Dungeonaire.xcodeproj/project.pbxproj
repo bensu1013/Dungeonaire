@@ -140,11 +140,8 @@
 			children = (
 				FD1E4E151EE097DC00626E22 /* LevelMap.swift */,
 				FD1E4DFD1EE0966700626E22 /* GameScene.swift */,
-				FD05D2581EF448FD006B951A /* BattleGameState.swift */,
-				FD05D25A1EF48EE3006B951A /* ExploreGameState.swift */,
-				FD1E4E611EF2505C00626E22 /* CardPlayingNode.swift */,
-				FD05D2521EF2F2B5006B951A /* PartyNode.swift */,
-				FD05D2541EF2F8B1006B951A /* HealthNode.swift */,
+				FDF7A81F1EF595B500299C09 /* SceneNodes */,
+				FDF7A8201EF595C800299C09 /* GameSceneStates */,
 			);
 			name = GameMap;
 			sourceTree = "<group>";
@@ -239,6 +236,25 @@
 				FD1E4E3D1EE316C000626E22 /* GoblinSpear */,
 			);
 			name = Goblins;
+			sourceTree = "<group>";
+		};
+		FDF7A81F1EF595B500299C09 /* SceneNodes */ = {
+			isa = PBXGroup;
+			children = (
+				FD1E4E611EF2505C00626E22 /* CardPlayingNode.swift */,
+				FD05D2521EF2F2B5006B951A /* PartyNode.swift */,
+				FD05D2541EF2F8B1006B951A /* HealthNode.swift */,
+			);
+			name = SceneNodes;
+			sourceTree = "<group>";
+		};
+		FDF7A8201EF595C800299C09 /* GameSceneStates */ = {
+			isa = PBXGroup;
+			children = (
+				FD05D2581EF448FD006B951A /* BattleGameState.swift */,
+				FD05D25A1EF48EE3006B951A /* ExploreGameState.swift */,
+			);
+			name = GameSceneStates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

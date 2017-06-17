@@ -107,10 +107,10 @@ extension BattleStation {
     func unitsHealth() -> ([Int], [Int]) {
         var team1 = [Int](), team2 = [Int]()
         for unit in playerUnits {
-            team1.append(unit.health)
+            team1.append(unit.battle.health)
         }
         for unit in enemyUnits {
-            team2.append(unit.health)
+            team2.append(unit.battle.health)
         }
         return (team1, team2)
     }
@@ -135,13 +135,13 @@ extension BattleStation {
     func teamDefeated(_ team: Team) -> Bool {
         if team == .team1 {
             for unit in playerUnits {
-                if !unit.isDefeated {
+                if !unit.battle.isDefeated {
                     return false
                 }
             }
         } else {
             for unit in enemyUnits {
-                if !unit.isDefeated {
+                if !unit.battle.isDefeated {
                     return false
                 }
             }
@@ -158,20 +158,15 @@ extension BattleStation {
         return nil
     }
     
-    func aiCalc() -> (SkillCard, Int) {
+    func aiCalc() -> (SkillCard, Unit) {
         let ai = AIBattleLogic()
         let aiChoice = ai.chooseCard(from: readyUnit!.hand!, team1: playerUnits, team2: enemyUnits)
         return (aiChoice.0, aiChoice.1)
     }
     
-    func completeTurn(card: SkillCard, target: Int) {
+    func completeTurn(card: SkillCard, target: Unit) {
         if let battleUnit = readyUnit {
-            if let _ = battleUnit.unit as? MonsterUnit {
-                battleUnit.useCard(card, target: playerUnits[target])
-            }
-            if let _ = battleUnit.unit as? PlayerUnit {
-                battleUnit.useCard(card, target: enemyUnits[target])
-            }
+            battleUnit.useCard(card, target: target)
             battleUnit.completeTurn()
         }
         endTurn()

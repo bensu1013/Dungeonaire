@@ -13,11 +13,11 @@ enum AnimationState: String {
     case idle, attack
 }
 
-class SpriteComponent {
+class SpriteComponent: SKSpriteNode {
     
     var unit: Unit!
-    var body = SKSpriteNode(texture: nil, size: CGSize(width: 60.0, height: 100.0))
     var animation: AnimationSprite = ASWarriorIdle()
+    var onPressed: ((Unit) -> ())?
     var state: AnimationState = .idle {
         willSet {
             if newValue != state {
@@ -26,6 +26,20 @@ class SpriteComponent {
         }
         didSet {
             runAnimation()
+        }
+    }
+    
+    init() {
+        super.init(texture: nil, color: .black, size: CGSize(width: 60.0, height: 100.0))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let press = onPressed {
+                press(unit)
         }
     }
     
@@ -39,7 +53,7 @@ class SpriteComponent {
     }
     
     func runAnimation() {
-        animation.animate(body) { (newState) in
+        animation.animate(self) { (newState) in
             self.state = newState
         }
     }

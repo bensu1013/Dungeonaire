@@ -20,20 +20,16 @@ class BattleGameState: GKState, BattleStation {
     var scene: GameScene!
     
     var component: BattleStoredComponents = BattleStoredComponents()
-    var inputState: InputState = .neutral {
-        didSet {
-            takeAITurn()
-        }
-    }
+    var inputState: InputState = .neutral
     var currentTeam: Team = .team1 {
         willSet {
             if newValue == .team2 {
-                useAIChoices = aiCalc()
+                takeAITurn()
             }
         }
     }
-    var useAIChoices: (SkillCard, Int)?
     var selectedCard: SkillCard?
+    var selectedTarget: Unit?
     
     init(scene: GameScene) {
         self.scene = scene
@@ -47,17 +43,26 @@ class BattleGameState: GKState, BattleStation {
     }
     
     override func didEnter(from previousState: GKState?) {
+        
+        for card in scene.cardsPlayingNode.cards {
+            card.onPressed = cardPressed(_:)
+        }
+        for sprite in scene.playerPartyNode.party {
+            sprite.onPressed = unitPressed(_:)
+        }
+        
         let enemy1 = GoblinSpear()
         let enemy2 = GoblinSpear()
         let enemy3 = GoblinSpear()
         let enemy4 = GoblinSpear()
         enemyUnits = [enemy1, enemy2, enemy3, enemy4]
         scene.enemyPartyNode.fillParty(with: [enemy1, enemy2, enemy3, enemy4])
+        for sprite in scene.enemyPartyNode.party {
+            sprite.onPressed = unitPressed(_:)
+        }
         scene.enemyPartyNode.enterSceneAnimation {
-           
             self.startBattle()
             self.startTurn()
-            
         }
     }
     
@@ -69,40 +74,82 @@ class BattleGameState: GKState, BattleStation {
         self.prepareTurn(completion: { (team) in
             let hand = self.drawCards()
             self.currentTeam = team
-            self.scene.cardsPlayingNode.showCards(with: hand, for: team, selector: self.cardPressed)
+            self.scene.cardsPlayingNode.showCards(with: hand, for: team)
             self.inputState = .card
         })
     }
     
     func takeAITurn() {
-        guard let aiChoice = useAIChoices else { return }
+        let aiChoice = aiCalc()
         scene.isUserInteractionEnabled = false
-        if inputState == .card {
-            cardPressed(aiChoice.0)
-        } else if inputState == .target {
-            unZoom {
-                //attack animation
-                self.completeTurn(card: aiChoice.0, target: aiChoice.1)
-                self.inputState = .neutral
-                self.startTurn()
-            }
-        } else {
-            scene.cardsPlayingNode.clearCards()
-            useAIChoices = nil
+        let delay = SKAction.wait(forDuration: 1.0)
+        let card = SKAction.run {
+            self.cardPressed(aiChoice.0)
+        }
+        let target = SKAction.run {
+            self.unitPressed(aiChoice.1)
+        }
+        let aiSequence = SKAction.sequence([delay, card, delay, target])
+        scene.run(aiSequence) { 
+            self.scene.isUserInteractionEnabled = true
         }
     }
     
     func cardPressed(_ card: SkillCard) {
-        selectedCard = card
-        if card.isFriendly {
-            moveCamera(to: currentTeam.getOpposite(), completion: {
-                self.inputState = .target
-            })
-        } else {
-            moveCamera(to: currentTeam, completion: {
-                self.inputState = .target
-            })
+        if inputState == .card {
+            selectedCard = card
+            if !card.isFriendly {
+                moveCamera(to: currentTeam.getOpposite(), completion: {
+                    self.inputState = .target
+                })
+            } else {
+                moveCamera(to: currentTeam, completion: {
+                    self.inputState = .target
+                })
+            }
         }
+    }
+    
+    func unitPressed(_ unit: Unit) {
+        if inputState == .target {
+            selectedTarget = unit
+            scene.cardsPlayingNode.clearCards()
+            unZoom {
+                self.completeTurn(card: self.selectedCard!, target: self.selectedTarget!)
+                self.updateHealthNodes()
+                self.inputState = .neutral
+                self.startTurn()
+            }
+        }
+    }
+    
+    func toggleOnUnitTouch(_ team: Team) {
+        if team == .team1 {
+            for sprite in scene.playerPartyNode.party {
+                sprite.isUserInteractionEnabled = true
+            }
+        } else {
+            for sprite in scene.enemyPartyNode.party {
+                sprite.isUserInteractionEnabled = true
+            }
+        }
+    }
+    func toggleOffUnitTouch(_ team: Team) {
+        if team == .team1 {
+            for sprite in scene.playerPartyNode.party {
+                sprite.isUserInteractionEnabled = false
+            }
+        } else {
+            for sprite in scene.enemyPartyNode.party {
+                sprite.isUserInteractionEnabled = false
+            }
+        }
+    }
+    
+    func updateHealthNodes() {
+        let newHealths = unitsHealth()
+        scene.playerPartyNode.updateHealth(newHealths.0)
+        scene.enemyPartyNode.updateHealth(newHealths.1)
         
     }
     

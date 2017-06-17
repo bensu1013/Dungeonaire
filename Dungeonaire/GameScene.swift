@@ -85,7 +85,6 @@ class GameScene: SKScene {
         
     }
 
-    
   
     
     //MARK: - Camera methods

@@ -18,11 +18,11 @@ class Warrior: PlayerUnit {
     override init() {
         super.init()
         stats.strength = 7
-        stats.dexterity = 5
+        stats.dexterity = 6
         stats.vitality = 6
         stats.wisdom = 3
         stats.luck = 2
-        health = maxHealth
+        battle.health = maxHealth
         let weapon = Weapon()
         equipment.weapon = weapon
         battle.team = .team1

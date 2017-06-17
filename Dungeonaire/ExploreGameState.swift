@@ -47,7 +47,6 @@ class ExploreGameState: GKState {
     }
     
     func enterBattle() {
-        
         stateMachine?.enter(BattleGameState.self)
     }
     

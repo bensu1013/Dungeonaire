@@ -10,12 +10,12 @@ import Foundation
 
 struct AIBattleLogic {
     
-    func chooseCard(from hand: Hand, team1: [Unit], team2: [Unit]) -> (SkillCard, Int) {
+    func chooseCard(from hand: Hand, team1: [Unit], team2: [Unit]) -> (SkillCard, Unit) {
         
         
         
         
-        return (hand[0], 2)
+        return (hand[0], team1[2])
     }
     
     
