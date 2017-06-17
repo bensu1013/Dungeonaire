@@ -33,10 +33,20 @@ class BattleComponent {
     }
     var health = 10 {
         didSet {
-            if health <= 0 {
-                health = 0
-                isDefeated = true
-            }
+            limitHealth()
+        }
+    }
+    
+    func limitHealth() {
+        if health < 0 {
+            health = 0
+            isDefeated = true
+            unit.sprite.isUserInteractionEnabled = false
+        } else if health == 0 {
+            isDefeated = true
+            unit.sprite.isUserInteractionEnabled = false
+        } else if health > unit.maxHealth {
+            health = unit.maxHealth
         }
     }
     
@@ -48,12 +58,29 @@ class BattleComponent {
     }
     
     func useCard(_ card: SkillCard, target: Unit) {
-        if let hand = hand {
-            
-            target.battle.healthChanged(by: card.temp)
-            
-        }
         
+        let stat = getStatFor(card.mainStat)
+        var damage = stat + card.temp
+        if !card.isFriendly {
+            damage = -damage
+        }
+        target.battle.healthChanged(by: damage)
+        
+    }
+    
+    func getStatFor(_ mainStat: MainStat) -> Int {
+        switch mainStat {
+        case .str:
+            return unit.stats.strength
+        case .dex:
+            return unit.stats.dexterity
+        case .vit:
+            return unit.stats.vitality
+        case .wis:
+            return unit.stats.wisdom
+        case .luk:
+            return unit.stats.luck
+        }
     }
     
     func healthChanged(by amount: Int) {

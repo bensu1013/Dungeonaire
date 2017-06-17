@@ -21,6 +21,7 @@ class GoblinSpear: MonsterUnit {
         stats.vitality = 3
         stats.wisdom = 2
         stats.luck = 2
+        baseHealth = 15
         battle.health = maxHealth
         battle.team = .team2
         deck = Weapon().cards
@@ -29,12 +30,6 @@ class GoblinSpear: MonsterUnit {
     override func update(dt: TimeInterval) {
 
     }
-    //in case of target selection, add function to choose targets and add to bottom of selectSkill
-    
-    override func calculateDamageRange() -> Double {
-        var damage = 0.0
-        damage = Double(stats.strength) / 5 + 1
-        return damage
-    }
+
     
 }

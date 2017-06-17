@@ -8,23 +8,28 @@
 
 import Foundation
 
-enum SkillSlot: Int {
-    case first = 0
-    case second = 1
-    case third = 2
-}
 
-enum CardType {
+enum CardEffect {
     case damage
     case heal
     case slow
 }
 
+enum MainStat: String {
+    case str = "Strength"
+    case dex = "Dexterity"
+    case vit = "Vitality"
+    case wis = "Wisdom"
+    case luk = "Luck"
+}
+
 class SkillCard {
     
+    var name = ""
     var rank = 1
+    var mainStat: MainStat = .str
     var isFriendly = true
-    var type = [CardType]()
+    var effects = [CardEffect]()
     var temp = 4
     
 }

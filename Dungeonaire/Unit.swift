@@ -16,17 +16,14 @@ class Unit {
     var sprite = SpriteComponent()
     var battle = BattleComponent()
     var deck = [SkillCard]()
+    var baseHealth: Int = 10
     var maxHealth: Int {
-        return 10 + (stats.vitality * 2)
+        return baseHealth + (stats.vitality * 2)
     }
     
     init() {
         sprite.unit = self
         battle.unit = self
-    }
-
-    func calculateDamageRange() -> Double {
-        return 0
     }
     
     func update(dt: TimeInterval) {

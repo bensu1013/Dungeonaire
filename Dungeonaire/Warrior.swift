@@ -22,6 +22,7 @@ class Warrior: PlayerUnit {
         stats.vitality = 6
         stats.wisdom = 3
         stats.luck = 2
+        baseHealth = 20
         battle.health = maxHealth
         let weapon = Weapon()
         equipment.weapon = weapon
@@ -34,12 +35,5 @@ class Warrior: PlayerUnit {
       
     }
     
-    override func calculateDamageRange() -> Double {
-        var damage: Double = Double(stats.strength) / 5 + 1
-        if let weapon = equipment.weapon {
-            damage = Double(weapon.damage * stats.strength) / 5
-        }
-        return damage
-    }
     
 }

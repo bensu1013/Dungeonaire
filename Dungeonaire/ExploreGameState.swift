@@ -41,7 +41,9 @@ class ExploreGameState: GKState {
             scene.camera!.position.x += 2.0
             scene.unitsNode.position.x += 2.0
         }
+        //TODO: remove triggers
         if (scene.camera?.contains(scene!.childNode(withName: "BattleTrigger")!))! {
+            
             enterBattle()
         }
     }
