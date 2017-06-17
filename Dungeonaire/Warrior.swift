@@ -25,7 +25,7 @@ class Warrior: PlayerUnit {
         health = maxHealth
         let weapon = Weapon()
         equipment.weapon = weapon
-
+        battle.team = .team1
         deck = weapon.cards
     }
     

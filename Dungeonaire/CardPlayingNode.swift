@@ -32,8 +32,12 @@ class CardPlayingNode: SKNode {
         
     }
     
-    func showCards(with hand: Hand) {
+    func showCards(with hand: Hand, for team: Team, selector: @escaping (SkillCard) -> () ) {
         for x in 0...2 {
+            if team == .team1 {
+                cards[x].isUserInteractionEnabled = true
+            }
+            cards[x].onPressed = selector
             cards[x].skillCard = hand[x]
             cards[x].cardName = "\(hand[x].temp)"
             cards[x].slide(to: cardPos[x])
@@ -42,6 +46,7 @@ class CardPlayingNode: SKNode {
     
     func clearCards() {
         for x in 0...2 {
+            cards[x].isUserInteractionEnabled = false
             cards[x].dropReset(to: deck.position)
         }
     }
@@ -64,6 +69,14 @@ class CardSprite: SKSpriteNode {
     }
     
     var skillCard: SkillCard?
+    var onPressed: ((SkillCard) -> ())?
+    
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("press card")
+        onPressed!(skillCard!)
+    }
     
     func slide(to point: CGPoint) {
         let slide = SKAction.move(to: point, duration: 0.5)

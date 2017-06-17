@@ -8,10 +8,18 @@
 
 import Foundation
 
+enum Team {
+    case team1, team2
+    func getOpposite() -> Team {
+        return self == .team1 ? .team2 : .team1
+    }
+}
+
 class BattleComponent {
     
     var unit: Unit!
     var initiative = 0
+    var team: Team = .team1
     var hand: Hand?
     var speed: Int {
         get {
