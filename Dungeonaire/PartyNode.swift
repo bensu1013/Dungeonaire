@@ -62,6 +62,14 @@ class PartyNode: SKNode {
         }
     }
     
+    func resetParty() {
+        for unit in party {
+            unit.removeFromParent()
+        }
+        party.removeAll()
+        self.position = offPosition
+    }
+    
 }
 
 

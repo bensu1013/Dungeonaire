@@ -20,11 +20,6 @@ protocol BattleStation: class {
 
     var component: BattleStoredComponents { get set }
     
-//    func showDrawn(_ cards: Hand, team: Team, completion: @escaping () -> () )
-//    func takeAITurn()
-//    func updateHUD(health: ([Int], [Int]))
-//    func showEndTurn(completion: @escaping () -> () )
-    
 }
 
 extension BattleStation {

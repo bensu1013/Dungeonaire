@@ -16,7 +16,7 @@ enum ExploreState {
 class ExploreGameState: GKState {
     var scene: GameScene!
     var exploreState: ExploreState = .neutral
-    
+    var battleTriggers = [SKNode]()
     init(scene: GameScene) {
         self.scene = scene
         super.init()
@@ -27,6 +27,15 @@ class ExploreGameState: GKState {
     }
     
     override func didEnter(from previousState: GKState?) {
+        battleTriggers.removeAll()
+        if let trigger = scene!.childNode(withName: "BattleTrigger") {
+            battleTriggers.append(trigger)
+        }
+        
+        for sprite in scene.playerPartyNode.party {
+            sprite.onPressed = unitPressed(_:)
+        }
+        
         scene!.isUserInteractionEnabled = false
         scene!.playerPartyNode.enterSceneAnimation {
             self.scene.isUserInteractionEnabled = true
@@ -42,14 +51,23 @@ class ExploreGameState: GKState {
             scene.unitsNode.position.x += 2.0
         }
         //TODO: remove triggers
-        if (scene.camera?.contains(scene!.childNode(withName: "BattleTrigger")!))! {
-            
-            enterBattle()
+        for trigger in battleTriggers {
+            if (scene.camera?.contains(trigger))! {
+                trigger.removeFromParent()
+                enterBattle()
+            }
         }
     }
     
     func enterBattle() {
+        endMovement()
         stateMachine?.enter(BattleGameState.self)
+    }
+    
+    func unitPressed(_ unit: Unit) {
+        print("exploring with \(unit)")
+        
+        
     }
     
     func input(for touch: UITouch) {

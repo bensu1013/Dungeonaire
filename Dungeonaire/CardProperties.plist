@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SlashCard</key>
+	<dict>
+		<key>Friendly</key>
+		<true/>
+		<key>Range</key>
+		<array>
+			<integer>2</integer>
+			<integer>4</integer>
+		</array>
+		<key>Name</key>
+		<string>Slash</string>
+		<key>MainStat</key>
+		<string>Strength</string>
+		<key>Rank</key>
+		<integer>1</integer>
+	</dict>
+</dict>
+</plist>

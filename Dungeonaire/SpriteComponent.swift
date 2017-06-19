@@ -13,6 +13,7 @@ enum AnimationState: String {
     case idle, attack
 }
 
+
 class SpriteComponent: SKSpriteNode {
     
     var unit: Unit!

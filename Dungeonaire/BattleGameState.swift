@@ -15,6 +15,7 @@ enum InputState {
     case target
 }
 
+
 class BattleGameState: GKState, BattleStation {
     
     var scene: GameScene!
@@ -67,7 +68,7 @@ class BattleGameState: GKState, BattleStation {
     }
     
     override func update(deltaTime seconds: TimeInterval) {
-        checkForWinner()
+        
     }
     
     func startTurn() {
@@ -111,6 +112,7 @@ class BattleGameState: GKState, BattleStation {
     }
     
     func unitPressed(_ unit: Unit) {
+        print("welp")
         if inputState == .target {
             selectedTarget = unit
             scene.cardsPlayingNode.clearCards()
@@ -118,33 +120,11 @@ class BattleGameState: GKState, BattleStation {
                 self.completeTurn(card: self.selectedCard!, target: self.selectedTarget!)
                 self.updateHealthNodes()
                 self.inputState = .neutral
-                self.startTurn()
+                self.checkForWinner()
             }
         }
     }
     
-    func toggleOnUnitTouch(_ team: Team) {
-        if team == .team1 {
-            for sprite in scene.playerPartyNode.party {
-                sprite.isUserInteractionEnabled = true
-            }
-        } else {
-            for sprite in scene.enemyPartyNode.party {
-                sprite.isUserInteractionEnabled = true
-            }
-        }
-    }
-    func toggleOffUnitTouch(_ team: Team) {
-        if team == .team1 {
-            for sprite in scene.playerPartyNode.party {
-                sprite.isUserInteractionEnabled = false
-            }
-        } else {
-            for sprite in scene.enemyPartyNode.party {
-                sprite.isUserInteractionEnabled = false
-            }
-        }
-    }
     
     func updateHealthNodes() {
         let newHealths = unitsHealth()
@@ -154,18 +134,23 @@ class BattleGameState: GKState, BattleStation {
     }
     
     func endBattle() {
-        stateMachine?.enter(ExploreGameState.self)
+        unZoom {
+            self.stateMachine?.enter(ExploreGameState.self)
+        }
     }
     
     func checkForWinner() {
         if let winner = wonBattle() {
             if winner == .team1 {
                 print("victory")
+                scene!.enemyPartyNode.resetParty()
                 endBattle()
             } else {
                 print("defeat")
-                
+                //game over , leave game scene
             }
+        } else {
+            self.startTurn()
         }
     }
     

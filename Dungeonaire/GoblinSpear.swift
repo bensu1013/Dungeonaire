@@ -10,9 +10,6 @@ import Foundation
 
 class GoblinSpear: MonsterUnit {
     
-    override var maxHealth: Int {
-        return 10 + (stats.vitality * 3)
-    }
     
     override init() {
         super.init()
@@ -21,8 +18,10 @@ class GoblinSpear: MonsterUnit {
         stats.vitality = 3
         stats.wisdom = 2
         stats.luck = 2
-        baseHealth = 15
+        baseHealth = 10
+        vitHealth = 3
         battle.health = maxHealth
+        battle.armor = 2
         battle.team = .team2
         deck = Weapon().cards
     }

@@ -11,14 +11,16 @@ import SpriteKit
 
 class Unit {
     
+    var name = "Unit"
     var initiative = 0
     var stats = StatsComponent()
     var sprite = SpriteComponent()
     var battle = BattleComponent()
     var deck = [SkillCard]()
     var baseHealth: Int = 10
+    var vitHealth: Int = 2
     var maxHealth: Int {
-        return baseHealth + (stats.vitality * 2)
+        return baseHealth + (stats.vitality * vitHealth)
     }
     
     init() {

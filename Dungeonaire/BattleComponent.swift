@@ -36,8 +36,13 @@ class BattleComponent {
             limitHealth()
         }
     }
+    var armor = 0 {
+        didSet {
+            limitArmor()
+        }
+    }
     
-    func limitHealth() {
+    private func limitHealth() {
         if health < 0 {
             health = 0
             isDefeated = true
@@ -47,6 +52,12 @@ class BattleComponent {
             unit.sprite.isUserInteractionEnabled = false
         } else if health > unit.maxHealth {
             health = unit.maxHealth
+        }
+    }
+    
+    private func limitArmor() {
+        if armor < 0 {
+            armor = 0
         }
     }
     
@@ -85,7 +96,12 @@ class BattleComponent {
     
     func healthChanged(by amount: Int) {
         if !isDefeated {
-            health -= Int(amount)
+            if armor < amount {
+                health -= amount - armor
+                armor = 0
+            } else {
+                health -= Int(amount)
+            }
         }
     }
     

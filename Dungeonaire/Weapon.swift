@@ -11,12 +11,12 @@ import Foundation
 class Weapon: Item {
     
     var damage = 3
-    var cards = [SkillCard(), SkillCard()]
+    var cards = [SkillCard(type: .SlashCard), SkillCard(type: .SlashCard)]
     
     //MARK: - temp init to fill card
     override init() {
         for _ in 0...9 {
-            cards.append(SkillCard())
+            cards.append(SkillCard(type: .SlashCard))
         }
     }
 }
