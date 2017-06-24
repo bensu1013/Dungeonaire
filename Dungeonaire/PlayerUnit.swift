@@ -10,7 +10,7 @@ import Foundation
 
 class PlayerUnit: Unit {
     
-    var equipment = EquipmentController()
+    
     
 
 }

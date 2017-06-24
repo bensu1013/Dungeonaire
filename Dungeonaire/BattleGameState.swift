@@ -99,11 +99,17 @@ class BattleGameState: GKState, BattleStation {
     func cardPressed(_ card: SkillCard) {
         if inputState == .card {
             selectedCard = card
-            if !card.isFriendly {
+            if card.targetEnemy {
+                for sprite in scene.playerPartyNode.party {
+                    sprite.isUserInteractionEnabled = false
+                }
                 moveCamera(to: currentTeam.getOpposite(), completion: {
                     self.inputState = .target
                 })
             } else {
+                for sprite in scene.enemyPartyNode.party {
+                    sprite.isUserInteractionEnabled = false
+                }
                 moveCamera(to: currentTeam, completion: {
                     self.inputState = .target
                 })
@@ -117,6 +123,12 @@ class BattleGameState: GKState, BattleStation {
             selectedTarget = unit
             scene.cardsPlayingNode.clearCards()
             unZoom {
+                for sprite in self.scene.playerPartyNode.party {
+                    sprite.isUserInteractionEnabled = true
+                }
+                for sprite in self.scene.enemyPartyNode.party {
+                    sprite.isUserInteractionEnabled = true
+                }
                 self.completeTurn(card: self.selectedCard!, target: self.selectedTarget!)
                 self.updateHealthNodes()
                 self.inputState = .neutral
@@ -162,9 +174,9 @@ class BattleGameState: GKState, BattleStation {
     
     func getPosition(for team: Team) -> CGPoint {
         if team == .team1 {
-            return CGPoint(x: scene.unitsNode.position.x - scene.playerPartyNode.position.x, y: 0.0)
+            return CGPoint(x: scene.unitsNode.position.x + scene.playerPartyNode.position.x, y: 0.0)
         } else {
-            return CGPoint(x: scene.unitsNode.position.x - scene.enemyPartyNode.position.x, y: 0.0)
+            return CGPoint(x: scene.unitsNode.position.x + scene.enemyPartyNode.position.x, y: 0.0)
         }
     }
     

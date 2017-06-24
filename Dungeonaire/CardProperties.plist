@@ -2,9 +2,57 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SlapCard</key>
+	<dict>
+		<key>TargetEnemy</key>
+		<true/>
+		<key>Range</key>
+		<array>
+			<integer>0</integer>
+			<integer>0</integer>
+		</array>
+		<key>Name</key>
+		<string>Slap</string>
+		<key>MainStat</key>
+		<string>Luck</string>
+		<key>Rank</key>
+		<integer>1</integer>
+	</dict>
+	<key>BludgeonCard</key>
+	<dict>
+		<key>TargetEnemy</key>
+		<true/>
+		<key>Range</key>
+		<array>
+			<integer>2</integer>
+			<integer>2</integer>
+		</array>
+		<key>Name</key>
+		<string>Bludgeon</string>
+		<key>MainStat</key>
+		<string>Strength</string>
+		<key>Rank</key>
+		<integer>1</integer>
+	</dict>
+	<key>StabCard</key>
+	<dict>
+		<key>TargetEnemy</key>
+		<true/>
+		<key>Range</key>
+		<array>
+			<integer>0</integer>
+			<integer>3</integer>
+		</array>
+		<key>Name</key>
+		<string>Stab</string>
+		<key>MainStat</key>
+		<string>Strength</string>
+		<key>Rank</key>
+		<integer>1</integer>
+	</dict>
 	<key>SlashCard</key>
 	<dict>
-		<key>Friendly</key>
+		<key>TargetEnemy</key>
 		<true/>
 		<key>Range</key>
 		<array>
@@ -15,6 +63,22 @@
 		<string>Slash</string>
 		<key>MainStat</key>
 		<string>Strength</string>
+		<key>Rank</key>
+		<integer>1</integer>
+	</dict>
+	<key>DodgeCard</key>
+	<dict>
+		<key>TargetEnemy</key>
+		<false/>
+		<key>Range</key>
+		<array>
+			<integer>2</integer>
+			<integer>4</integer>
+		</array>
+		<key>Name</key>
+		<string>Dodge</string>
+		<key>MainStat</key>
+		<string>Dexterity</string>
 		<key>Rank</key>
 		<integer>1</integer>
 	</dict>

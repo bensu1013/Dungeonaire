@@ -23,7 +23,7 @@ class GoblinSpear: MonsterUnit {
         battle.health = maxHealth
         battle.armor = 2
         battle.team = .team2
-        deck = Weapon().cards
+        equipment.weapon = Weapon(type: .Dagger)
     }
 
     override func update(dt: TimeInterval) {

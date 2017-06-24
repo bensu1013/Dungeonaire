@@ -61,6 +61,8 @@ class BattleComponent {
         }
     }
     
+    
+    
     func completeTurn() {
         
         initiative -= turnThreshold
@@ -72,7 +74,7 @@ class BattleComponent {
         
         let stat = getStatFor(card.mainStat)
         var damage = stat + card.temp
-        if !card.isFriendly {
+        if !card.targetEnemy {
             damage = -damage
         }
         target.battle.healthChanged(by: damage)
@@ -106,14 +108,18 @@ class BattleComponent {
     }
     
     func drawCards() -> Hand {
-        let first = unit.deck.popLast()!
-        let second = unit.deck.popLast()!
-        let third = unit.deck.popLast()!
-        hand = [first, second, third]
-        return [first, second, third]
+        let newHand = unit.cards.drawCards()
+        hand = newHand
+        return newHand
     }
     
-    //MARK: - Initiative and Turn management
+
+    
+}
+
+//MARK: - Initiative and Turn management
+extension BattleComponent {
+    
     func initiativeIncrement() {
         if !isDefeated {
             initiative += unit.stats.dexterity
@@ -122,7 +128,7 @@ class BattleComponent {
     
     func initiativeStart() {
         if !isDefeated {
-            let initBase = Int(arc4random_uniform(UInt32(20)))
+            let initBase = Int(arc4random_uniform(UInt32(30)))
             initiative = initBase + unit.stats.dexterity
         }
     }
@@ -133,8 +139,5 @@ class BattleComponent {
         }
         return false
     }
-    
 }
-
-
 

@@ -16,7 +16,10 @@ enum CardEffect {
 }
 
 enum SkillCardType: String {
+    case SlapCard
     case SlashCard
+    case StabCard
+    case BludgeonCard
     
 }
 
@@ -32,26 +35,23 @@ class SkillCard {
     
     var name = ""
     var rank = 1
-    var mainStat: MainStat = .str
-    var isFriendly = true
+    var mainStat: MainStat = .luk
+    var targetEnemy = true
     var effects = [CardEffect]()
+    var range = (0,0)
     var temp = 4
-    var range = (2,4)
     
     init(type: SkillCardType) {
-        let path = Bundle.main.path(forResource: "CardProperties", ofType: "plist")
-        let dict = NSDictionary(contentsOfFile: path!)
+        guard let path = Bundle.main.path(forResource: "CardProperties", ofType: "plist") else { return }
+        let dict = NSDictionary(contentsOfFile: path)
         let cardData = dict![type.rawValue] as! [String : Any]
         
         name = cardData["Name"] as! String
         rank = cardData["Rank"] as! Int
         mainStat = MainStat.init(rawValue: cardData["MainStat"] as! String)!
-        isFriendly = cardData["Friendly"] as! Bool
+        targetEnemy = cardData["TargetEnemy"] as! Bool
         let range = cardData["Range"] as! [Int]
         self.range = (range[0], range[1])
-        
-        dump(self)
-        
     }
     
 }

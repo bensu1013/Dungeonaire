@@ -8,15 +8,29 @@
 
 import Foundation
 
+enum WeaponType: String {
+    case Dagger
+    case Shortsword
+    case Club
+}
+
 class Weapon: Item {
     
-    var damage = 3
-    var cards = [SkillCard(type: .SlashCard), SkillCard(type: .SlashCard)]
+    var damage = 2
+    var cards = [SkillCard]()
     
     //MARK: - temp init to fill card
-    override init() {
-        for _ in 0...9 {
-            cards.append(SkillCard(type: .SlashCard))
+    init(type: WeaponType) {
+        guard let path = Bundle.main.path(forResource: "WeaponProperties", ofType: "plist") else { return }
+        let dict = NSDictionary(contentsOfFile: path)
+        let weaponData = dict![type.rawValue] as! [String : Any]
+        let cards = weaponData["Cards"] as! [String]
+        
+        for card in cards {
+            self.cards.append(SkillCard(type: SkillCardType(rawValue: card)!))
         }
+        
+        self.damage = weaponData["Damage"] as! Int
+        
     }
 }

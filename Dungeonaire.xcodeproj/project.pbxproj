@@ -39,8 +39,10 @@
 		FD1E4E5E1EF084BD00626E22 /* BattleStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E5D1EF084BD00626E22 /* BattleStation.swift */; };
 		FD1E4E601EF1879D00626E22 /* AIBattleLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E5F1EF1879D00626E22 /* AIBattleLogic.swift */; };
 		FD1E4E621EF2505C00626E22 /* CardPlayingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1E4E611EF2505C00626E22 /* CardPlayingNode.swift */; };
-		FD51F5711EF7461F00F79500 /* SlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5701EF7461F00F79500 /* SlashCard.swift */; };
 		FD51F5731EF7466300F79500 /* CardProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD51F5721EF7466300F79500 /* CardProperties.plist */; };
+		FD51F5781EFDFF1B00F79500 /* WeaponProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD51F5771EFDFF1B00F79500 /* WeaponProperties.plist */; };
+		FD51F57A1EFE2D4300F79500 /* ArmorProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD51F5791EFE2D4300F79500 /* ArmorProperties.plist */; };
+		FD51F57C1EFE2EEE00F79500 /* DeckComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F57B1EFE2EEE00F79500 /* DeckComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,8 +80,10 @@
 		FD1E4E5D1EF084BD00626E22 /* BattleStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleStation.swift; sourceTree = "<group>"; };
 		FD1E4E5F1EF1879D00626E22 /* AIBattleLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AIBattleLogic.swift; sourceTree = "<group>"; };
 		FD1E4E611EF2505C00626E22 /* CardPlayingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPlayingNode.swift; sourceTree = "<group>"; };
-		FD51F5701EF7461F00F79500 /* SlashCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlashCard.swift; sourceTree = "<group>"; };
 		FD51F5721EF7466300F79500 /* CardProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CardProperties.plist; sourceTree = "<group>"; };
+		FD51F5771EFDFF1B00F79500 /* WeaponProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WeaponProperties.plist; sourceTree = "<group>"; };
+		FD51F5791EFE2D4300F79500 /* ArmorProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ArmorProperties.plist; sourceTree = "<group>"; };
+		FD51F57B1EFE2EEE00F79500 /* DeckComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,8 +175,8 @@
 		FD1E4E1E1EE108D500626E22 /* ItemModels */ = {
 			isa = PBXGroup;
 			children = (
-				FD1E4E2A1EE10DD500626E22 /* EquipmentController.swift */,
 				FD1E4E1F1EE108EB00626E22 /* Item.swift */,
+				FD51F56F1EF7453900F79500 /* SkillCards */,
 				FD51F5741EF74FF000F79500 /* Weapons */,
 				FD51F5751EF74FF900F79500 /* Armors */,
 				FD51F5761EF7500300F79500 /* Relics */,
@@ -212,9 +216,10 @@
 			children = (
 				FD1E4E0F1EE096F000626E22 /* Unit.swift */,
 				FD1E4E5B1EEF815500626E22 /* BattleComponent.swift */,
+				FD51F57B1EFE2EEE00F79500 /* DeckComponent.swift */,
 				FD1E4E511EEA429F00626E22 /* SpriteComponent.swift */,
 				FD1E4E331EE24EFD00626E22 /* StatsComponent.swift */,
-				FD51F56F1EF7453900F79500 /* SkillCards */,
+				FD1E4E2A1EE10DD500626E22 /* EquipmentController.swift */,
 			);
 			name = BaseUnitModel;
 			sourceTree = "<group>";
@@ -248,7 +253,6 @@
 			children = (
 				FD51F5721EF7466300F79500 /* CardProperties.plist */,
 				FD1E4E591EEF7F3100626E22 /* SkillCard.swift */,
-				FD51F5701EF7461F00F79500 /* SlashCard.swift */,
 			);
 			name = SkillCards;
 			sourceTree = "<group>";
@@ -256,6 +260,7 @@
 		FD51F5741EF74FF000F79500 /* Weapons */ = {
 			isa = PBXGroup;
 			children = (
+				FD51F5771EFDFF1B00F79500 /* WeaponProperties.plist */,
 				FD1E4E211EE108FE00626E22 /* Weapon.swift */,
 			);
 			name = Weapons;
@@ -264,6 +269,7 @@
 		FD51F5751EF74FF900F79500 /* Armors */ = {
 			isa = PBXGroup;
 			children = (
+				FD51F5791EFE2D4300F79500 /* ArmorProperties.plist */,
 				FD1E4E261EE10C5D00626E22 /* Armor.swift */,
 			);
 			name = Armors;
@@ -358,8 +364,10 @@
 				FD1E4E031EE0966700626E22 /* Main.storyboard in Resources */,
 				FD51F5731EF7466300F79500 /* CardProperties.plist in Resources */,
 				FD1E4DFA1EE0966700626E22 /* GameScene.sks in Resources */,
+				FD51F57A1EFE2D4300F79500 /* ArmorProperties.plist in Resources */,
 				FD1E4E051EE0966700626E22 /* Assets.xcassets in Resources */,
 				FD1E4E081EE0966700626E22 /* LaunchScreen.storyboard in Resources */,
+				FD51F5781EFDFF1B00F79500 /* WeaponProperties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,12 +394,12 @@
 				FD1E4E621EF2505C00626E22 /* CardPlayingNode.swift in Sources */,
 				FD1E4E1C1EE098AB00626E22 /* UserDatabase.swift in Sources */,
 				FD05D2591EF448FD006B951A /* BattleGameState.swift in Sources */,
-				FD51F5711EF7461F00F79500 /* SlashCard.swift in Sources */,
 				FD1E4E311EE24DBF00626E22 /* MonsterUnit.swift in Sources */,
 				FD1E4E221EE108FE00626E22 /* Weapon.swift in Sources */,
 				FD05D2531EF2F2B5006B951A /* PartyNode.swift in Sources */,
 				FD1E4DFE1EE0966700626E22 /* GameScene.swift in Sources */,
 				FD1E4E001EE0966700626E22 /* GameViewController.swift in Sources */,
+				FD51F57C1EFE2EEE00F79500 /* DeckComponent.swift in Sources */,
 				FD1E4DF81EE0966700626E22 /* AppDelegate.swift in Sources */,
 				FD1E4E101EE096F000626E22 /* Unit.swift in Sources */,
 				FD1E4E5A1EEF7F3100626E22 /* SkillCard.swift in Sources */,

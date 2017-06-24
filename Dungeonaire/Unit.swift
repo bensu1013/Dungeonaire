@@ -16,7 +16,9 @@ class Unit {
     var stats = StatsComponent()
     var sprite = SpriteComponent()
     var battle = BattleComponent()
-    var deck = [SkillCard]()
+    var cards = CardsComponent()
+    var equipment = EquipmentController()
+    
     var baseHealth: Int = 10
     var vitHealth: Int = 2
     var maxHealth: Int {
@@ -26,6 +28,7 @@ class Unit {
     init() {
         sprite.unit = self
         battle.unit = self
+        cards.unit = self
     }
     
     func update(dt: TimeInterval) {

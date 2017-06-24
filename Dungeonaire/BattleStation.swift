@@ -14,6 +14,7 @@ struct BattleStoredComponents {
     var enemyUnits = [Unit]()
     var battleUnits = [BattleComponent]()
     var readyUnit: BattleComponent?
+    
 }
 
 protocol BattleStation: class {
@@ -63,9 +64,11 @@ extension BattleStation {
     //MARK: -Battle Methods
     func startBattle() {
         for unit in playerUnits {
+            unit.cards.startBattle()
             battleUnits.append(unit.battle)
         }
         for unit in enemyUnits {
+            unit.cards.startBattle()
             battleUnits.append(unit.battle)
         }
         for unit in battleUnits {

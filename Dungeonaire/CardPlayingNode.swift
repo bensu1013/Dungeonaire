@@ -38,7 +38,7 @@ class CardPlayingNode: SKNode {
                 cards[x].isUserInteractionEnabled = true
             }
             cards[x].skillCard = hand[x]
-            cards[x].cardName = "\(hand[x].temp)"
+            cards[x].cardName = "\(hand[x].name)"
             cards[x].slide(to: cardPos[x])
         }
     }

@@ -12,7 +12,13 @@ class EquipmentController {
     
     var weapon: Weapon?
     var armor: Armor?
+    var relic: Relic?
     
+    
+    
+}
+
+class Relic: Item {
     
     
     
