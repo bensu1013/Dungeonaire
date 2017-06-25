@@ -23,7 +23,7 @@ class Warrior: PlayerUnit {
         vitHealth = 3
         battle.health = maxHealth
         battle.armor = 2
-        equipment.weapon = Weapon(type: .Shortsword)
+        equipment.weapon = Weapon(type: .GreatHammer)
         battle.team = .team1
     }
     

@@ -119,7 +119,6 @@ extension BattleStation {
             incrementInitiative()
         }
         let battleUnit = readyUnit!
-//        let hand = battleUnit.drawCards()
         
         // set hudlayer to reflect drawing cards 'hand'
         completion(battleUnit.team)

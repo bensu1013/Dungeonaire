@@ -118,7 +118,6 @@ class BattleGameState: GKState, BattleStation {
     }
     
     func unitPressed(_ unit: Unit) {
-        print("welp")
         if inputState == .target {
             selectedTarget = unit
             scene.cardsPlayingNode.clearCards()
@@ -137,12 +136,10 @@ class BattleGameState: GKState, BattleStation {
         }
     }
     
-    
     func updateHealthNodes() {
         let newHealths = unitsHealth()
         scene.playerPartyNode.updateHealth(newHealths.0)
         scene.enemyPartyNode.updateHealth(newHealths.1)
-        
     }
     
     func endBattle() {

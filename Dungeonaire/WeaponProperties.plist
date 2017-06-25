@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GreatHammer</key>
+	<dict>
+		<key>Damage</key>
+		<integer>8</integer>
+		<key>Cards</key>
+		<array>
+			<string>DevastatingSmashCard</string>
+			<string>DevastatingSmashCard</string>
+			<string>DevastatingSmashCard</string>
+			<string>BludgeonCard</string>
+		</array>
+	</dict>
 	<key>Dagger</key>
 	<dict>
 		<key>Damage</key>

@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>DevastatingSmashCard</key>
+	<dict>
+		<key>TargetEnemy</key>
+		<true/>
+		<key>Range</key>
+		<array>
+			<integer>9</integer>
+			<integer>13</integer>
+		</array>
+		<key>Name</key>
+		<string>Devastating Smash</string>
+		<key>MainStat</key>
+		<string>Strength</string>
+		<key>Rank</key>
+		<integer>3</integer>
+	</dict>
 	<key>SlapCard</key>
 	<dict>
 		<key>TargetEnemy</key>

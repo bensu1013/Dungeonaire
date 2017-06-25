@@ -12,6 +12,7 @@ enum WeaponType: String {
     case Dagger
     case Shortsword
     case Club
+    case GreatHammer
 }
 
 class Weapon: Item {

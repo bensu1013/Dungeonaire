@@ -31,26 +31,8 @@ class CardsComponent {
     }
     
     func constructDeck() -> [SkillCard] {
-        var newDeck = [SkillCard]()
-        if deck.count == 0 {
-            if let armor = unit.equipment.armor {
-                newDeck += armor.cards
-            }
-            if let weapon = unit.equipment.weapon {
-                newDeck += weapon.cards
-            }
-            newDeck += insertFillerCards(currentCount: newDeck.count)
-            newDeck = shuffle(newDeck)
-        }
-        return newDeck
-    }
-    
-    func insertFillerCards(currentCount: Int) -> [SkillCard] {
-        var tempDeck = [SkillCard]()
-        for _ in 1...(maxDeckCount - currentCount) {
-            tempDeck.append(SkillCard(type: .SlapCard))
-        }
-        return tempDeck
+        let newDeck = unit.equipment.getEquipmentCards()
+        return shuffle(newDeck)
     }
     
     func shuffle(_ deck: [SkillCard]) -> [SkillCard] {

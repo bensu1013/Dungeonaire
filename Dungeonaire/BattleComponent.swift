@@ -21,6 +21,7 @@ class BattleComponent {
     var initiative = 0
     var team: Team = .team1
     var hand: Hand?
+    var persistedEffects = [CardEffect]()
     var speed: Int {
         get {
             return unit.stats.dexterity

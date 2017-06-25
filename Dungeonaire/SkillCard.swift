@@ -9,10 +9,13 @@
 import Foundation
 
 
-enum CardEffect {
-    case damage
-    case heal
-    case slow
+enum CardEffect: String {
+    case Damage
+    case DamageArmor
+    case Heal
+    case GainArmor
+    case Slow
+    case Stun
 }
 
 enum SkillCardType: String {
@@ -20,6 +23,7 @@ enum SkillCardType: String {
     case SlashCard
     case StabCard
     case BludgeonCard
+    case DevastatingSmashCard
     
 }
 
@@ -31,7 +35,7 @@ enum MainStat: String {
     case luk = "Luck"
 }
 
-class SkillCard {
+struct SkillCard {
     
     var name = ""
     var rank = 1
