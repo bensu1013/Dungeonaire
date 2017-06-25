@@ -62,8 +62,6 @@ class BattleComponent {
         }
     }
     
-    
-    
     func completeTurn() {
         
         initiative -= turnThreshold
@@ -73,12 +71,12 @@ class BattleComponent {
     
     func useCard(_ card: SkillCard, target: Unit) {
         
-        let stat = getStatFor(card.mainStat)
-        var damage = stat + card.temp
-        if !card.targetEnemy {
-            damage = -damage
+        let cardEffectManager = CardEffectManager()
+        
+        cardEffectManager.activate(card, for: self, on: target.battle) { effect in
+            //set animation to effect
+            
         }
-        target.battle.healthChanged(by: damage)
         
     }
     

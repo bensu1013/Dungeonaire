@@ -41,6 +41,7 @@ struct SkillCard {
     var rank = 1
     var mainStat: MainStat = .luk
     var targetEnemy = true
+    var multiTarget = false
     var effects = [CardEffect]()
     var range = (0,0)
     var temp = 4
@@ -54,8 +55,12 @@ struct SkillCard {
         rank = cardData["Rank"] as! Int
         mainStat = MainStat.init(rawValue: cardData["MainStat"] as! String)!
         targetEnemy = cardData["TargetEnemy"] as! Bool
+        multiTarget = cardData["MultiTarget"] as! Bool
         let range = cardData["Range"] as! [Int]
         self.range = (range[0], range[1])
+        for effect in cardData["Effects"] as! [String] {
+            self.effects.append(CardEffect(rawValue: effect)!)
+        }
     }
     
 }

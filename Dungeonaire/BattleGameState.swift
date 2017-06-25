@@ -128,7 +128,11 @@ class BattleGameState: GKState, BattleStation {
                 for sprite in self.scene.enemyPartyNode.party {
                     sprite.isUserInteractionEnabled = true
                 }
-                self.completeTurn(card: self.selectedCard!, target: self.selectedTarget!)
+                if self.selectedCard!.multiTarget {
+                    self.completeTurn(card: self.selectedCard!, targets: self.enemyUnits)
+                } else {
+                    self.completeTurn(card: self.selectedCard!, targets: [self.selectedTarget!])
+                }
                 self.updateHealthNodes()
                 self.inputState = .neutral
                 self.checkForWinner()

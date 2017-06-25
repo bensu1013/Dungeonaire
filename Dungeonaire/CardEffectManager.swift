@@ -11,22 +11,28 @@ import Foundation
 struct CardEffectManager {
     
     //methods to run through card and produce proper results based on cards effects
-    func activate(_ card: SkillCard, for user: BattleComponent, on target: BattleComponent) {
+    func activate(_ card: SkillCard, for user: BattleComponent, on target: BattleComponent, completion: @escaping (CardEffect) -> ()) {
         for effect in card.effects {
             
             switch effect {
             case .Damage:
                 damageEffect(card, for: user, on: target)
+                completion(.Damage)
             case .DamageArmor:
                 target.armor -= 10
+                completion(.DamageArmor)
             case .Heal:
                 healEffect(card, for: user, on: target)
+                completion(.Heal)
             case .GainArmor:
                 target.armor += 10
+                completion(.GainArmor)
             case .Slow:
                 target.persistedEffects.append(.Slow)
+                completion(.Slow)
             case .Stun:
                 target.persistedEffects.append(.Stun)
+                completion(.Stun)
             }
         }
     }

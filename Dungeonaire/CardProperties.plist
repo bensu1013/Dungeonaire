@@ -4,6 +4,13 @@
 <dict>
 	<key>DevastatingSmashCard</key>
 	<dict>
+		<key>MultiTarget</key>
+		<true/>
+		<key>Effects</key>
+		<array>
+			<string>Stun</string>
+			<string>Damage</string>
+		</array>
 		<key>TargetEnemy</key>
 		<true/>
 		<key>Range</key>
@@ -20,6 +27,12 @@
 	</dict>
 	<key>SlapCard</key>
 	<dict>
+		<key>MultiTarget</key>
+		<false/>
+		<key>Effects</key>
+		<array>
+			<string>Damage</string>
+		</array>
 		<key>TargetEnemy</key>
 		<true/>
 		<key>Range</key>
@@ -36,6 +49,13 @@
 	</dict>
 	<key>BludgeonCard</key>
 	<dict>
+		<key>MultiTarget</key>
+		<false/>
+		<key>Effects</key>
+		<array>
+			<string>Stun</string>
+			<string>Damage</string>
+		</array>
 		<key>TargetEnemy</key>
 		<true/>
 		<key>Range</key>
@@ -52,6 +72,12 @@
 	</dict>
 	<key>StabCard</key>
 	<dict>
+		<key>MultiTarget</key>
+		<false/>
+		<key>Effects</key>
+		<array>
+			<string>Damage</string>
+		</array>
 		<key>TargetEnemy</key>
 		<true/>
 		<key>Range</key>
@@ -68,6 +94,12 @@
 	</dict>
 	<key>SlashCard</key>
 	<dict>
+		<key>MultiTarget</key>
+		<false/>
+		<key>Effects</key>
+		<array>
+			<string>Damage</string>
+		</array>
 		<key>TargetEnemy</key>
 		<true/>
 		<key>Range</key>
@@ -82,8 +114,12 @@
 		<key>Rank</key>
 		<integer>1</integer>
 	</dict>
-	<key>DodgeCard</key>
+	<key>TemplateCard</key>
 	<dict>
+		<key>MultiTarget</key>
+		<false/>
+		<key>Effects</key>
+		<array/>
 		<key>TargetEnemy</key>
 		<false/>
 		<key>Range</key>

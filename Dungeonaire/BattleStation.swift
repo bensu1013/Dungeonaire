@@ -17,6 +17,7 @@ struct BattleStoredComponents {
     
 }
 
+//TODO: - change from protocol back to class
 protocol BattleStation: class {
 
     var component: BattleStoredComponents { get set }
@@ -161,9 +162,11 @@ extension BattleStation {
         return (aiChoice.0, aiChoice.1)
     }
     
-    func completeTurn(card: SkillCard, target: Unit) {
+    func completeTurn(card: SkillCard, targets: [Unit]) {
         if let battleUnit = readyUnit {
-            battleUnit.useCard(card, target: target)
+            for target in targets {
+                battleUnit.useCard(card, target: target)
+            }
             battleUnit.completeTurn()
         }
         endTurn()

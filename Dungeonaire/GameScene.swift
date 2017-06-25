@@ -20,7 +20,7 @@ class GameScene: SKScene {
     
     var stateMachine: GKStateMachine?
     
-    //Need a way to handle AI graphics
+    //TODO: - Need a way to handle AI graphics
     var frameTime: Double = 0
     var cardsPlayingNode: CardPlayingNode!
     var unitsNode: SKNode!
@@ -75,44 +75,11 @@ class GameScene: SKScene {
         if let currentState = stateMachine!.currentState as? ExploreGameState {
             currentState.input(for: touches.first!)
         }
-
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let currentState = stateMachine!.currentState as? ExploreGameState {
             currentState.endMovement()
-        }
-        
-    }
-
-  
-    
-    //MARK: - Camera methods
-    func adjustCamera(to state: CameraState, completion: @escaping () -> () ) {
-        isUserInteractionEnabled = false
-        switch state {
-        case .playerTeam:
-            zoom(to: CGPoint(x: unitsNode.position.x - playerPartyNode.position.x, y: 0.0)) {
-                completion()
-            }
-        case .enemyTeam:
-            zoom(to: CGPoint(x: unitsNode.position.x - enemyPartyNode.position.x, y: 0.0)) {
-                completion()
-            }
-        case .reverseTeam:
-            if camera?.position == playerPartyNode.position {
-                zoom(to: CGPoint(x: unitsNode.position.x - enemyPartyNode.position.x, y: 0.0)) {
-                    completion()
-                }
-            } else {
-                zoom(to: CGPoint(x: unitsNode.position.x - playerPartyNode.position.x, y: 0.0)) {
-                    completion()
-                }
-            }
-        case .neutral:
-            unZoom(to: unitsNode.position) {
-                completion()
-            }
         }
     }
     
