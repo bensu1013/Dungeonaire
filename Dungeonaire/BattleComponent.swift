@@ -73,12 +73,14 @@ class BattleComponent {
         
         let cardEffectManager = CardEffectManager()
         
-        cardEffectManager.activate(card, for: self, on: target.battle) { effect in
+        cardEffectManager.activate(card, for: self, on: target.battle) { effected in
             //set animation to effect
-            
+            print("used")
         }
         
     }
+    
+    
     
     func getStatFor(_ mainStat: MainStat) -> Int {
         switch mainStat {
@@ -104,6 +106,14 @@ class BattleComponent {
                 health -= Int(amount)
             }
         }
+    }
+    
+    func didDodge(_ attackRoll: Int) -> Bool {
+        return attackRoll < unit.stats.dodgeModifier
+    }
+    
+    func didResist(_ attackRoll: Int) -> Bool {
+        return attackRoll < unit.stats.resistModifier
     }
     
     func drawCards() -> Hand {

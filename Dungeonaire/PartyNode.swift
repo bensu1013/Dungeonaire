@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+//Handles party animation in game scene
 class PartyNode: SKNode {
     
     var offPosition = CGPoint()

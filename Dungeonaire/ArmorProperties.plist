@@ -7,6 +7,9 @@
 		<key>Cards</key>
 		<array>
 			<string>SlashCard</string>
+			<string>SlashCard</string>
+			<string>SlashCard</string>
+			<string>SlashCard</string>
 		</array>
 		<key>Defense</key>
 		<integer>3</integer>

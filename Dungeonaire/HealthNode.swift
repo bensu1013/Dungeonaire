@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+//handles healthbar and text animations
 class HealthNode: SKNode {
     
     var healthBar = SKSpriteNode()

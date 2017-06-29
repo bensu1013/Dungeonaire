@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+//Handles card displays and animation in the game scene
 class CardPlayingNode: SKNode {
     
     var cards = [CardSprite]()
@@ -32,15 +33,21 @@ class CardPlayingNode: SKNode {
         
     }
     
-    func showCards(with hand: Hand, for team: Team) {
-        for x in 0...2 {
+    func showCards(with hand: Hand, for team: Team, completion: @escaping () -> () ) {
+        var slideCardActions = [SKAction]()
+        for x in 0...hand.count - 1 {
             if team == .team1 {
                 cards[x].isUserInteractionEnabled = true
             }
             cards[x].skillCard = hand[x]
-            cards[x].cardName = "\(hand[x].name)"
-            cards[x].slide(to: cardPos[x])
+            let slide = SKAction.run {
+                self.cards[x].slide(to: self.cardPos[x])
+            }
+            slideCardActions.append(slide)
         }
+        let completeAction = SKAction.run { completion() }
+        slideCardActions.append(completeAction)
+        self.run(SKAction.sequence(slideCardActions))
     }
     
     func clearCards() {
@@ -67,13 +74,20 @@ class CardSprite: SKSpriteNode {
         }
     }
     
-    var skillCard: SkillCard?
+    var skillCard: SkillCard? {
+        didSet {
+            if let card = skillCard {
+                cardName = card.name
+            } else {
+                cardName = nil
+            }
+        }
+    }
+    
     var onPressed: ((SkillCard) -> ())?
     
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("press card")
         onPressed!(skillCard!)
     }
     

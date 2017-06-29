@@ -75,7 +75,9 @@ class BattleGameState: GKState, BattleStation {
         self.prepareTurn(completion: { (team) in
             let hand = self.drawCards()
             self.currentTeam = team
-            self.scene.cardsPlayingNode.showCards(with: hand, for: team)
+            self.scene.cardsPlayingNode.showCards(with: hand, for: team) {
+                print("slide baby")
+            }
             self.inputState = .card
         })
     }
