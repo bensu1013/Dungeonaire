@@ -9,11 +9,11 @@
 import Foundation
 
 enum SkillCardType: String {
-    case SlapCard
-    case SlashCard
-    case StabCard
-    case BludgeonCard
-    case DevastatingSmashCard
+    case Slap
+    case Slash
+    case Stab
+    case Bludgeon
+    case DevastatingSmash
 }
 
 enum Attribute: String {
@@ -35,7 +35,6 @@ protocol SkillCard {
 }
 
 extension SkillCard {
-    
     func getAttribute(for owner: Unit) -> Int {
         switch attribute {
         case .str:

@@ -24,9 +24,9 @@ class Armor: Item {
         let armorData = dict![type.rawValue] as! [String : Any]
         let cards = armorData["Cards"] as! [String]
         
-        for card in cards {
-            self.cards.append(AttackCard(type: SkillCardType(rawValue: card)!))
-        }
+//        for card in cards {
+//            self.cards.append(AttackCard(type: SkillCardType(rawValue: card)!))
+//        }
         
         self.defense = armorData["Defense"] as! Int
     }

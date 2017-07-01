@@ -8,10 +8,10 @@
 		<integer>8</integer>
 		<key>Cards</key>
 		<array>
-			<string>DevastatingSmashCard</string>
-			<string>DevastatingSmashCard</string>
-			<string>DevastatingSmashCard</string>
-			<string>BludgeonCard</string>
+			<string>DevastatingSmash</string>
+			<string>DevastatingSmash</string>
+			<string>DevastatingSmash</string>
+			<string>Bludgeon</string>
 		</array>
 	</dict>
 	<key>Dagger</key>
@@ -20,10 +20,10 @@
 		<integer>3</integer>
 		<key>Cards</key>
 		<array>
-			<string>StabCard</string>
-			<string>StabCard</string>
-			<string>StabCard</string>
-			<string>SlashCard</string>
+			<string>Stab</string>
+			<string>Stab</string>
+			<string>Stab</string>
+			<string>Slash</string>
 		</array>
 	</dict>
 	<key>Shortsword</key>
@@ -32,10 +32,10 @@
 		<integer>3</integer>
 		<key>Cards</key>
 		<array>
-			<string>StabCard</string>
-			<string>SlashCard</string>
-			<string>SlashCard</string>
-			<string>SlashCard</string>
+			<string>Stab</string>
+			<string>Slash</string>
+			<string>Slash</string>
+			<string>Slash</string>
 		</array>
 	</dict>
 </dict>

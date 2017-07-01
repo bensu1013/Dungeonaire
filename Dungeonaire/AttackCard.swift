@@ -8,6 +8,14 @@
 
 import Foundation
 
+enum AttackCardType: String {
+    
+    case Slash
+    case Bludgeon
+    case Stab
+    
+}
+
 struct AttackCard: SkillCard {
     
     var name: String
@@ -24,19 +32,31 @@ struct AttackCard: SkillCard {
         let dict = NSDictionary(contentsOfFile: path)
         let cardData = dict![type.rawValue] as! [String : Any]
         
-        name = cardData["Name"] as! String
+        name = type.rawValue
         rank = cardData["Rank"] as! Int
         attribute = Attribute(rawValue: cardData["Attribute"] as! String)!
         isMultiTarget = cardData["MultiTarget"] as! Bool
         let range = cardData["Range"] as! [Int]
         self.damageRange = (range[0], range[1])
-        for effect in cardData["Effects"] as! [String] {
-            self.statusEffects.append(StunEffect(rank: 1))
+        for (effectName, effectRank) in cardData["Effects"] as! [String:Int] {
+            if let status = StatusEffectFactory.create(word: effectName, rank: effectRank) {
+                self.statusEffects.append(status)
+            }
         }
     }
     
     func activateCard(_ owner: Unit, target: Unit) {
+        target.battle.healthChanged(by: generateNumber(min: damageRange.0, max: damageRange.1) + owner.stats.physicalModifier)
+        
         
     }
     
 }
+
+
+
+
+
+
+
+

@@ -30,7 +30,9 @@ class Weapon: Item {
         let cards = weaponData["Cards"] as! [String]
         
         for card in cards {
-            self.cards.append(AttackCard(type: SkillCardType(rawValue: card)!))
+            if let newCard = SkillCardFactory.create(named: card) {
+                self.cards.append(newCard)
+            }
         }
         
         self.damage = weaponData["Damage"] as! Int

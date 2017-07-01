@@ -50,6 +50,8 @@
 		FD51F5871F073E5C00F79500 /* AttackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5861F073E5C00F79500 /* AttackCard.swift */; };
 		FD51F5891F073E6F00F79500 /* DefenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5881F073E6F00F79500 /* DefenseCard.swift */; };
 		FD51F58D1F0753E300F79500 /* DefenseCardProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD51F58C1F0753E300F79500 /* DefenseCardProperties.plist */; };
+		FD51F58F1F07FB9C00F79500 /* StatusEffectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F58E1F07FB9C00F79500 /* StatusEffectFactory.swift */; };
+		FD51F5911F07FEA700F79500 /* SkillCardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5901F07FEA700F79500 /* SkillCardFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		FD51F5861F073E5C00F79500 /* AttackCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttackCard.swift; sourceTree = "<group>"; };
 		FD51F5881F073E6F00F79500 /* DefenseCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefenseCard.swift; sourceTree = "<group>"; };
 		FD51F58C1F0753E300F79500 /* DefenseCardProperties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefenseCardProperties.plist; sourceTree = "<group>"; };
+		FD51F58E1F07FB9C00F79500 /* StatusEffectFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusEffectFactory.swift; sourceTree = "<group>"; };
+		FD51F5901F07FEA700F79500 /* SkillCardFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillCardFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,9 +271,11 @@
 			isa = PBXGroup;
 			children = (
 				FD1E4E591EEF7F3100626E22 /* SkillCard.swift */,
+				FD51F5901F07FEA700F79500 /* SkillCardFactory.swift */,
 				FD51F58A1F07538E00F79500 /* AttackCards */,
 				FD51F58B1F07539C00F79500 /* DefenseCards */,
 				FD51F5841F07376900F79500 /* StatusEffect.swift */,
+				FD51F58E1F07FB9C00F79500 /* StatusEffectFactory.swift */,
 				FD51F5821EFF539100F79500 /* CardEffectManager.swift */,
 			);
 			name = SkillCards;
@@ -425,9 +431,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD1E4E541EEA433500626E22 /* Extensions.swift in Sources */,
+				FD51F58F1F07FB9C00F79500 /* StatusEffectFactory.swift in Sources */,
 				FD1E4E131EE0974900626E22 /* Warrior.swift in Sources */,
 				FD1E4E601EF1879D00626E22 /* AIBattleLogic.swift in Sources */,
 				FD05D25B1EF48EE3006B951A /* ExploreGameState.swift in Sources */,
+				FD51F5911F07FEA700F79500 /* SkillCardFactory.swift in Sources */,
 				FD51F57F1EFED97C00F79500 /* OffHand.swift in Sources */,
 				FD1E4E341EE24EFD00626E22 /* StatsComponent.swift in Sources */,
 				FD1E4E2F1EE24D7800626E22 /* PlayerUnit.swift in Sources */,

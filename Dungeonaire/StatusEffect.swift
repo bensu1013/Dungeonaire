@@ -70,10 +70,10 @@ struct RegenEffect: StatusEffect {
     func activateEffect(_ owner: Unit, target: Unit) {
         if let regen = target.battle.persistingStatus[.Regen] {
             if duration > regen.duration {
-                target.battle.persistingStatus[.Regen] = (duration, 0)
+                target.battle.persistingStatus[.Regen] = (duration, owner.stats.magicalModifier)
             }
         } else {
-            target.battle.persistingStatus[.Regen] = (duration, 0)
+            target.battle.persistingStatus[.Regen] = (duration, owner.stats.magicalModifier)
         }
     }
 }
