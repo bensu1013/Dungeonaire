@@ -24,10 +24,9 @@ enum SkillCardType: String {
     case StabCard
     case BludgeonCard
     case DevastatingSmashCard
-    
 }
 
-enum MainStat: String {
+enum Attribute: String {
     case str = "Strength"
     case dex = "Dexterity"
     case vit = "Vitality"
@@ -35,34 +34,37 @@ enum MainStat: String {
     case luk = "Luck"
 }
 
-struct SkillCard {
+protocol SkillCard {
+    var name: String {get}
+    var rank: Int {get}
+    var attribute: Attribute {get}
+    var statusEffects: [StatusEffect] {get}
+    var isMultiTarget: Bool {get}
     
-    var name = ""
-    var rank = 1
-    var mainStat: MainStat = .luk
-    var targetSelf = false
-    var targetEnemy = true
-    var multiTarget = false
-    var effects = [CardEffect]()
-    var range = (0,0)
-    var temp = 4
-    
-    init(type: SkillCardType) {
-        guard let path = Bundle.main.path(forResource: "CardProperties", ofType: "plist") else { return }
-        let dict = NSDictionary(contentsOfFile: path)
-        let cardData = dict![type.rawValue] as! [String : Any]
-        
-        name = cardData["Name"] as! String
-        rank = cardData["Rank"] as! Int
-        mainStat = MainStat.init(rawValue: cardData["MainStat"] as! String)!
-        targetEnemy = cardData["TargetEnemy"] as! Bool
-        multiTarget = cardData["MultiTarget"] as! Bool
-        targetSelf = cardData["TargetSelf"] as! Bool
-        let range = cardData["Range"] as! [Int]
-        self.range = (range[0], range[1])
-        for effect in cardData["Effects"] as! [String] {
-            self.effects.append(CardEffect(rawValue: effect)!)
+    func activateCard(_ owner: Unit, target: Unit)
+}
+
+extension SkillCard {
+    func getAttribute(for owner: Unit) -> Int {
+        switch attribute {
+        case .str:
+            return owner.stats.strength
+        case .dex:
+            return owner.stats.dexterity
+        case .wis:
+            return owner.stats.wisdom
+        case .vit:
+            return owner.stats.vitality
+        case .luk:
+            return owner.stats.luck
         }
     }
-    
 }
+
+
+
+
+
+
+
+

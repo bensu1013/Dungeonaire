@@ -8,8 +8,8 @@
 
 import Foundation
 
-class Item {
+protocol Item {
     
-    
+    var name: String {get}
     
 }

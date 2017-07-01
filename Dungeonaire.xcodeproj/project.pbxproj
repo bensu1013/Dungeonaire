@@ -46,6 +46,9 @@
 		FD51F57F1EFED97C00F79500 /* OffHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F57E1EFED97C00F79500 /* OffHand.swift */; };
 		FD51F5811EFED99500F79500 /* Relic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5801EFED99500F79500 /* Relic.swift */; };
 		FD51F5831EFF539100F79500 /* CardEffectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5821EFF539100F79500 /* CardEffectManager.swift */; };
+		FD51F5851F07376900F79500 /* StatusEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5841F07376900F79500 /* StatusEffect.swift */; };
+		FD51F5871F073E5C00F79500 /* AttackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5861F073E5C00F79500 /* AttackCard.swift */; };
+		FD51F5891F073E6F00F79500 /* DefenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD51F5881F073E6F00F79500 /* DefenseCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +93,9 @@
 		FD51F57E1EFED97C00F79500 /* OffHand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffHand.swift; sourceTree = "<group>"; };
 		FD51F5801EFED99500F79500 /* Relic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relic.swift; sourceTree = "<group>"; };
 		FD51F5821EFF539100F79500 /* CardEffectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardEffectManager.swift; sourceTree = "<group>"; };
+		FD51F5841F07376900F79500 /* StatusEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusEffect.swift; sourceTree = "<group>"; };
+		FD51F5861F073E5C00F79500 /* AttackCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttackCard.swift; sourceTree = "<group>"; };
+		FD51F5881F073E6F00F79500 /* DefenseCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefenseCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +266,9 @@
 			children = (
 				FD51F5721EF7466300F79500 /* CardProperties.plist */,
 				FD1E4E591EEF7F3100626E22 /* SkillCard.swift */,
+				FD51F5861F073E5C00F79500 /* AttackCard.swift */,
+				FD51F5881F073E6F00F79500 /* DefenseCard.swift */,
+				FD51F5841F07376900F79500 /* StatusEffect.swift */,
 				FD51F5821EFF539100F79500 /* CardEffectManager.swift */,
 			);
 			name = SkillCards;
@@ -414,11 +423,13 @@
 				FD05D2591EF448FD006B951A /* BattleGameState.swift in Sources */,
 				FD1E4E311EE24DBF00626E22 /* MonsterUnit.swift in Sources */,
 				FD1E4E221EE108FE00626E22 /* Weapon.swift in Sources */,
+				FD51F5871F073E5C00F79500 /* AttackCard.swift in Sources */,
 				FD05D2531EF2F2B5006B951A /* PartyNode.swift in Sources */,
 				FD51F5831EFF539100F79500 /* CardEffectManager.swift in Sources */,
 				FD1E4DFE1EE0966700626E22 /* GameScene.swift in Sources */,
 				FD1E4E001EE0966700626E22 /* GameViewController.swift in Sources */,
 				FD51F57C1EFE2EEE00F79500 /* DeckComponent.swift in Sources */,
+				FD51F5851F07376900F79500 /* StatusEffect.swift in Sources */,
 				FD1E4DF81EE0966700626E22 /* AppDelegate.swift in Sources */,
 				FD1E4E101EE096F000626E22 /* Unit.swift in Sources */,
 				FD1E4E5A1EEF7F3100626E22 /* SkillCard.swift in Sources */,
@@ -427,6 +438,7 @@
 				FD05D2551EF2F8B1006B951A /* HealthNode.swift in Sources */,
 				FD1E4E5C1EEF815500626E22 /* BattleComponent.swift in Sources */,
 				FD1E4E3C1EE316B000626E22 /* GoblinSpear.swift in Sources */,
+				FD51F5891F073E6F00F79500 /* DefenseCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -80,23 +80,6 @@ class BattleComponent {
         
     }
     
-    
-    
-    func getStatFor(_ mainStat: MainStat) -> Int {
-        switch mainStat {
-        case .str:
-            return unit.stats.strength
-        case .dex:
-            return unit.stats.dexterity
-        case .vit:
-            return unit.stats.vitality
-        case .wis:
-            return unit.stats.wisdom
-        case .luk:
-            return unit.stats.luck
-        }
-    }
-    
     func healthChanged(by amount: Int) {
         if !isDefeated {
             if armor < amount {

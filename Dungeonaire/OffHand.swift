@@ -9,7 +9,7 @@
 import Foundation
 
 class OffHand: Item {
-    
+    var name: String = ""
     var cards = [SkillCard]()
     
 }

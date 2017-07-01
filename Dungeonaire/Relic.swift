@@ -10,6 +10,8 @@ import Foundation
 
 class Relic: Item {
     
+    var name: String = ""
+    
     var cards = [SkillCard]()
     
     

@@ -35,7 +35,7 @@ class BattleGameState: GKState, BattleStation {
     init(scene: GameScene) {
         self.scene = scene
         super.init()
-        playerUnits = UserDatabase.main.party.units
+        playerUnits = UserDatabase.main.party
         
     }
     
@@ -101,7 +101,7 @@ class BattleGameState: GKState, BattleStation {
     func cardPressed(_ card: SkillCard) {
         if inputState == .card {
             selectedCard = card
-            if card.targetEnemy {
+            if let _ = card as? AttackCard {
                 for sprite in scene.playerPartyNode.party {
                     sprite.isUserInteractionEnabled = false
                 }
@@ -130,7 +130,7 @@ class BattleGameState: GKState, BattleStation {
                 for sprite in self.scene.enemyPartyNode.party {
                     sprite.isUserInteractionEnabled = true
                 }
-                if self.selectedCard!.multiTarget {
+                if self.selectedCard!.isMultiTarget {
                     self.completeTurn(card: self.selectedCard!, targets: self.enemyUnits)
                 } else {
                     self.completeTurn(card: self.selectedCard!, targets: [self.selectedTarget!])

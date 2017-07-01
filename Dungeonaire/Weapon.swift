@@ -17,18 +17,20 @@ enum WeaponType: String {
 
 class Weapon: Item {
     
+    var name: String
     var damage = 2
     var cards = [SkillCard]()
     
     //MARK: - temp init to fill card
     init(type: WeaponType) {
+        self.name = type.rawValue
         guard let path = Bundle.main.path(forResource: "WeaponProperties", ofType: "plist") else { return }
         let dict = NSDictionary(contentsOfFile: path)
         let weaponData = dict![type.rawValue] as! [String : Any]
         let cards = weaponData["Cards"] as! [String]
         
         for card in cards {
-            self.cards.append(SkillCard(type: SkillCardType(rawValue: card)!))
+            self.cards.append(AttackCard(type: SkillCardType(rawValue: card)!))
         }
         
         self.damage = weaponData["Damage"] as! Int

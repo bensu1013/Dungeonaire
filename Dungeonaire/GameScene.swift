@@ -45,7 +45,7 @@ class GameScene: SKScene {
                 enemyPartyNode.setVariables(partyNode)
             }
         }
-        playerPartyNode.fillParty(with: UserDatabase.main.party.units)
+        playerPartyNode.fillParty(with: UserDatabase.main.party)
         if let cardsNode = childNode(withName: "CardPlayingNode") as? CardPlayingNode {
             cardsPlayingNode = cardsNode
             cardsPlayingNode.setVariables(cardsNode)

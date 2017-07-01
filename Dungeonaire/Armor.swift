@@ -14,6 +14,7 @@ enum ArmorType: String {
 
 class Armor: Item {
     
+    var name: String = ""
     var defense = 2
     var cards = [SkillCard]()
     
@@ -24,7 +25,7 @@ class Armor: Item {
         let cards = armorData["Cards"] as! [String]
         
         for card in cards {
-            self.cards.append(SkillCard(type: SkillCardType(rawValue: card)!))
+            self.cards.append(AttackCard(type: SkillCardType(rawValue: card)!))
         }
         
         self.defense = armorData["Defense"] as! Int

@@ -27,10 +27,10 @@ class GameViewController: UIViewController {
         let char3 = Warrior()
         let char4 = Warrior()
         
-        UserDatabase.main.party.units.append(char1)
-        UserDatabase.main.party.units.append(char2)
-        UserDatabase.main.party.units.append(char3)
-        UserDatabase.main.party.units.append(char4)
+        UserDatabase.main.party.append(char1)
+        UserDatabase.main.party.append(char2)
+        UserDatabase.main.party.append(char3)
+        UserDatabase.main.party.append(char4)
         
         if skView.scene == nil {
             skView.showsFPS = true
