@@ -21,27 +21,27 @@ class EquipmentController {
         if let weapon = weapon {
             deck += weapon.cards
         } else {
-            deck += [SkillCard(type: .SlapCard), SkillCard(type: .SlapCard), SkillCard(type: .SlapCard), SkillCard(type: .SlashCard)]
+            deck += [AttackCard(type: .SlapCard), AttackCard(type: .SlapCard), AttackCard(type: .SlapCard), AttackCard(type: .SlashCard)]
         }
         if let offHand = offHand {
             deck += offHand.cards
         } else {
-            deck += [SkillCard(type: .SlapCard), SkillCard(type: .SlapCard), SkillCard(type: .SlapCard), SkillCard(type: .SlashCard)]
+            deck += [AttackCard(type: .SlapCard), AttackCard(type: .SlapCard), AttackCard(type: .SlapCard), AttackCard(type: .SlashCard)]
         }
         if let armor = armor {
             deck += armor.cards
         } else {
-            deck += [SkillCard(type: .SlapCard), SkillCard(type: .SlapCard), SkillCard(type: .SlapCard), SkillCard(type: .SlashCard)]
+            deck += [AttackCard(type: .SlapCard), AttackCard(type: .SlapCard), AttackCard(type: .SlapCard), AttackCard(type: .SlashCard)]
         }
         if let relic = relic1 {
             deck += relic.cards
         } else {
-            deck += [SkillCard(type: .SlapCard), SkillCard(type: .SlapCard), SkillCard(type: .SlapCard)]
+            deck += [AttackCard(type: .SlapCard), AttackCard(type: .SlapCard), AttackCard(type: .SlapCard)]
         }
         if let relic = relic2 {
             deck += relic.cards
         } else {
-            deck += [SkillCard(type: .SlapCard), SkillCard(type: .SlapCard), SkillCard(type: .SlapCard)]
+            deck += [AttackCard(type: .SlapCard), AttackCard(type: .SlapCard), AttackCard(type: .SlapCard)]
         }
         return deck
     }

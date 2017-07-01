@@ -21,7 +21,7 @@ class BattleComponent {
     var initiative = 0
     var team: Team = .team1
     var hand: Hand?
-    var persistedEffects = [CardEffect]()
+    var persistingStatus = [StatusType : StatusDurationPotency]()
     var speed: Int {
         get {
             return unit.stats.dexterity
@@ -73,10 +73,11 @@ class BattleComponent {
         
         let cardEffectManager = CardEffectManager()
         
-        cardEffectManager.activate(card, for: self, on: target.battle) { effected in
-            //set animation to effect
-            print("used")
-        }
+//        cardEffectManager.activate(card, for: self, on: target.battle) { effected in
+//            //set animation to effect
+//            print("used")
+//        }
+        card.activateCard(self.unit, target: target)
         
     }
     
@@ -92,11 +93,19 @@ class BattleComponent {
     }
     
     func didDodge(_ attackRoll: Int) -> Bool {
-        return attackRoll < unit.stats.dodgeModifier
+        var dodgeMod = unit.stats.dodgeModifier
+        if let quicken = persistingStatus[.Quick] {
+            dodgeMod += quicken.potency
+        }
+        return attackRoll < dodgeMod
     }
     
     func didResist(_ attackRoll: Int) -> Bool {
-        return attackRoll < unit.stats.resistModifier
+        var resistMod = unit.stats.resistModifier
+        if let warded = persistingStatus[.Ward] {
+            resistMod += warded.potency
+        }
+        return attackRoll < resistMod
     }
     
     func drawCards() -> Hand {

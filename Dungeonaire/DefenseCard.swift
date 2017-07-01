@@ -14,8 +14,9 @@ struct DefenseCard: SkillCard {
     var name: String
     var rank: Int
     var attribute: Attribute
-    var statusEffects = [StatusEffect]()
     var isMultiTarget: Bool = false
+    var statusEffects = [StatusEffect]()
+    
     
     var selfTarget: Bool = false
     var healRange = (0,0)
@@ -32,10 +33,9 @@ struct DefenseCard: SkillCard {
         let range = cardData["Range"] as! [Int]
         self.healRange = (range[0], range[1])
         for effect in cardData["Effects"] as! [String] {
-            self.statusEffects.append(StunEffect())
+            self.statusEffects.append(StunEffect(rank: 1))
         }
     }
-    
     
     func activateCard(_ owner: Unit, target: Unit) {
         

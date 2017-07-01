@@ -8,16 +8,6 @@
 
 import Foundation
 
-
-enum CardEffect: String {
-    case Damage
-    case DamageArmor
-    case Heal
-    case GainArmor
-    case Slow
-    case Stun
-}
-
 enum SkillCardType: String {
     case SlapCard
     case SlashCard
@@ -38,13 +28,14 @@ protocol SkillCard {
     var name: String {get}
     var rank: Int {get}
     var attribute: Attribute {get}
-    var statusEffects: [StatusEffect] {get}
     var isMultiTarget: Bool {get}
+    var statusEffects: [StatusEffect] {get}
     
     func activateCard(_ owner: Unit, target: Unit)
 }
 
 extension SkillCard {
+    
     func getAttribute(for owner: Unit) -> Int {
         switch attribute {
         case .str:

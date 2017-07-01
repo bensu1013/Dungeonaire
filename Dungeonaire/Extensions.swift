@@ -9,7 +9,6 @@
 import Foundation
 
 extension Double {
-    
     //returns a smaller number between the percentage given and 100%
     func modify(by percent: Double = 30.0) -> Double {
         var range = percent
@@ -22,5 +21,9 @@ extension Double {
         let rand = Double(arc4random_uniform(UInt32(range))) + base
         return self * rand / 100.0
     }
-    
+}
+
+func generateNumber(min: Int = 1, max: Int = 100) -> Int {
+    let random = Int(arc4random_uniform(UInt32(max - min))) + min + 1
+    return random
 }

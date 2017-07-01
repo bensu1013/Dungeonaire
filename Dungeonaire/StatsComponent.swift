@@ -35,7 +35,6 @@ struct StatsComponent {
             return vitality * 2 + wisdom + strength
         }
     }
-    
     var physicalAccuraryModifier: Int {
         get {
             return dexterity * 2 + luck + 60

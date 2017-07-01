@@ -13,24 +13,25 @@ struct AttackCard: SkillCard {
     var name: String
     var rank: Int
     var attribute: Attribute
-    var statusEffects = [StatusEffect]()
     var isMultiTarget: Bool = false
+    var statusEffects = [StatusEffect]()
+    
     
     var damageRange = (0,0)
     
     init(type: SkillCardType) {
-        let path = Bundle.main.path(forResource: "CardProperties", ofType: "plist")!
+        let path = Bundle.main.path(forResource: "AttackCardProperties", ofType: "plist")!
         let dict = NSDictionary(contentsOfFile: path)
         let cardData = dict![type.rawValue] as! [String : Any]
         
         name = cardData["Name"] as! String
         rank = cardData["Rank"] as! Int
-        attribute = Attribute(rawValue: cardData["MainStat"] as! String)!
+        attribute = Attribute(rawValue: cardData["Attribute"] as! String)!
         isMultiTarget = cardData["MultiTarget"] as! Bool
         let range = cardData["Range"] as! [Int]
         self.damageRange = (range[0], range[1])
         for effect in cardData["Effects"] as! [String] {
-            self.statusEffects.append(StunEffect())
+            self.statusEffects.append(StunEffect(rank: 1))
         }
     }
     

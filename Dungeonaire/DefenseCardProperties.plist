@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TemplateCard</key>
+	<dict>
+		<key>Name</key>
+		<string>Dodge</string>
+		<key>MainStat</key>
+		<string>Dexterity</string>
+		<key>Rank</key>
+		<integer>1</integer>
+		<key>TargetSelf</key>
+		<false/>
+		<key>TargetEnemy</key>
+		<false/>
+		<key>MultiTarget</key>
+		<false/>
+		<key>Effects</key>
+		<array/>
+		<key>Range</key>
+		<array>
+			<integer>0</integer>
+			<integer>0</integer>
+		</array>
+	</dict>
+</dict>
+</plist>
